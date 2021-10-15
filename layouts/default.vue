@@ -96,18 +96,3 @@ export default {
   }
 
 </style>
-
-<style>
-  * {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    box-sizing: border-box;
-    font-family: sans-serif;
-  }
-
-  html, body, #__nuxt, #__layout {
-    width: 100%;
-    height: 100%;
-  }
-</style>

@@ -1,0 +1,8 @@
+:root {
+  --font-size: 1.6rem;
+  --text-color:  rgb(17, 24, 39);
+  --body-bg: #f9fafb;
+
+  --bezier: cubic-bezier(0.4, 0, 0.2, 1) 0s;
+	--transition-base: 0.3s var(--bezier);
+}

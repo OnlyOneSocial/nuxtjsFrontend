@@ -1,0 +1,52 @@
+@charset "UTF-8";
+
+@import "modern-normalize/modern-normalize.css";
+
+html {
+	font-size: 62.5%;
+}
+:focus {
+	outline: 0;
+}
+
+img {
+	position: relative;
+	max-width: 100%;
+	vertical-align: middle;
+	border-style: none;
+	-ms-interpolation-mode: bicubic;
+	box-sizing: content-box;
+	object-fit: cover;
+	white-space: pre-wrap;
+}
+svg {
+	overflow: hidden;
+	vertical-align: middle;
+}
+svg:not(:root) {
+	overflow: hidden;
+}
+svg:not([fill]) {
+    fill: currentColor
+}
+
+[hidden] {
+	display: none !important;
+}
+a {
+	text-decoration: none;
+}
+body {
+	position: relative;
+	font-weight: 500;
+	font-size: var(--font-size);
+	line-height: 160%;
+	font-family: "Inter", -apple-system, BlinkMacSystemFont, "Roboto", "Helvetica Neue", Geneva, "Noto Sans Armenian", "Noto Sans Bengali", "Noto Sans Cherokee", "Noto Sans Devanagari", "Noto Sans Ethiopic", "Noto Sans Georgian", "Noto Sans Hebrew", "Noto Sans Kannada", "Noto Sans Khmer", "Noto Sans Lao", "Noto Sans Osmanya", "Noto Sans Tamil", "Noto Sans Telugu", "Noto Sans Thai", sans-serif, arial, Tahoma, verdana;
+	letter-spacing: -.022em;
+	color: var(--text-color);
+	background-color: var(--body-bg);
+	text-rendering: optimizeLegibility;
+	-webkit-text-size-adjust: none;
+	-webkit-overflow-scrolling: touch;
+	transition: background var(--transition-base), color var(--transition-base);
+}

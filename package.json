@@ -14,9 +14,12 @@
   "dependencies": {
     "@nuxtjs/axios": "^5.13.6",
     "@nuxtjs/pwa": "^3.3.5",
+    "@vue/composition-api": "^1.2.4",
     "core-js": "^3.15.1",
+    "modern-normalize": "^1.1.0",
     "nuxt": "^2.15.7",
-    "nuxt-ssr-cache": "^1.5.2"
+    "nuxt-ssr-cache": "^1.5.2",
+    "vue-avatar": "^2.3.3"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.14.7",

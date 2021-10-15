@@ -5,16 +5,24 @@ export default {
     port: 8111
   },
   head: {
-    title: 'Social network',
+    titleTemplate: '%s - Social network',
+    htmlAttrs: {
+      lang: 'ru',
+      prefix: 'og: //ogp.me/ns# fb: //ogp.me/ns/fb#'
+    },
     meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { hid: 'charset', charset: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0' },
       { name: 'description', content: '', hid: 'description' },
+      { hid: 'og:type', property: 'og:type', content: 'website' },
+      { hid: 'robots', name: 'robots', content: 'index,follow' },
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
       { rel: 'icon', type: 'image/png', href: '/icons/favicon.png' },
-      { rel: 'icon', type: 'image/x-icon', href: '/icons/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/icons/favicon.ico' },
+      { rel: 'preconnect', href: 'https://fonts.gstatic.com' },
+      { rel: 'stylesheet preload prefetch', as: 'style', href: 'https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;900&display=swap', crossorigin: 'anonymous' }
     ]
   },
   cache: {
@@ -34,11 +42,14 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
+    '~/assets/css/variables.css',
+    '~/assets/css/global.css'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    '~/plugins/axios'
+    // '@/plugins/composition-api',
+    '@/plugins/axios'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
