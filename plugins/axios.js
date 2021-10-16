@@ -1,17 +1,14 @@
-export default function ({ $axios, req }, inject) {
-  const token = ''
-  const headers = {}
-  /* if (req.cookies && req.cookies.token) { token = req.cookies.token }
+export default function (context, inject) {
+  const token = context.$cookies.get('token')
+  let headers = {}
+
   if (token !== '') {
     headers = {
       authorization: 'bearer ' + token
     }
-  } */
+  }
 
-  // const headers = (req && req.headers) ? Object.assign({}, req.headers) : {}
-  // Create a custom axios instance
-
-  const api = $axios.create({
+  const api = context.$axios.create({
     headers
   })
 
