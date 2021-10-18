@@ -57,9 +57,14 @@ export default {
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
     'nuxt-ssr-cache',
-    'cookie-universal-nuxt'
-
+    'cookie-universal-nuxt',
+    '@nuxtjs/recaptcha'
   ],
+  recaptcha: {
+    siteKey: '6LeM-igcAAAAAJNQUHNOzpAH1jzTgruIMcjtUTsJ', // Site key for requests
+    version: 2
+
+  },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {},
