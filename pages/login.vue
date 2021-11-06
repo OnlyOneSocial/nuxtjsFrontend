@@ -43,7 +43,7 @@ export default Vue.extend({
   methods: {
     async Auth () {
       const captcha = await this.$recaptcha.getResponse()
-      this.$api.$post('https://social.katelinlis.xyz/api/auth/login', {
+      this.$api.$post('https://social.katelinlis.ru/api/auth/login', {
         username: this.login,
         password: this.password,
         captcha
