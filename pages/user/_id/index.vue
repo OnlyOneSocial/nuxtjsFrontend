@@ -79,7 +79,11 @@ export default Vue.extend({
       : '' */
     return {
       title: `${this.user.username} - Modern Social Network`,
-      description: `Пользователь ${this.user.username} ${friendsDesc}`
+      description: `Пользователь ${this.user.username} ${friendsDesc}`,
+      meta: [
+        { property: 'og:title', content: `${this.user.username} - Modern Social Network` },
+        { property: 'og:image', content: this.avatar }
+      ]
     }
   },
   fetchOnServer: true,
