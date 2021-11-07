@@ -4,9 +4,7 @@
       <h3>Users<span id="countusers">({{ users.total }})</span></h3>
       <div id="users">
         <span v-for="(user,index) in users.users" :key="index">
-          <a
-            :href="`/user/4428${user.id}`"
-          >
+          <NuxtLink :to="`/user/4428${user.id}`">
             <img
               height="
             40px"
@@ -18,7 +16,7 @@
             >
               {{ user.username }}
             </span>
-          </a>
+          </NuxtLink>
         </span>
       </div>
     </div>
