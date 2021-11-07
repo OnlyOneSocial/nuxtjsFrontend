@@ -20,6 +20,11 @@ export default {
         {
           name: 'viewport',
           content: 'width=device-width,initial-scale=1.0'
+        },
+        {
+          name: 'og:site_name',
+          hid: 'og:site_name',
+          content: 'Only one'
         }
       ]
     }
