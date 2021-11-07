@@ -12,10 +12,21 @@ export const state = () => ({
       count: 0
     }
   },
+  users: [],
   posts: []
 })
 
 export const actions = {
+  async getUsers ({ commit }, userid) {
+    const response = await this.$api.$get(`${serverUrl}/user/get`).catch((err) => {
+      console.log(err)
+    })
+    if (response) {
+      const content = response
+      commit('SetUsers', content)
+    }
+    return true
+  },
   async getUser ({ commit }, userid) {
     const response = await this.$api.$get(`${serverUrl}/user/get/${userid}`).catch((err) => {
       console.log(err)
@@ -41,6 +52,9 @@ export const actions = {
 export const mutations = {
   SetUser (state, content) {
     state.user = content
+  },
+  SetUsers (state, content) {
+    state.users = content
   },
   SetPosts (state, content) {
     state.posts = content
