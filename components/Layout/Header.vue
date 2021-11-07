@@ -3,13 +3,45 @@
     <NuxtLink to="/">
       <img class="header-logo" src="/img/Logo.svg" alt="MSN - modern social network alpha">
     </NuxtLink>
-    <button onclick="logout()" class="login-container">
-      <span class="login-button">Выйти</span>
-    </button>
+    <template v-if="me.id">
+      <button class="login-container" @click="logout">
+        <span class="login-button">Выйти</span>
+      </button>
+    </template>
+    <template v-else>
+      <NuxtLink to="/login" class="login-container">
+        <span class="login-button">Войти</span>
+      </NuxtLink>
+    </template>
   </header>
 </template>
 
+<script>
+import { mapState } from 'vuex'
+
+export default {
+  computed: {
+    ...mapState({
+      me: state => state.me
+    })
+  },
+  methods: {
+    logout () {
+      this.$cookies.remove('token')
+      localStorage.removeItem('token')
+      this.$store.commit('SetMe', { id: 0 })
+
+      this.$router.push('/login')
+    }
+  }
+}
+</script>
+
 <style scoped>
+   a {
+    color: black;
+    text-decoration: none;
+  }
   .header-container {
     position: relative;
     display: block;

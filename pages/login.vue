@@ -22,6 +22,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import { mapActions } from 'vuex'
 
 export default Vue.extend({
   data () {
@@ -57,10 +58,12 @@ export default Vue.extend({
           maxAge: 60 * 60 * 24 * 7
         })
         localStorage.setItem('savePassword', this.savePassword)
-        this.$router.push(`/user/${data.userid}`)
+        location.href = `/user/${data.userid}`
+        // this.$router.push(`/user/${data.userid}`)
       })
       await this.$recaptcha.reset()
-    }
+    },
+    ...mapActions(['getMe'])
   }
 
 })

@@ -10,6 +10,8 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
   head () {
     return {
@@ -21,6 +23,15 @@ export default {
         }
       ]
     }
+  },
+  created () {
+    this.getMe()
+  },
+  methods: {
+    async Update () {
+      await this.getMe()
+    },
+    ...mapActions(['getMe'])
   }
 }
 </script>
