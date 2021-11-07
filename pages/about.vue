@@ -15,6 +15,10 @@
       </p>
       <br>
 
+      <a href="https://vk.com/onlyonesu">
+        VK группа
+      </a> <br>
+
       <a href="https://katelinlis.xyz">
         Авторка проекта
       </a> <br>
