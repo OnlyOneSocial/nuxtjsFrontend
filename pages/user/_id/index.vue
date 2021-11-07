@@ -81,8 +81,8 @@ export default Vue.extend({
       title: `${this.user.username} - Modern Social Network`,
       description: `Пользователь ${this.user.username} ${friendsDesc}`,
       meta: [
-        { property: 'og:title', content: `${this.user.username} - Modern Social Network` },
-        { property: 'og:image', content: this.avatar }
+        { hid: 'og:title', name: 'og:title', content: `${this.user.username} - Modern Social Network` },
+        { hid: 'og:image', name: 'og:image', content: this.avatar }
       ]
     }
   },
