@@ -4,7 +4,7 @@ export default function (context, inject) {
 
   if (token !== '') {
     headers = {
-      authorization: 'bearer ' + token
+      authorization: 'Bearer ' + token
     }
   }
 

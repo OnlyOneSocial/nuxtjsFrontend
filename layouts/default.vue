@@ -25,12 +25,17 @@ export default {
           name: 'og:site_name',
           hid: 'og:site_name',
           content: 'Only one'
+        },
+        {
+          name: 'og:title',
+          hid: 'og:title',
+          content: 'Only one'
         }
       ]
     }
   },
-  created () {
-    this.getMe()
+  beforeMount  () {
+    // this.getMe()
   },
   methods: {
     async Update () {

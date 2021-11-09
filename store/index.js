@@ -6,6 +6,7 @@ export const state = () => ({
   me: {
     id: 0
   },
+  news: [],
   user: {
     username: 'asdasdsd',
     id: '',
@@ -20,6 +21,36 @@ export const state = () => ({
 })
 
 export const actions = {
+  async nuxtServerInit ({ commit, state }, { app, redirect }) {
+    const token = this.$cookies.get('token')
+    const namePage = app.router.history.current.name
+    console.log(namePage)
+    if (!token && namePage === 'index') {
+      redirect('/login')
+    }
+    if (token && namePage === 'index') {
+      redirect('/news')
+    }
+    if (token && namePage === 'login') {
+      redirect('/news')
+    }
+    if (namePage !== 'login') {
+      let headers = {}
+
+      if (token !== '') {
+        headers = {
+          authorization: 'Bearer ' + token
+        }
+      }
+
+      const res = await this.$axios.get(`${serverUrl}/auth/user/`, { headers }).catch((err) => {
+        console.log(err)
+      })
+
+      const content = res.data.user
+      if (content && content.id) { commit('SetMe', content) }
+    }
+  },
   async getUsers ({ commit }, userid) {
     const response = await this.$api.$get(`${serverUrl}/user/get`).catch((err) => {
       console.log(err)
@@ -27,6 +58,16 @@ export const actions = {
     if (response) {
       const content = response
       commit('SetUsers', content)
+    }
+    return true
+  },
+  async getNews ({ commit }) {
+    const response = await this.$api.$get(`${serverUrl}/wall/get`).catch((err) => {
+      console.log(err)
+    })
+    if (response) {
+      const content = response
+      commit('SetNews', content)
     }
     return true
   },
@@ -65,6 +106,9 @@ export const actions = {
 export const mutations = {
   SetUser (state, content) {
     state.user = content
+  },
+  SetNews (state, content) {
+    state.news = content
   },
   SetMe (state, content) {
     state.me = content
