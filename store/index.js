@@ -24,7 +24,6 @@ export const actions = {
   async nuxtServerInit ({ commit, state }, { app, redirect }) {
     const token = this.$cookies.get('token')
     const namePage = app.router.history.current.name
-    console.log(namePage)
     if (!token && namePage === 'index') {
       redirect('/login')
     }
@@ -44,11 +43,13 @@ export const actions = {
       }
 
       const res = await this.$axios.get(`${serverUrl}/auth/user/`, { headers }).catch((err) => {
-        console.log(err)
+        if (err.response.status === 401) {
+          this.$cookies.remove('token')
+          redirect('/login')
+        }
       })
 
-      const content = res.data.user
-      if (content && content.id) { commit('SetMe', content) }
+      if (res && res.data && res.data.user && res.data.user.id) { commit('SetMe', res.data.user) }
     }
   },
   async getUsers ({ commit }, userid) {
