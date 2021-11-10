@@ -1,3 +1,4 @@
+import axios from 'axios'
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   server: {
@@ -58,8 +59,34 @@ export default {
     '@nuxtjs/pwa',
     'nuxt-ssr-cache',
     'cookie-universal-nuxt',
-    '@nuxtjs/recaptcha'
+    '@nuxtjs/recaptcha',
+    '@nuxtjs/sitemap'
   ],
+  sitemap:
+    {
+      path: '/sitemap.xml',
+      hostname: 'https://only-one.su',
+      gzip: false,
+      routes: ['/users', '/login', '/about'],
+      sitemaps: [
+        {
+          path: '/sitemap-main.xml',
+          routes: ['/users', '/login', '/about']
+        },
+        {
+          path: '/sitemap-users.xml',
+          exclude: ['/users', '/login', '/about', '/news', '/'],
+          routes: async () => {
+            const array = []
+            const { data } = await axios.get('https://social.katelinlis.xyz/api/user/get')
+            array.push(...data.users.map(user => `/user/${user.id}`))
+            array.push(...data.users.map(user => `/user/${user.id}/friends`))
+            return array
+          }
+        }
+      ]
+    },
+
   recaptcha: {
     siteKey: '6LeM-igcAAAAAJNQUHNOzpAH1jzTgruIMcjtUTsJ', // Site key for requests
     version: 2

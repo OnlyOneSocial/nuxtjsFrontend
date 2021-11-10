@@ -23,6 +23,11 @@
           Список пользователей
         </NuxtLink>
       </li>
+      <li class="nav-list__item">
+        <NuxtLink to="/about">
+          Список пользователей
+        </NuxtLink>
+      </li>
     </ul>
   </nav>
 </template>
