@@ -25,7 +25,7 @@
       </li>
       <li class="nav-list__item">
         <NuxtLink to="/about">
-          Список пользователей
+          О проекте
         </NuxtLink>
       </li>
     </ul>
