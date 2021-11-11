@@ -1,20 +1,37 @@
 
-<template>
-  <section class="page-container">
-    <LayoutHeader />
-    <section class="page-container__layout">
-      <LayoutNav /><Nuxt class="page-container__content" />
+<template style="">
+  <div class="page-container_main">
+    <section class="page-container">
+      <LayoutHeader />
+      <section class="page-container__layout">
+        <LayoutNav /><Nuxt class="page-container__content" />
+      </section>
+      <LayoutFooter />
     </section>
-    <LayoutFooter />
-  </section>
+    <section v-if="modal.type" class="modal" @click.self="Close">
+      <UserAvatarChangeModal
+        v-if="modal.type === 'updateUserAvatar'"
+
+        :avatar="'https://cdnsocial.katelinlis.xyz/public/clients/1/cc31b175288b869bd96c18fa2070f9cc.jpeg'"
+      />
+      <UserAvatarOpenAvatar
+        v-if="modal.type === 'OpenUserAvatar'"
+
+        :avatar="modal.data"
+      />
+    </section>
+  </div>
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 
 export default {
   head () {
     return {
+      bodyAttrs: {
+        style: this.modal ? ' overflow: hidden;' : ''
+      },
       meta: [
         // hid is used as unique identifier. Do not use `vmid` for it as it will not work
         {
@@ -34,10 +51,21 @@ export default {
       ]
     }
   },
+  computed: {
+    ...mapState({
+      modal: state => state.modal
+
+    })
+
+  },
   beforeMount  () {
     // this.getMe()
   },
   methods: {
+    Close () {
+      console.log(event)
+      this.$store.commit('SetModal', { type: '', data: {} })
+    },
     async Update () {
       await this.getMe()
     },
@@ -47,6 +75,21 @@ export default {
 </script>
 
 <style scoped>
+  .modal{
+    position:absolute;
+    z-index:1000;
+    background-color: #80808085;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+  }
+  .page-container_main {
+    position: relative;
+    width: 100%;
+    min-height: 100%;
+    background-color: #f8f5f5;
+  }
   .page-container {
     position: relative;
     display: flex;

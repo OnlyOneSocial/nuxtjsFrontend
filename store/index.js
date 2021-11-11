@@ -6,6 +6,10 @@ export const state = () => ({
   me: {
     id: 0
   },
+  modal: {
+    type: false,
+    data: ''
+  },
   news: [],
   user: {
     username: 'asdasdsd',
@@ -107,6 +111,12 @@ export const actions = {
 export const mutations = {
   SetUser (state, content) {
     state.user = content
+  },
+  SetModal (state, { type, data }) {
+    state.modal = {
+      type,
+      data
+    }
   },
   SetNews (state, content) {
     state.news = content

@@ -1,7 +1,11 @@
 <template>
   <div>
-    <h2>News</h2>
-    <News :posts="news" />
+    <div style="margin: 0 auto">
+      <h2 style="text-align:center">
+        News
+      </h2>
+      <News :posts="news" />
+    </div>
   </div>
 </template>
 

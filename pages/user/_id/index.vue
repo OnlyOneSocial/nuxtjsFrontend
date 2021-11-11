@@ -2,9 +2,9 @@
   <div class="content UserPage">
     <div class="userAvatarAndAbout">
       <div style="display: inline-block;">
-        <span id="username">{{ user.username }}</span><br><div id="AvatarBox">
-          <img id="avatarPhoto" alt="user avatar" :src="avatar">
-        </div>
+        <span id="username">{{ user.username }}</span>
+        <br>
+        <UserAvatar :avatar="avatar" />
       </div><div id="aboutblock">
         <span>about</span><div style="min-height: 216px;">
           <div>
@@ -121,18 +121,6 @@ export default Vue.extend({
   width: 27px;
   display: inline-block;
   margin-right: 13px;
-}
-
-#avatarPhoto {
-  width: 240px;
-  height: 240px;
-  border-radius: 100%;
-  object-fit: cover;
-}
-
-#AvatarBox {
-  width: 240px;
-  height: 240px;
 }
 
 .userAvatarAndAbout {
