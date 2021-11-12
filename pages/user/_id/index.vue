@@ -5,6 +5,26 @@
         <span id="username">{{ user.username }}</span>
         <br>
         <UserAvatar :avatar="avatar" />
+        <div v-if="user.me" id="EditUser">
+          <button style="width:150px" onclick="if (!window.__cfRLUnblockHandlers) return false; document.location.href = 'https://katelinlis.xyz/settings'">
+            Обновить информацию
+          </button>
+        </div>
+        <div v-else id="friendRequestAndSendMessage">
+          <button v-if="friendStatus.status===3" id="ButtonSendRequestFriend" style="width:150px">
+            Добавить в друзья
+          </button>
+          <button v-if="friendStatus.status===2" id="ButtonSendRequestFriend" style="width:150px">
+            Принять запрос в друзья
+          </button>
+          <button v-if="friendStatus.status===1" id="ButtonSendRequestFriend" style="width:150px">
+            Удалить из друзей
+          </button>
+          <br>
+          <button style="width:150px">
+            Send Message
+          </button>
+        </div>
       </div><div id="aboutblock">
         <span>about</span><div style="min-height: 216px;">
           <div>
@@ -90,6 +110,7 @@ export default Vue.extend({
   computed: {
     ...mapState({
       user: state => state.user,
+      friendStatus: state => state.friendStatus,
       posts: state => state.posts
     }),
     avatar () {
@@ -113,6 +134,12 @@ export default Vue.extend({
 })
 </script>
 <style scoped>
+#EditUser {
+    margin-left: 50px;
+}
+#friendRequestAndSendMessage {
+    margin-left: 50px;
+}
 .UserPage{
   display: flex;
   flex-direction: column;

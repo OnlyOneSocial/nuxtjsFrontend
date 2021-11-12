@@ -30,7 +30,7 @@ export default {
   head () {
     return {
       bodyAttrs: {
-        style: this.modal ? ' overflow: hidden;' : ''
+        style: this.modal.type ? ' overflow: hidden;' : ''
       },
       meta: [
         // hid is used as unique identifier. Do not use `vmid` for it as it will not work

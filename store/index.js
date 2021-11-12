@@ -20,6 +20,7 @@ export const state = () => ({
       count: 0
     }
   },
+  friendStatus: {},
   users: [],
   posts: []
 })
@@ -81,8 +82,10 @@ export const actions = {
       console.log(err)
     })
     if (response) {
-      const content = response.user
-      commit('SetUser', content)
+      const user = response.user
+      const friendStatus = response.friend_status
+      commit('SetUser', user)
+      commit('SetFriendStatus', friendStatus)
     }
     return true
   },
@@ -111,6 +114,9 @@ export const actions = {
 export const mutations = {
   SetUser (state, content) {
     state.user = content
+  },
+  SetFriendStatus (state, content) {
+    state.friendStatus = content
   },
   SetModal (state, { type, data }) {
     state.modal = {
