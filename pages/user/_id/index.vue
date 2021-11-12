@@ -70,7 +70,7 @@ export default Vue.extend({
     }
   },
   async fetch () {
-    if (this.$store.state.user.id !== this.$route.params.id) {
+    if (this.$store.state.UserPage.user.id !== this.$route.params.id) {
       const cleanUser = Object.assign({}, this.$store.state.user)
       cleanUser.username = ''
       cleanUser.avatar = ''
@@ -83,7 +83,7 @@ export default Vue.extend({
   },
   head () {
     const friendsDesc =
-      this.user && this.user.friends.count > 0
+      this.user && this.user.friends && this.user.friends.count && this.user.friends.count > 0
         ? `дружит с ${this.user.friends.count} пользователями ${this.user.friends.list
             .slice(0, 6)
             .map((user, index) => {
