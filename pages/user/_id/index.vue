@@ -109,9 +109,9 @@ export default Vue.extend({
   fetchOnServer: true,
   computed: {
     ...mapState({
-      user: state => state.user,
-      friendStatus: state => state.friendStatus,
-      posts: state => state.posts
+      user: state => state.UserPage.user,
+      friendStatus: state => state.UserPage.friendStatus,
+      posts: state => state.UserPage.posts
     }),
     avatar () {
       return this.getAvatar(this.user.id, this.user.avatar)
@@ -128,7 +128,7 @@ export default Vue.extend({
       await this.getUser(this.$route.params.id)
       await this.getPosts(this.$route.params.id)
     },
-    ...mapActions(['getUser', 'getPosts'])
+    ...mapActions({ getUser: 'UserPage/getUser', getPosts: 'UserPage/getPosts' })
   }
 
 })

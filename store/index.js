@@ -11,18 +11,7 @@ export const state = () => ({
     data: ''
   },
   news: [],
-  user: {
-    username: 'asdasdsd',
-    id: '',
-    avatar: '',
-    friends: {
-      list: [],
-      count: 0
-    }
-  },
-  friendStatus: {},
-  users: [],
-  posts: []
+  users: []
 })
 
 export const actions = {
@@ -68,24 +57,12 @@ export const actions = {
     return true
   },
   async getNews ({ commit }) {
-    const response = await this.$api.$get(`${serverUrl}/wall/get`).catch((err) => {
+    const response = await this.$api.$get(`${serverNewsUrl}/wall/get`).catch((err) => {
       console.log(err)
     })
     if (response) {
       const content = response
       commit('SetNews', content)
-    }
-    return true
-  },
-  async getUser ({ commit }, userid) {
-    const response = await this.$api.$get(`${serverUrl}/user/get/${userid}`).catch((err) => {
-      console.log(err)
-    })
-    if (response) {
-      const user = response.user
-      const friendStatus = response.friend_status
-      commit('SetUser', user)
-      commit('SetFriendStatus', friendStatus)
     }
     return true
   },
@@ -98,26 +75,10 @@ export const actions = {
       commit('SetMe', content)
     }
     return true
-  },
-  async getPosts ({ commit }, userid) {
-    const response = await this.$api.$get(`${serverNewsUrl}/wall/get/${userid}`).catch((err) => {
-      console.log(err)
-    })
-    if (response) {
-      const content = response
-      commit('SetPosts', content)
-    }
-    return true
   }
 }
 
 export const mutations = {
-  SetUser (state, content) {
-    state.user = content
-  },
-  SetFriendStatus (state, content) {
-    state.friendStatus = content
-  },
   SetModal (state, { type, data }) {
     state.modal = {
       type,
@@ -132,8 +93,5 @@ export const mutations = {
   },
   SetUsers (state, content) {
     state.users = content
-  },
-  SetPosts (state, content) {
-    state.posts = content
   }
 }
