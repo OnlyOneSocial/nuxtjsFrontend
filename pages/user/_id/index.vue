@@ -5,26 +5,28 @@
         <span id="username">{{ user.username }}</span>
         <br>
         <UserAvatar :avatar="avatar" />
-        <div v-if="user.me" id="EditUser">
-          <button style="width:150px" onclick="if (!window.__cfRLUnblockHandlers) return false; document.location.href = 'https://katelinlis.xyz/settings'">
-            Обновить информацию
-          </button>
-        </div>
-        <div v-else id="friendRequestAndSendMessage">
-          <button v-if="friendStatus.status===3" id="ButtonSendRequestFriend" style="width:150px">
-            Добавить в друзья
-          </button>
-          <button v-if="friendStatus.status===2" id="ButtonSendRequestFriend" style="width:150px">
-            Принять запрос в друзья
-          </button>
-          <button v-if="friendStatus.status===1" id="ButtonSendRequestFriend" style="width:150px">
-            Удалить из друзей
-          </button>
-          <br>
-          <button style="width:150px">
-            Send Message
-          </button>
-        </div>
+        <template v-if="$store.state.me.id">
+          <div v-if="user.me" id="EditUser">
+            <button style="width:150px" onclick="if (!window.__cfRLUnblockHandlers) return false; document.location.href = 'https://katelinlis.xyz/settings'">
+              Обновить информацию
+            </button>
+          </div>
+          <div v-else id="friendRequestAndSendMessage">
+            <button v-if="friendStatus.status===3" id="ButtonSendRequestFriend" style="width:150px">
+              Добавить в друзья
+            </button>
+            <button v-if="friendStatus.status===2" id="ButtonSendRequestFriend" style="width:150px">
+              Принять запрос в друзья
+            </button>
+            <button v-if="friendStatus.status===1" id="ButtonSendRequestFriend" style="width:150px">
+              Удалить из друзей
+            </button>
+            <br>
+            <button style="width:150px">
+              Send Message
+            </button>
+          </div>
+        </template>
       </div><div id="aboutblock">
         <span>about</span><div style="min-height: 216px;">
           <div>
@@ -78,7 +80,11 @@ export default Vue.extend({
       this.$store.commit('UserPage/SetUser', cleanUser)
       this.$store.commit('UserPage/SetPosts', [])
       // if (process.env.VUE_ENV === 'server') {  }
-      await this.Update()
+
+      Promise.all([
+        await this.getUser(this.$route.params.id),
+        await this.getPosts(this.$route.params.id)
+      ])
     }
   },
   head () {
@@ -123,13 +129,6 @@ export default Vue.extend({
   methods: {
     getAvatar (id, avatar) {
       if (avatar) { return `https://cdnsocial.katelinlis.xyz/public/clients/${id}/${avatar}` } else { return 'https://cdnsocial.katelinlis.xyz/public/UserProfileImage.svg' }
-    },
-    async Update () {
-      const self = this
-      return await Promise.all(
-        self.getUser(this.$route.params.id),
-        self.getPosts(this.$route.params.id)
-      )
     },
     ...mapActions({ getUser: 'UserPage/getUser', getPosts: 'UserPage/getPosts' })
   }
