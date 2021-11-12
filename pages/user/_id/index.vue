@@ -40,7 +40,7 @@
           <span id="FriendsTitle">
             <a href="/user/1/friends" style="text-decoration: unset; color: #000;">Friends</a>
           </span>
-          <span id="count_friends"> {{ user.friends.count }}</span>
+          <span id="count_friends"> {{ user.friends && user.friends.count }}</span>
           <div v-if="user.friends">
             <template v-for="(friend,index) in user.friends.list">
               <span v-if="index<4" id="friend" :key="friend.id">
@@ -75,8 +75,8 @@ export default Vue.extend({
       cleanUser.username = ''
       cleanUser.avatar = ''
       cleanUser.id = ''
-      this.$store.commit('SetUser', cleanUser)
-      this.$store.commit('SetPosts', [])
+      this.$store.commit('UserPage/SetUser', cleanUser)
+      this.$store.commit('UserPage/SetPosts', [])
       // if (process.env.VUE_ENV === 'server') {  }
       await this.Update()
     }
@@ -125,8 +125,11 @@ export default Vue.extend({
       if (avatar) { return `https://cdnsocial.katelinlis.xyz/public/clients/${id}/${avatar}` } else { return 'https://cdnsocial.katelinlis.xyz/public/UserProfileImage.svg' }
     },
     async Update () {
-      await this.getUser(this.$route.params.id)
-      await this.getPosts(this.$route.params.id)
+      const self = this
+      return await Promise.all(
+        self.getUser(this.$route.params.id),
+        self.getPosts(this.$route.params.id)
+      )
     },
     ...mapActions({ getUser: 'UserPage/getUser', getPosts: 'UserPage/getPosts' })
   }
