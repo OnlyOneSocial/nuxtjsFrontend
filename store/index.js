@@ -27,7 +27,7 @@ export const actions = {
     if (token && namePage === 'login') {
       redirect('/news')
     }
-    if (namePage !== 'login') {
+    if (!token && namePage !== 'login') {
       let headers = {}
 
       if (token !== '') {
