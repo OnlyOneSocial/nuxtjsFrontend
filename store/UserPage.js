@@ -18,9 +18,7 @@ export const state = () => ({
 
 export const actions = {
   async getUser ({ commit }, userid) {
-    const response = await this.$api.$get(`${serverUrl}/user/get/${userid}`).catch((err) => {
-      console.log(err)
-    })
+    const response = await this.$api.$get(`${serverUrl}/user/get/${userid}`)
     if (response) {
       const user = response.user
       const friendStatus = response.friend_status
@@ -30,9 +28,7 @@ export const actions = {
     return true
   },
   async getPosts ({ commit }, userid) {
-    const response = await this.$api.$get(`${serverNewsUrl}/wall/get/${userid}`).catch((err) => {
-      console.log(err)
-    })
+    const response = await this.$api.$get(`${serverNewsUrl}/wall/get/${userid}`)
     if (response) {
       const content = response
       commit('SetPosts', content)

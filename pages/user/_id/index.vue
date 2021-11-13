@@ -11,21 +11,7 @@
               Обновить информацию
             </button>
           </div>
-          <div v-else id="friendRequestAndSendMessage">
-            <button v-if="friendStatus.status===3" id="ButtonSendRequestFriend" style="width:150px">
-              Добавить в друзья
-            </button>
-            <button v-if="friendStatus.status===2" id="ButtonSendRequestFriend" style="width:150px">
-              Принять запрос в друзья
-            </button>
-            <button v-if="friendStatus.status===1" id="ButtonSendRequestFriend" style="width:150px">
-              Удалить из друзей
-            </button>
-            <br>
-            <button style="width:150px">
-              Send Message
-            </button>
-          </div>
+          <UserAction v-else :friend-status="friendStatus" :userid="user.id" />
         </template>
       </div><div id="aboutblock">
         <span>about</span><div style="min-height: 216px;">

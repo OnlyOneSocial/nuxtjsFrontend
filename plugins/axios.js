@@ -13,7 +13,7 @@ export default function (context, inject) {
   })
 
   // Set baseURL to something different
-  api.setBaseURL('https://social.katelinlis.xyz/api/')
+  api.setBaseURL('https://social.katelinlis.ru/api/')
 
   // Inject to context as $api
   inject('api', api)
