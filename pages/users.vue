@@ -35,10 +35,7 @@ export default Vue.extend({
     }
   },
   async fetch () {
-    if (this.$store.state.user.id !== this.$route.params.id) {
-      // if (process.env.VUE_ENV === 'server') {  }
-      await this.Update()
-    }
+    await this.getUsers()
   },
   head () {
     /* const postsDesc = posts
@@ -62,9 +59,6 @@ export default Vue.extend({
   },
 
   methods: {
-    async Update () {
-      await this.getUsers()
-    },
     ...mapActions(['getUsers'])
   }
 
