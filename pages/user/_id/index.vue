@@ -163,6 +163,7 @@ export default Vue.extend({
 
 .friendsAndWall {
   display: flex;
+  justify-content: space-between;
 }
 
 .friends {
