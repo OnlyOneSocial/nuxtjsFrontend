@@ -169,7 +169,11 @@ export default {
     box-sizing: border-box;
     font-family: sans-serif;
   }
-
+  button {
+   border-radius: 4px;
+   margin: 4px 0;
+   padding: 4px;
+  }
   html, body, #__nuxt, #__layout {
     width: 100%;
     height: 100%;
