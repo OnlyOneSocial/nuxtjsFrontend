@@ -41,7 +41,7 @@
           </div>
         </div>
       </div>
-      <UserWall :posts="posts" />
+      <UserWall :update="UpdatePosts" :posts="posts" />
     </div>
   </div>
 </template>
@@ -69,7 +69,7 @@ export default Vue.extend({
 
       Promise.all([
         await this.getUser(this.$route.params.id),
-        await this.getPosts(this.$route.params.id)
+        await this.UpdatePosts()
       ])
     }
   },
@@ -113,6 +113,9 @@ export default Vue.extend({
     // this.getUser(this.$route.params.id)
   },
   methods: {
+    async UpdatePosts () {
+      await this.getPosts(this.$route.params.id)
+    },
     getAvatar (id, avatar) {
       if (avatar) { return `https://cdnsocial.katelinlis.xyz/public/clients/${id}/${avatar}` } else { return 'https://cdnsocial.katelinlis.xyz/public/UserProfileImage.svg' }
     },
