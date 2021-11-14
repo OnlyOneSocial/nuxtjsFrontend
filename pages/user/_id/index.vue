@@ -148,8 +148,7 @@ export default Vue.extend({
 #username {
   font-size: 24px;
   line-height: 31px;
-  padding-left: 71px;
-  padding-top: 12px;
+  padding: 12px 0 0 71px;
 }
 
 #aboutblock {
@@ -173,8 +172,7 @@ export default Vue.extend({
   background: #fff;
   border-radius: 21px;
   width: 200px;
-  margin-top: 37px;
-  margin-left: 11px;
+  margin: 37px 0 0 11px;
   height: 94px;
 }
 
