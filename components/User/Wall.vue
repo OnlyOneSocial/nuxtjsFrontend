@@ -1,19 +1,31 @@
 <template>
   <div id="wall">
-    <span>wall</span><div>
-      <div>
-        <textarea id="wallInput" v-model="wallInput" name="" style="width:83%; max-width:83%; max-height:50px" />
-        <button @click="WallSend">
-          send
-        </button>
+    <span>Стена</span><div>
+      <div v-if="me">
+        <div style="width:100%;">
+          <textarea id="wallInput" v-model="wallInput" name="" style="width:100%;height:50px;max-height:90px;min-height:50px;resize:vertical" @keyup.enter="WallSend" />
+          <div style="width:100%;text-align:right">
+            <span>
+              <span>photo</span>
+            </span>
+            <span style="width:100%; text-align:right">
+              <button style="text-area:left" @click="WallSend">
+                send
+              </button>
+            </span>
+          </div>
+        </div>
       </div>
-      <News :posts="posts" />
     </div>
+    <News :posts="posts" />
   </div>
 </template>
 <script>
 export default {
   props: {
+    me: {
+      type: Boolean
+    },
     update: {
       type: Function,
       default: () => { console.log('set update function') }
