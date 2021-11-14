@@ -2,15 +2,15 @@
   <div id="wall">
     <span>Стена</span><div>
       <div v-if="me">
-        <div style="width:100%;">
-          <textarea id="wallInput" v-model="wallInput" @keyup.enter="WallSend" />
-          <div style="width:100%;text-align:right">
+        <div class="w">
+          <textarea class="w" id="wallInput" v-model="wallInput" @keyup.enter="WallSend" />
+          <div class="w tar">
             <span>
               <span>photo</span>
             </span>
-            <span style="width:100%; text-align:right">
-              <button style="text-area:left" @click="WallSend">
-                send
+            <span class="w tar">
+              <button class="tal" @click="WallSend">
+                Send
               </button>
             </span>
           </div>
@@ -53,8 +53,16 @@ export default {
 }
 </script>
 <style scoped>
+  .w {
+    width:100%
+  }
+  .tar{
+    text-align:right
+  }
+  .tal{
+    text-area:left
+  }
   #wallInput{
-    width:100%;
     height:50px;
     max-height:90px;
     min-height:50px;
