@@ -60,8 +60,17 @@ export default {
     'nuxt-ssr-cache',
     'cookie-universal-nuxt',
     '@nuxtjs/recaptcha',
-    '@nuxtjs/sitemap'
+    '@nuxtjs/sitemap',
+    '@nuxtjs/yandex-metrika'
   ],
+  yandexMetrika: {
+    id: '86443781',
+    webvisor: false
+    // clickmap:true,
+    // useCDN:false,
+    // trackLinks:true,
+    // accurateTrackBounce:true,
+  },
   sitemap:
     {
       path: '/sitemap.xml',
