@@ -7,7 +7,7 @@
         <UserAvatar :avatar="avatar" />
         <template v-if="$store.state.me.id">
           <div v-if="user.me" id="EditUser">
-            <button style="width:150px" onclick="if (!window.__cfRLUnblockHandlers) return false; document.location.href = 'https://katelinlis.xyz/settings'">
+            <button style="width:150px" @click="$router.push('/settings')">
               Обновить информацию
             </button>
           </div>
