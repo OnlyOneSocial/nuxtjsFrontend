@@ -3,7 +3,7 @@
     <span>Стена</span><div>
       <div v-if="me">
         <div style="width:100%;">
-          <textarea id="wallInput" v-model="wallInput" name="" style="width:100%;height:50px;max-height:90px;min-height:50px;resize:vertical" @keyup.enter="WallSend" />
+          <textarea id="wallInput" v-model="wallInput" @keyup.enter="WallSend" />
           <div style="width:100%;text-align:right">
             <span>
               <span>photo</span>
@@ -52,3 +52,12 @@ export default {
   }
 }
 </script>
+<style scoped>
+  #wallInput{
+    width:100%;
+    height:50px;
+    max-height:90px;
+    min-height:50px;
+    resize:vertical
+  }
+</style>
