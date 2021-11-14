@@ -1,19 +1,31 @@
 <template>
   <div id="wall">
-    <span>wall</span><div>
-      <div>
-        <textarea id="wallInput" v-model="wallInput" name="" style="width:83%; max-width:83%; max-height:50px" />
-        <button @click="WallSend">
-          send
-        </button>
+    <span>Стена</span><div>
+      <div v-if="me">
+        <div class="w">
+          <textarea class="w" id="wallInput" v-model="wallInput" @keyup.enter="WallSend" />
+          <div class="w tar">
+            <span>
+              <span>photo</span>
+            </span>
+            <span class="w tar">
+              <button class="tal" @click="WallSend">
+                Send
+              </button>
+            </span>
+          </div>
+        </div>
       </div>
-      <News :posts="posts" />
     </div>
+    <News :posts="posts" />
   </div>
 </template>
 <script>
 export default {
   props: {
+    me: {
+      type: Boolean
+    },
     update: {
       type: Function,
       default: () => { console.log('set update function') }
@@ -40,3 +52,20 @@ export default {
   }
 }
 </script>
+<style scoped>
+  .w {
+    width:100%
+  }
+  .tar{
+    text-align:right
+  }
+  .tal{
+    text-area:left
+  }
+  #wallInput{
+    height:50px;
+    max-height:90px;
+    min-height:50px;
+    resize:vertical
+  }
+</style>
