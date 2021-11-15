@@ -11,7 +11,8 @@ export const state = () => ({
     data: ''
   },
   news: [],
-  users: []
+  users: [],
+  post: {}
 })
 
 export const actions = {
@@ -66,6 +67,16 @@ export const actions = {
     }
     return true
   },
+  async getPost ({ commit }, { AuthorID, PostID }) {
+    const response = await this.$api.$get(`${serverNewsUrl}/wall/get/${AuthorID}/${PostID}`).catch((err) => {
+      console.log(err)
+    })
+    if (response) {
+      const content = response
+      commit('SetPost', content)
+    }
+    return true
+  },
   async getMe ({ commit }) {
     const response = await this.$api.$get(`${serverUrl}/auth/user/`).catch((err) => {
       console.log(err)
@@ -87,6 +98,9 @@ export const mutations = {
   },
   SetNews (state, content) {
     state.news = content
+  },
+  SetPost (state, content) {
+    state.post = content
   },
   SetMe (state, content) {
     state.me = content
