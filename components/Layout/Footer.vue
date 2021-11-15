@@ -1,12 +1,19 @@
 <template>
   <footer class="footer-mobile">
-    <NuxtLink href="/news">
-      <img style="width: 30px;" src="/img/footer/newspaper.svg"></NuxtLink>
-    <NuxtLink v-if="$store.state.me.id" :to="`/user/${$store.state.me.id}`>
-      <img style="width: 30px; margin-left: 40px;" src="/img/footer/user.svg">
+    <NuxtLink to="/news">
+      <img style="width: 30px;" src="/img/footer/newspaper.svg">
     </NuxtLink>
-    <NuxtLink href="/users">
-      <img style="width: 38px; margin-left: 40px;" src="/img/footer/users.svg">
+    <NuxtLink
+      v-if="$store.state.me.id"
+      :to="`/user/${$store.state.me.id}`"
+    >
+      <img
+        class="UserICON"
+        src="/img/footer/user.svg"
+      >
+    </NuxtLink>
+    <NuxtLink to="/users">
+      <img class="ICON" src="/img/footer/users.svg">
     </NuxtLink>
   </footer>
 </template>
@@ -29,5 +36,9 @@
       z-index: 300;
       text-align: center;
     }
+  }
+  .ICON{
+    width:30px;
+    margin-left:40px;
   }
 </style>
