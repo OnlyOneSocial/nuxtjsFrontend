@@ -61,8 +61,36 @@ export default {
     'cookie-universal-nuxt',
     '@nuxtjs/recaptcha',
     '@nuxtjs/sitemap',
-    '@nuxtjs/yandex-metrika'
+    '@nuxtjs/yandex-metrika',
+    '@nuxtjs/i18n'
   ],
+  i18n: {
+    strategy: 'no_prefix',
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'i18n_redirected'
+    },
+    langDir: 'lang/',
+    locales: [
+      { code: 'en', iso: 'en-US', file: 'en.js', dir: 'ltr' },
+      { code: 'ru', iso: 'ru-RU', file: 'ru.js', dir: 'ltr' }
+    ],
+    defaultLocale: 'en',
+    vueI18n: {
+      fallbackLocale: 'en',
+      messages: {
+        en: {
+          welcome: 'Welcome'
+        },
+        fr: {
+          welcome: 'Bienvenue'
+        },
+        es: {
+          welcome: 'Bienvenido'
+        }
+      }
+    }
+  },
   yandexMetrika: {
     id: '86443781',
     webvisor: false

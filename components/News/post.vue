@@ -13,9 +13,9 @@
       {{ post.text }}
     </p><div style="position:absolute;bottom:0;display: flex;flex-direction: row;width: 100%;">
       <div style="width: 50%;">
-        {{ post.Likes }} лайков
+        {{ post.Likes }} {{ $t('LikePost') }}
       </div><div style="width: 50%;text-align: right;">
-        ответить
+        {{ $t('AnswerPost') }}
       </div>
     </div>
   </article>

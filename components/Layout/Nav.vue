@@ -4,29 +4,39 @@
       <template v-if="me.id">
         <li class="nav-list__item">
           <NuxtLink :to="`/user/${me.id}`">
-            Моя страница
+            {{ $t('MyPage') }}
           </NuxtLink>
         </li>
         <li class="nav-list__item">
           <NuxtLink :to="`/user/${me.id}/friends`">
-            Контакты
+            {{ $t('Contacts') }}
           </NuxtLink>
         </li>
         <li class="nav-list__item">
           <NuxtLink to="/news">
-            Лента
+            {{ $t('Feed') }}
           </NuxtLink>
         </li>
       </template>
       <li class="nav-list__item">
         <NuxtLink to="/users">
-          Список пользователей
+          {{ $t('UsersCatalog') }}
         </NuxtLink>
       </li>
       <li class="nav-list__item">
         <NuxtLink to="/about">
-          О проекте
+          {{ $t('AboutProject') }}
         </NuxtLink>
+      </li>
+      <li v-if="$i18n.localeProperties.code=='ru'" class="nav-list__item">
+        <span @click="$i18n.setLocale('en')">
+          Change to English
+        </span>
+      </li>
+      <li v-else-if="$i18n.localeProperties.code=='en'" class="nav-list__item">
+        <span @click="$i18n.setLocale('ru')">
+          Сменить на Русский
+        </span>
       </li>
     </ul>
   </nav>

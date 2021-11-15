@@ -1,16 +1,16 @@
 <template>
   <div id="wall">
-    <span>Стена</span><div>
+    <span>{{ $t('Wall') }}</span><div>
       <div v-if="me">
         <div class="w">
-          <textarea class="w" id="wallInput" v-model="wallInput" @keyup.enter="WallSend" />
+          <textarea id="wallInput" v-model="wallInput" class="w" @keyup.enter="WallSend" />
           <div class="w tar">
             <span>
               <span>photo</span>
             </span>
             <span class="w tar">
               <button class="tal" @click="WallSend">
-                Send
+                {{ $t('Send') }}
               </button>
             </span>
           </div>

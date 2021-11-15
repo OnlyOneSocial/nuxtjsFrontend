@@ -26,7 +26,7 @@
       <div class="friends">
         <div style="margin-left: 8px;">
           <span id="FriendsTitle">
-            <a href="/user/1/friends" style="text-decoration: unset; color: #000;">Friends</a>
+            <a href="/user/1/friends" style="text-decoration: unset; color: #000;">{{ $t('FriendsUser') }}</a>
           </span>
           <span id="count_friends"> {{ user.friends && user.friends.count }}</span>
           <div v-if="user.friends">
