@@ -1,13 +1,13 @@
 <template>
   <footer class="footer-mobile">
-    <a href="/">
-      <img style="width: 30px;" src="/img/footer/newspaper.svg"></a>
-    <a href="/user/1">
+    <NuxtLink href="/news">
+      <img style="width: 30px;" src="/img/footer/newspaper.svg"></NuxtLink>
+    <NuxtLink v-if="$store.state.me.id" :to="`/user/${$store.state.me.id}`>
       <img style="width: 30px; margin-left: 40px;" src="/img/footer/user.svg">
-    </a>
-    <a href="/users">
+    </NuxtLink>
+    <NuxtLink href="/users">
       <img style="width: 38px; margin-left: 40px;" src="/img/footer/users.svg">
-    </a>
+    </NuxtLink>
   </footer>
 </template>
 
