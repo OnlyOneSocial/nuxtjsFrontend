@@ -41,7 +41,7 @@
           </div>
         </div>
       </div>
-      <UserWall :me="$store.state.me.id>0" :update="UpdatePosts" :posts="posts" />
+      <UserWall :me="user.me" :update="UpdatePosts" :posts="posts" />
     </div>
   </div>
 </template>
