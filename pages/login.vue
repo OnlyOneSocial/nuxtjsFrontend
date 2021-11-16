@@ -1,20 +1,20 @@
 <template>
   <div class="content">
     <div style="margin: 0 auto;text-align:center">
-      <label for="InputUsername">Имя пользователя</label>
+      <label for="InputUsername">{{ $t('UserName') }}</label>
       <input id="InputUsername" v-model="login">
 
-      <label for="InputPassword">Пароль</label>
+      <label for="InputPassword">{{ $t('UserPassword') }}</label>
       <input id="InputPassword" v-model="password" type="password">
       <br>
-      <label for="SavePassword">Сохранить пароль?</label>
+      <label for="SavePassword">{{ $t('SavePassword') }}?</label>
       <input id="SavePassword" v-model="savePassword" type="checkbox">
 
       <div id="captcha" style="text-align: -webkit-center">
         <recaptcha />
       </div>
       <div style="margin-top: 15px;">
-        <input type="button" title="Авторизация или регистрация нового аккаунта" value="Войти" @click="Auth">
+        <input type="button" title="Авторизация или регистрация нового аккаунта" :value="$t('Login')" @click="Auth">
       </div>
     </div>
   </div>

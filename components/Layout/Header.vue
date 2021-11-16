@@ -5,12 +5,12 @@
     </NuxtLink>
     <template v-if="me.id">
       <button class="login-container" @click="logout">
-        <span class="login-button">Выйти</span>
+        <span class="login-button">{{ $t('Logout') }}</span>
       </button>
     </template>
     <template v-else>
       <NuxtLink to="/login" class="login-container">
-        <span class="login-button">Войти</span>
+        <span class="login-button">{{ $t('Login') }}</span>
       </NuxtLink>
     </template>
   </header>

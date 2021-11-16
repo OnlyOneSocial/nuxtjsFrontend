@@ -8,6 +8,11 @@ export default {
   Send: 'Отправить',
   AnswerPost: 'Ответить',
   LikePost: 'лайк',
-  FriendsUser: 'Связи'
+  FriendsUser: 'Связи',
+  Login: 'Войти',
+  Logout: 'Выйти',
+  UserName: 'Имя пользователя',
+  UserPassword: 'Пароль',
+  SavePassword: 'Запомнить пароль'
 
 }
