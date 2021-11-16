@@ -16,7 +16,7 @@
         {{ post.Likes }} {{ $t('LikePost') }}
       </div>
       <div style="width: 50%;text-align: right;" @click="$router.push(`/user/${post.author}/post/${post.random_id}/?answer`)">
-        {{ $t('AnswerPost') }}
+        {{ $t('AnswerPost') }}({{ post.answercount }})
       </div>
     </div>
   </article>
