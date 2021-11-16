@@ -1,5 +1,16 @@
 <template>
-  <div><NewsPost :post="post" /></div>
+  <div style="">
+    <div style="width:600px;margin: 0 auto;">
+      <NewsPost style="width:600px" :post="post" />
+      <br>
+      <News :posts="answers" />
+      <br>
+      <template v-if="checkAnswer">
+        Ответ
+      </template>
+      <NewsNewPost v-if="checkAnswer" :answer="post.random_id" />
+    </div>
+  </div>
 </template>
 <script>
 import Vue from 'vue'
@@ -29,10 +40,15 @@ export default Vue.extend({
       ]
     }
   },
+
   fetchOnServer: true,
   computed: {
+    checkAnswer () {
+      return typeof this.$route.query.answer !== 'undefined'
+    },
     ...mapState({
-      post: state => state.post
+      post: state => state.post.Post,
+      answers: state => state.post.Answers
     })
   },
   created () {

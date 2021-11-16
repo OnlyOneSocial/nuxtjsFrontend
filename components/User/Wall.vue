@@ -1,21 +1,7 @@
 <template>
   <div id="wall">
     <span>{{ $t('Wall') }}</span><div>
-      <div v-if="me">
-        <div class="w">
-          <textarea id="wallInput" v-model="wallInput" class="w" @keyup.enter="WallSend" />
-          <div class="w tar">
-            <span>
-              <span>photo</span>
-            </span>
-            <span class="w tar">
-              <button class="tal" @click="WallSend">
-                {{ $t('Send') }}
-              </button>
-            </span>
-          </div>
-        </div>
-      </div>
+      <NewsNewPost v-if="me" />
     </div>
     <News :posts="posts" />
   </div>
@@ -34,20 +20,6 @@ export default {
       type: Array,
       // eslint-disable-next-line vue/require-valid-default-prop
       default: []
-    }
-
-  },
-  data () {
-    return {
-      wallInput: ''
-    }
-  },
-  methods: {
-    WallSend () {
-      this.$api.post('wall/send', { text: this.wallInput }).then((data) => {
-        this.wallInput = ''
-        this.update()
-      })
     }
   }
 }
