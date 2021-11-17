@@ -54,7 +54,7 @@ export default {
   .header-logo {
     position: relative;
     display: block;
-    padding: 12px;
+    padding: 20px 0px 14.22px 29px;
   }
 
   .login-button {
