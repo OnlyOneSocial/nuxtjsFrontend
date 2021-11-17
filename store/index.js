@@ -67,7 +67,7 @@ export const actions = {
     }
     return true
   },
-  async getPost ({ commit }, { AuthorID, PostID }) {
+  async getPost ({ commit }, { PostID }) {
     const response = await this.$api.$get(`${serverNewsUrl}/wall/post/${PostID}`).catch((err) => {
       console.log(err)
     })

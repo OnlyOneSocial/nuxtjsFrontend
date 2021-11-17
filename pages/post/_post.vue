@@ -22,7 +22,7 @@ export default Vue.extend({
     // if (process.env.VUE_ENV === 'server') {  }
 
     Promise.all([
-      await this.getPost({ AuthorID: this.$route.params.id, PostID: this.$route.params.post })
+      await this.getPost({ PostID: this.$route.params.post })
     ])
   },
   head () {

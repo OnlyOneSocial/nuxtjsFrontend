@@ -4,18 +4,28 @@
       <NuxtLink :to="`/user/${post.author}`">
         {{ post.author_username }}
       </NuxtLink>
+      <div style="display: inline-block;padding-left: 65%;">
+        <NuxtLink :to="`/post/${post.answerto}`">
+          <span v-if="post.answerto!='00000000-0000-0000-0000-000000000000'" style="font-weight: normal; ">
+            в ответ на пост
+          </span>
+        </NuxtLink>
+      </div>
+    </h3>
+    <h3>
       <div style="font-size:14px;color:gray">
-        <NuxtLink :to="`/user/${post.author}/post/${post.random_id}`">
+        <NuxtLink :to="`/post/${post.random_id}`">
           {{ post.time }}
         </NuxtLink>
       </div>
-    </h3><p style="margin: 0;">
+    </h3>
+    <p style="margin: 0;">
       {{ post.text }}
     </p><div style="position:absolute;bottom:0;display: flex;flex-direction: row;width: 100%;">
       <div style="width: 50%;">
         {{ post.Likes }} {{ $t('LikePost') }}
       </div>
-      <div style="width: 50%;text-align: right;" @click="$router.push(`/user/${post.author}/post/${post.random_id}/?answer`)">
+      <div style="width: 50%;text-align: right;" @click="$router.push(`/post/${post.random_id}/?answer`)">
         {{ $t('AnswerPost') }}({{ post.answercount }})
       </div>
     </div>
