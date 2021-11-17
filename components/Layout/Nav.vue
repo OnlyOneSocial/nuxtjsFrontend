@@ -4,28 +4,28 @@
       <template v-if="me.id">
         <li class="nav-list__item">
           <NuxtLink :to="`/user/${me.id}`">
-            {{ $t('MyPage') }}
+            <img src="/img/menu/my_page.svg" style="margin-right:6px;filter: invert(0.5) sepia(1) saturate(5) hue-rotate(175deg)">{{ $t('MyPage') }}
           </NuxtLink>
         </li>
         <li class="nav-list__item">
           <NuxtLink :to="`/user/${me.id}/friends`">
-            {{ $t('Contacts') }}
+            <img src="/img/menu/contacts.svg" style="margin-right:6px">{{ $t('Contacts') }}
           </NuxtLink>
         </li>
         <li class="nav-list__item">
           <NuxtLink to="/news">
-            {{ $t('Feed') }}
+            <img src="/img/menu/news.svg" style="margin-right:6px">{{ $t('Feed') }}
           </NuxtLink>
         </li>
       </template>
       <li class="nav-list__item">
         <NuxtLink to="/users">
-          {{ $t('UsersCatalog') }}
+          <img src="/img/menu/people.svg" style="margin-right:6px">{{ $t('UsersCatalog') }}
         </NuxtLink>
       </li>
       <li class="nav-list__item">
         <NuxtLink to="/about">
-          {{ $t('AboutProject') }}
+          <img src="/img/menu/about.svg" style="margin-right:6px">{{ $t('AboutProject') }}
         </NuxtLink>
       </li>
       <li v-if="$i18n.localeProperties.code=='ru'" class="nav-list__item">
@@ -54,6 +54,15 @@ export default {
 </script>
 
 <style scoped>
+  .nav-list__item > a > img {
+    margin-right:6px
+  }
+  .nav-container{
+    background: #FFFFFF;
+    border-radius: 8px;
+    padding: 27px 18px 38.5px 31px;
+  }
+
   .nav-list__item {
     list-style-type: none;
   }

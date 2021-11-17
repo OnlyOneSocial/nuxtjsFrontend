@@ -51,7 +51,7 @@ export default {
 #avatarPhoto {
   width: 240px;
   height: 240px;
-  border-radius: 100%;
+  border-radius: 11px;
   object-fit: cover;
 }
 

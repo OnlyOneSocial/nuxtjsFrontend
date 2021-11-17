@@ -45,8 +45,10 @@ export default {
   .header-container {
     position: relative;
     display: block;
-    height: 89px;
-    background: #dbdbdb;
+    height: 75px;
+    background: #FFFFFF;
+    border-radius: 0px 0px 8px 8px;
+    margin-bottom: 8px;
   }
 
   .header-logo {

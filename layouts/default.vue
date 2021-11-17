@@ -88,7 +88,7 @@ export default {
     position: relative;
     width: 100%;
     min-height: 100%;
-    background-color: #f8f5f5;
+
   }
   .page-container {
     position: relative;
@@ -97,7 +97,7 @@ export default {
     margin: 0 auto;
     width: 80vw;
     min-height: 100%;
-    background-color: #f8f5f5;
+
   }
 
   .page-container__layout {
@@ -111,18 +111,13 @@ export default {
     display: flex;
     flex-grow: 1;
     align-items: stretch;
-    padding: 8px;
     overflow: auto;
   }
 
   .page-container__layout nav {
     flex-grow: 0;
     flex-shrink: 0;
-    width: 200px;
-  }
-
-  .page-container__content {
-    background-color: #c4c4c4;
+    width: 230px;
   }
 
   @media screen and (orientation: portrait) {
@@ -145,11 +140,11 @@ export default {
   }
   .content {
     position: absolute;
-    background: #c4c4c4;
+
     height: max-content;
     min-height: 700px;
     z-index: 1;
-    left: 15%;
+    left: 17%;
     width: 80%;
   }
   @media only screen and (max-width: 768px) {
@@ -162,6 +157,9 @@ export default {
 </style>
 
 <style>
+  body{
+    background: #F5F8FD;
+  }
   * {
     margin: 0;
     padding: 0;

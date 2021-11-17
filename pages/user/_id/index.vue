@@ -2,25 +2,35 @@
   <div class="content UserPage">
     <div class="userAvatarAndAbout">
       <div style="display: inline-block;">
-        <span id="username">{{ user.username }}</span>
-        <br>
-        <UserAvatar :avatar="avatar" />
-        <template v-if="$store.state.me.id">
-          <div v-if="user.me" id="EditUser">
-            <button style="width:150px" onclick="if (!window.__cfRLUnblockHandlers) return false; document.location.href = 'https://katelinlis.xyz/settings'">
-              Обновить информацию
-            </button>
-          </div>
-          <UserAction v-else :friend-status="friendStatus" :userid="user.id" />
-        </template>
-      </div><div id="aboutblock">
-        <span>about</span><div style="min-height: 216px;">
+        <div class="AboutUser">
           <div>
-            <div>Имя</div><div style="margin-left: 20px;">
-              Имя Фамилия
+            <UserAvatar :avatar="avatar" />
+          </div>
+          <div style="padding-left:16px">
+            <div style="display:flex">
+              <div>
+                <div>
+                  <span id="username">{{ user.username }}</span>
+                  <span style="color: #0BA4A4;">Online</span>
+                </div>
+                <div>
+                  text
+                </div>
+              </div>
+
+              <img
+                src="/img/settings.svg"
+                title="settings"
+                data-v-8c57f232=""
+              >
             </div>
+            <div style="opacity: 0.5;border: 1px solid #D7E2F2;box-sizing: border-box;width: 100%;height: 0px;" />
           </div>
         </div>
+
+        <template v-if="$store.state.me.id">
+          <UserAction v-if="!user.me" :friend-status="friendStatus" :userid="user.id" />
+        </template>
       </div>
     </div><div class="friendsAndWall">
       <div class="friends">
@@ -125,6 +135,13 @@ export default Vue.extend({
 })
 </script>
 <style scoped>
+.AboutUser{
+  display: flex;
+  background: #FFFFFF;
+  border-radius: 8px;
+  width: 800px;
+  padding: 16px 16px 12px 13px;
+}
 #EditUser {
     margin-left: 50px;
 }
@@ -148,7 +165,6 @@ export default Vue.extend({
 #username {
   font-size: 24px;
   line-height: 31px;
-  padding: 12px 0 0 71px;
 }
 
 #aboutblock {
