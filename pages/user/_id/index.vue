@@ -19,24 +19,33 @@
             </div>
           </div>
         </div>
-        <div style="padding-left:16px">
-          <div style="display:flex">
+        <div style="padding-left:16px;width: 100%;">
+          <div style="">
             <div>
               <div>
                 <span id="username">{{ user.username }}</span>
                 <span style="color: #0BA4A4;">Online</span>
+
+                <img
+                  src="/img/settings.svg"
+                  title="settings"
+                  style="display:inline-block;margin-left: 30vw;"
+                  data-v-8c57f232=""
+                >
               </div>
               <div>
-                text
+                <input id="status" style="color:#8C99B2;border:none;width:37vw" value="text">
               </div>
             </div>
-            <img
-              src="/img/settings.svg"
-              title="settings"
-              data-v-8c57f232=""
-            >
           </div>
           <div style="opacity: 0.5;border: 1px solid #D7E2F2;box-sizing: border-box;width: 100%;height: 0px;" />
+          Возраст: 10
+          <br>
+          Пол: Женский
+          <br>
+          Местоположение: Россия, Москва
+          <br>
+          Краткое описание: текст про текст
         </div>
       </div>
       <div style="position:relative">
@@ -48,6 +57,18 @@
               </span>
               <span id="count_friends"> {{ user.friends && user.friends.count }}</span>
             </div>
+            <br>
+            <div class="InputSearch">
+              <img style="padding: 8px 13px;position:absolute;" src="/img/search.svg">
+              <input placeholder="Поиск">
+            </div>
+
+            <div style="padding: 19px 28px 16px 28px;">
+              Друзья Подписчики Запросы (2)
+            </div>
+
+            <div data-v-398b3732="" style="opacity: 0.5; border: 1px solid rgb(215, 226, 242); box-sizing: border-box; width: 84%; height: 0px;margin: 0px 15% 8px 8%;" />
+
             <div v-if="user.friends" style="margin-left:6px">
               <template v-for="(friend,index) in user.friends.list">
                 <div :key="friend.id" style="width:80%;margin: 0 auto">
@@ -156,6 +177,25 @@ export default Vue.extend({
 })
 </script>
 <style scoped>
+.InputSearch{
+  width:80%;
+  height:32px;
+  border-radius: 35px;
+  background: #F5F8FD;
+  margin: 0 auto;
+}
+
+.InputSearch > input {
+  background:#F5F8FD;
+  border: none;
+  border-radius: 35px;
+  height:32px;
+  position:relative;
+  margin: 0 2% 0 2%;
+  padding: 3% 8%;
+  width:96%;
+}
+
 .iconBox{
     padding: 8px 8px 8px 8px;
     background-color: #F5F8FD;
@@ -247,6 +287,9 @@ export default Vue.extend({
   .userAvatarAndAbout {
     display: block;
   }
+}
+#status:focus-visible {
+  outline: 0;
 }
 a {
   text-decoration: unset;
