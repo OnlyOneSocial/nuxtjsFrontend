@@ -8,7 +8,7 @@
       :to="`/user/${$store.state.me.id}`"
     >
       <img
-        class="UserICON"
+        class="ICON"
         src="/img/footer/user.svg"
       >
     </NuxtLink>
