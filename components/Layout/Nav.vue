@@ -60,6 +60,7 @@ export default {
   .nav-container{
     background: #FFFFFF;
     border-radius: 8px;
+    width: 258px;
     padding: 27px 18px 38.5px 31px;
   }
 

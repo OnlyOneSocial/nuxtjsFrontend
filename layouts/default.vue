@@ -139,12 +139,11 @@ export default {
     }
   }
   .content {
-    position: absolute;
-
+    position: relative;
+    margin-left: 1%;
     height: max-content;
     min-height: 700px;
     z-index: 1;
-    left: 17%;
     width: 80%;
   }
   @media only screen and (max-width: 768px) {

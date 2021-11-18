@@ -1,62 +1,79 @@
 <template>
   <div class="content UserPage">
     <div class="userAvatarAndAbout">
-      <div style="display: inline-block;">
-        <div class="userpage">
-          <div class="AboutUser">
-            <div>
-              <UserAvatar :avatar="avatar" />
+      <div class="AboutUser">
+        <div>
+          <UserAvatar :avatar="avatar" />
+          <div style="padding-top:10px">
+            <div class="iconBox">
+              <img width="16px" height="16px" src="/img/user/message.svg">
             </div>
-            <div style="padding-left:16px">
-              <div style="display:flex">
-                <div>
-                  <div>
-                    <span id="username">{{ user.username }}</span>
-                    <span style="color: #0BA4A4;">Online</span>
-                  </div>
-                  <div>
-                    text
-                  </div>
-                </div>
-                <img
-                  src="/img/settings.svg"
-                  title="settings"
-                  data-v-8c57f232=""
-                >
-              </div>
-              <div style="opacity: 0.5;border: 1px solid #D7E2F2;box-sizing: border-box;width: 100%;height: 0px;" />
+            <div class="iconBox Offset12">
+              <img src="/img/user/user_add.svg">
+            </div>
+            <div class="iconBox Offset12">
+              <img src="/img/user/wallet.svg">
+            </div>
+            <div class="iconBox Offset12">
+              <img src="/img/user/forbidden.svg">
             </div>
           </div>
+        </div>
+        <div style="padding-left:16px">
+          <div style="display:flex">
+            <div>
+              <div>
+                <span id="username">{{ user.username }}</span>
+                <span style="color: #0BA4A4;">Online</span>
+              </div>
+              <div>
+                text
+              </div>
+            </div>
+            <img
+              src="/img/settings.svg"
+              title="settings"
+              data-v-8c57f232=""
+            >
+          </div>
+          <div style="opacity: 0.5;border: 1px solid #D7E2F2;box-sizing: border-box;width: 100%;height: 0px;" />
+        </div>
+      </div>
+      <div style="position:relative">
+        <div style="position:absolute">
           <div class="friends">
-            <div style="margin-left: 8px;">
+            <div style="padding-top: 23px; padding-left: 28px;">
               <span id="FriendsTitle">
                 <a href="/user/1/friends" style="text-decoration: unset; color: #000;">{{ $t('FriendsUser') }}</a>
               </span>
               <span id="count_friends"> {{ user.friends && user.friends.count }}</span>
-              <div v-if="user.friends">
-                <template v-for="(friend,index) in user.friends.list">
-                  <span v-if="index<4" id="friend" :key="friend.id">
+            </div>
+            <div v-if="user.friends" style="margin-left:6px">
+              <template v-for="(friend,index) in user.friends.list">
+                <div :key="friend.id" style="width:80%;margin: 0 auto">
+                  <div v-if="index<4" id="friend">
                     <NuxtLink :to="`/user/${friend.id}`">
-                      <img height="30px" width="30px" style="border-radius: 100%;" alt="user avatar" :src="getAvatar(friend.id,friend.avatar)">
-                      <div style="font-size: 14px; width: 36px; overflow: hidden; white-space: nowrap;">{{ friend.username.slice(0,10) }}</div>
+                      <img height="41px" width="41px" style="border-radius: 100%;" alt="user avatar" :src="getAvatar(friend.id,friend.avatar)">
+                      <span style="font-size: 18px; width: 41px; overflow: hidden; white-space: nowrap;">
+                        {{ friend.username.slice(0,10) }}
+                      </span>
+                      <div>Online</div>
                     </NuxtLink>
-                  </span>
-                </template>
-              </div>
+                  </div>
+                </div>
+              </template>
             </div>
           </div>
         </div>
-        <template v-if="$store.state.me.id">
-          <UserAction v-if="!user.me" :friend-status="friendStatus" :userid="user.id" />
-        </template>
       </div>
+
+      <template v-if="$store.state.me.id">
+        <UserAction v-if="!user.me" :friend-status="friendStatus" :userid="user.id" />
+      </template>
     </div><div class="friendsAndWall">
-
-      <UserWall :me="user.me" :update="UpdatePosts" :posts="posts" />
+      <UserWall class="Wall" :me="user.me" :update="UpdatePosts" :posts="posts" />
     </div>
-    <div class="networkwall">
-
-    </div>
+    <div class="networkwall" />
   </div>
 </template>
 
@@ -139,14 +156,27 @@ export default Vue.extend({
 })
 </script>
 <style scoped>
-.userpage {
+.iconBox{
+    padding: 8px 8px 8px 8px;
+    background-color: #F5F8FD;
+    border-radius: 6px;
+    box-sizing: content-box;
+    /* width: 16px; */
+    height: 16px;
+    display: inline-block;
+}
+.Offset12{
+  margin-left:6px ;
+}
+.userpage2 {
   display: flex;
 }
 .AboutUser{
   display: flex;
   background: #FFFFFF;
   border-radius: 8px;
-  width: 800px;
+  height: 237px;
+  width: 49.6vw;
   padding: 16px 16px 12px 13px;
 }
 #EditUser {
@@ -160,9 +190,7 @@ export default Vue.extend({
   flex-direction: column;
 }
 #friend {
-  width: 27px;
-  display: inline-block;
-  margin-right: 13px;
+  margin: 0 auto;
 }
 
 .userAvatarAndAbout {
@@ -188,13 +216,17 @@ export default Vue.extend({
 
 .friendsAndWall {
   display: flex;
+  width: 49.6vw;
   justify-content: space-between;
+}
+.Wall {
+  width: 49.6vw;
 }
 
 .friends {
   background: #fff;
   border-radius: 8px;
-  width: 258px;
+  width: 17vw;
   margin: 0px 0 0 9px;
   height: 450px;
 }
@@ -215,5 +247,9 @@ export default Vue.extend({
   .userAvatarAndAbout {
     display: block;
   }
+}
+a {
+  text-decoration: unset;
+  color: unset;
 }
 </style>
