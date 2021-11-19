@@ -117,7 +117,7 @@ export default {
   .page-container__layout nav {
     flex-grow: 0;
     flex-shrink: 0;
-    width: 230px;
+    width: 13vw;
   }
 
   @media screen and (orientation: portrait) {

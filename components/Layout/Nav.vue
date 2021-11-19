@@ -54,23 +54,30 @@ export default {
 </script>
 
 <style scoped>
+   .nav-list__item > a {
+    color: black;
+    text-decoration: none;
+        font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 17px;
+    letter-spacing: 0.01em;
+
+  }
   .nav-list__item > a > img {
     margin-right:6px
   }
+
   .nav-container{
     background: #FFFFFF;
     border-radius: 8px;
-    width: 258px;
     padding: 27px 18px 38.5px 31px;
   }
 
   .nav-list__item {
     list-style-type: none;
-  }
-
-  .nav-list__item a {
-    color: black;
-    text-decoration: none;
+    margin-bottom: 1vw;
   }
 
   @media screen and (orientation: portrait) {
