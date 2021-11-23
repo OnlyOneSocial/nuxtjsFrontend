@@ -1,48 +1,100 @@
 <template>
   <div class="content UserPage">
     <div class="userAvatarAndAbout">
-      <div style="display: inline-block;">
-        <span id="username">{{ user.username }}</span>
-        <br>
-        <UserAvatar :avatar="avatar" />
-        <template v-if="$store.state.me.id">
-          <div v-if="user.me" id="EditUser">
-            <button style="width:150px" onclick="if (!window.__cfRLUnblockHandlers) return false; document.location.href = 'https://katelinlis.xyz/settings'">
-              Обновить информацию
-            </button>
+      <div class="AboutUser">
+        <div>
+          <UserAvatar :avatar="avatar" />
+          <div style="padding-top:10px">
+            <div class="iconBox">
+              <img width="16px" height="16px" src="/img/user/message.svg">
+            </div>
+            <div class="iconBox Offset12">
+              <img src="/img/user/user_add.svg">
+            </div>
+            <div class="iconBox Offset12">
+              <img src="/img/user/wallet.svg">
+            </div>
+            <div class="iconBox Offset12">
+              <img src="/img/user/forbidden.svg">
+            </div>
           </div>
-          <UserAction v-else :friend-status="friendStatus" :userid="user.id" />
-        </template>
-      </div><div id="aboutblock">
-        <span>about</span><div style="min-height: 216px;">
-          <div>
-            <div>Имя</div><div style="margin-left: 20px;">
-              Имя Фамилия
+        </div>
+        <div style="padding-left:16px;width: 100%;">
+          <div style="">
+            <div>
+              <div>
+                <span id="username">{{ user.username }}</span>
+                <span style="color: #0BA4A4;">Online</span>
+
+                <img
+                  src="/img/settings.svg"
+                  title="settings"
+                  style="display:inline-block;margin-left: 30vw;"
+                  data-v-8c57f232=""
+                >
+              </div>
+              <div>
+                <input id="status" style="color:#8C99B2;border:none;width:37vw" value="text">
+              </div>
+            </div>
+          </div>
+          <div style="opacity: 0.5;border: 1px solid #D7E2F2;box-sizing: border-box;width: 100%;height: 0px;" />
+          Возраст: 10
+          <br>
+          Пол: Женский
+          <br>
+          Местоположение: Россия, Москва
+          <br>
+          Краткое описание: текст про текст
+        </div>
+      </div>
+      <div style="position:relative">
+        <div style="position:absolute">
+          <div class="friends">
+            <div style="padding-top: 23px; padding-left: 28px;">
+              <span id="FriendsTitle">
+                <a href="/user/1/friends" style="text-decoration: unset; color: #000;">{{ $t('FriendsUser') }}</a>
+              </span>
+              <span id="count_friends"> {{ user.friends && user.friends.count }}</span>
+            </div>
+            <br>
+            <div class="InputSearch">
+              <img style="padding: 8px 13px;position:absolute;" src="/img/search.svg">
+              <input placeholder="Поиск">
+            </div>
+
+            <div style="padding: 19px 28px 16px 28px;">
+              Друзья Подписчики Запросы (2)
+            </div>
+
+            <div data-v-398b3732="" style="opacity: 0.5; border: 1px solid rgb(215, 226, 242); box-sizing: border-box; width: 84%; height: 0px;margin: 0px 15% 8px 8%;" />
+
+            <div v-if="user.friends" style="margin-left:6px">
+              <template v-for="(friend,index) in user.friends.list">
+                <div :key="friend.id" style="width:80%;margin: 0 auto">
+                  <div v-if="index<4" id="friend">
+                    <NuxtLink :to="`/user/${friend.id}`">
+                      <img height="41px" width="41px" style="border-radius: 100%;" alt="user avatar" :src="getAvatar(friend.id,friend.avatar)">
+                      <span style="font-size: 18px; width: 41px; overflow: hidden; white-space: nowrap;">
+                        {{ friend.username.slice(0,10) }}
+                      </span>
+                      <div>Online</div>
+                    </NuxtLink>
+                  </div>
+                </div>
+              </template>
             </div>
           </div>
         </div>
       </div>
+
+      <template v-if="$store.state.me.id">
+        <UserAction v-if="!user.me" :friend-status="friendStatus" :userid="user.id" />
+      </template>
     </div><div class="friendsAndWall">
-      <div class="friends">
-        <div style="margin-left: 8px;">
-          <span id="FriendsTitle">
-            <a href="/user/1/friends" style="text-decoration: unset; color: #000;">{{ $t('FriendsUser') }}</a>
-          </span>
-          <span id="count_friends"> {{ user.friends && user.friends.count }}</span>
-          <div v-if="user.friends">
-            <template v-for="(friend,index) in user.friends.list">
-              <span v-if="index<4" id="friend" :key="friend.id">
-                <NuxtLink :to="`/user/${friend.id}`">
-                  <img height="30px" width="30px" style="border-radius: 100%;" alt="user avatar" :src="getAvatar(friend.id,friend.avatar)">
-                  <div style="font-size: 14px; width: 36px; overflow: hidden; white-space: nowrap;">{{ friend.username.slice(0,10) }}</div>
-                </NuxtLink>
-              </span>
-            </template>
-          </div>
-        </div>
-      </div>
-      <UserWall :me="user.me" :update="UpdatePosts" :posts="posts" />
+      <UserWall class="Wall" :me="user.me" :update="UpdatePosts" :posts="posts" />
     </div>
+    <div class="networkwall" />
   </div>
 </template>
 
@@ -125,6 +177,48 @@ export default Vue.extend({
 })
 </script>
 <style scoped>
+.InputSearch{
+  width:80%;
+  height:32px;
+  border-radius: 35px;
+  background: #F5F8FD;
+  margin: 0 auto;
+}
+
+.InputSearch > input {
+  background:#F5F8FD;
+  border: none;
+  border-radius: 35px;
+  height:32px;
+  position:relative;
+  margin: 0 2% 0 2%;
+  padding: 3% 8%;
+  width:96%;
+}
+
+.iconBox{
+    padding: 8px 8px 8px 8px;
+    background-color: #F5F8FD;
+    border-radius: 6px;
+    box-sizing: content-box;
+    /* width: 16px; */
+    height: 16px;
+    display: inline-block;
+}
+.Offset12{
+  margin-left:6px ;
+}
+.userpage2 {
+  display: flex;
+}
+.AboutUser{
+  display: flex;
+  background: #FFFFFF;
+  border-radius: 8px;
+  height: 237px;
+  width: 49.6vw;
+  padding: 16px 16px 12px 13px;
+}
 #EditUser {
     margin-left: 50px;
 }
@@ -136,9 +230,7 @@ export default Vue.extend({
   flex-direction: column;
 }
 #friend {
-  width: 27px;
-  display: inline-block;
-  margin-right: 13px;
+  margin: 0 auto;
 }
 
 .userAvatarAndAbout {
@@ -148,7 +240,6 @@ export default Vue.extend({
 #username {
   font-size: 24px;
   line-height: 31px;
-  padding: 12px 0 0 71px;
 }
 
 #aboutblock {
@@ -165,18 +256,23 @@ export default Vue.extend({
 
 .friendsAndWall {
   display: flex;
+  width: 49.6vw;
   justify-content: space-between;
+}
+.Wall {
+  width: 49.6vw;
 }
 
 .friends {
   background: #fff;
-  border-radius: 21px;
-  width: 200px;
-  margin: 37px 0 0 11px;
-  height: 94px;
+  border-radius: 8px;
+  width: 17vw;
+  margin: 0px 0 0 9px;
+  height: 450px;
 }
 
 #FriendsTitle {
+  font-family: Roboto;
   font-size: 24px;
   line-height: 31px;
   color: #000;
@@ -191,5 +287,12 @@ export default Vue.extend({
   .userAvatarAndAbout {
     display: block;
   }
+}
+#status:focus-visible {
+  outline: 0;
+}
+a {
+  text-decoration: unset;
+  color: unset;
 }
 </style>

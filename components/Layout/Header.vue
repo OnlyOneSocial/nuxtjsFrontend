@@ -45,14 +45,16 @@ export default {
   .header-container {
     position: relative;
     display: block;
-    height: 89px;
-    background: #dbdbdb;
+    height: 75px;
+    background: #FFFFFF;
+    border-radius: 0px 0px 8px 8px;
+    margin-bottom: 8px;
   }
 
   .header-logo {
     position: relative;
     display: block;
-    padding: 12px;
+    padding: 20px 0px 14.22px 29px;
   }
 
   .login-button {

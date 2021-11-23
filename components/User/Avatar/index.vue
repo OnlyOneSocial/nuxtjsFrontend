@@ -41,22 +41,22 @@ export default {
 }
 #changeAvatarButton {
     background: #80808069;
-    width: 240px;
+    width: 160px;
     height: 20px;
     position: absolute;
-    top: 251px;
+    top: 161px;
     z-index: 10;
 
 }
 #avatarPhoto {
-  width: 240px;
-  height: 240px;
-  border-radius: 100%;
+  width: 160px;
+  height: 160px;
+  border-radius: 11px;
   object-fit: cover;
 }
 
 #AvatarBox {
-  width: 240px;
-  height: 240px;
+  width: 160px;
+  height: 160px;
 }
 </style>
