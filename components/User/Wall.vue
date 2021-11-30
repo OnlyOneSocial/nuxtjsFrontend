@@ -3,7 +3,7 @@
     <span>{{ $t('Wall') }}</span><div>
       <NewsNewPost v-if="me" />
     </div>
-    <News :posts="posts" />
+    <News :update="update" :posts="posts" />
   </div>
 </template>
 <script>
