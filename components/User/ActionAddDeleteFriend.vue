@@ -32,20 +32,20 @@ export default {
   },
   methods: {
     async action () {
-      await console.log(123)
+      if (this.friendStatus.status === 3) { await this.Request() }
+      if (this.friendStatus.status === 1) { await this.Cancel }
+      if (this.friendStatus.status === 0 && this.friendStatus.forme === true) { this.RequestAccept() }
     },
     async RequestAccept () {
       const info = await this.$api.post(`user/request_accept/${this.userid}`)
       if (info.data.request.status) { this.$store.commit('UserPage/SetFriendStatus', { status: 1, forme: true }) }
-      console.log(info)
     },
     async Request () {
       const info = await this.$api.post(`user/request/${this.userid}`)
       if (info.data.request.status) { this.$store.commit('UserPage/SetFriendStatus', { status: info.data.request.status, forme: false }) }
     },
     async Cancel () {
-      const info = await this.$api.post(`user/request_cancel/${this.userid}`)
-      console.log(info)
+      await this.$api.post(`user/request_cancel/${this.userid}`)
     }
   }
 }
@@ -57,8 +57,8 @@ export default {
   background: #8C99B2;
   animation: 4s frames infinite linear;
 
-  -webkit-mask-image: url('http://localhost:8111/img/user/ooi-add-contact.svg');
-  mask-image: url('http://localhost:8111/img/user/ooi-add-contact.svg');
+  -webkit-mask-image: url('/img/user/ooi-add-contact.svg');
+  mask-image: url('/img/user/ooi-add-contact.svg');
 }
 .icon {
    --size: 70px;
