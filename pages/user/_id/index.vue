@@ -3,14 +3,14 @@
     <div class="userAvatarAndAbout">
       <div class="AboutUser">
         <div>
-          <UserAvatar :avatar="avatar" />
-          <div style="padding-top:10px">
+          <UserAvatar :update="UpdateUser" :avatar="avatar" />
+          <div v-if="$store.state.me.id && !user.me" style="padding-top:10px">
             <div class="iconBox">
               <img width="16px" height="16px" src="/img/user/message.svg">
             </div>
-            <div class="iconBox Offset12">
-              <img src="/img/user/user_add.svg">
-            </div>
+
+            <UserActionAddDeleteFriend v-if="$store.state.me.id && !user.me" :friend-status="friendStatus" :userid="user.id" class="iconBox Offset12" />
+
             <div class="iconBox Offset12">
               <img src="/img/user/wallet.svg">
             </div>
@@ -87,10 +87,6 @@
           </div>
         </div>
       </div>
-
-      <template v-if="$store.state.me.id">
-        <UserAction v-if="!user.me" :friend-status="friendStatus" :userid="user.id" />
-      </template>
     </div><div class="friendsAndWall">
       <UserWall class="Wall" :me="user.me" :update="UpdatePosts" :posts="posts" />
     </div>
@@ -168,6 +164,9 @@ export default Vue.extend({
     async UpdatePosts () {
       await this.getPosts(this.$route.params.id)
     },
+    async UpdateUser () {
+      await this.getUser(this.$route.params.id)
+    },
     getAvatar (id, avatar) {
       if (avatar) { return `https://cdnsocial.katelinlis.xyz/public/clients/${id}/${avatar}` } else { return 'https://cdnsocial.katelinlis.xyz/public/UserProfileImage.svg' }
     },
@@ -196,18 +195,6 @@ export default Vue.extend({
   width:96%;
 }
 
-.iconBox{
-    padding: 8px 8px 8px 8px;
-    background-color: #F5F8FD;
-    border-radius: 6px;
-    box-sizing: content-box;
-    /* width: 16px; */
-    height: 16px;
-    display: inline-block;
-}
-.Offset12{
-  margin-left:6px ;
-}
 .userpage2 {
   display: flex;
 }
@@ -294,5 +281,19 @@ export default Vue.extend({
 a {
   text-decoration: unset;
   color: unset;
+}
+</style>
+<style>
+.iconBox{
+    padding: 8px 8px 8px 8px;
+    background-color: #F5F8FD;
+    border-radius: 6px;
+    box-sizing: content-box;
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+}
+.Offset12{
+  margin-left:6px ;
 }
 </style>
