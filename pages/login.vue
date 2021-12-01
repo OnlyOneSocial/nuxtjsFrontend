@@ -35,8 +35,8 @@ export default Vue.extend({
   },
   head () {
     return {
-      title: 'Only One - Свободная социальная сеть',
-      description: 'Социальная сеть с открытым исходным кодом ',
+      title: 'Авторизация в социальной сети - Only One',
+      description: 'Свободная социальная сеть с открытым исходным кодом ',
       meta: [
         { hid: 'og:title', name: 'og:title', content: 'Only One - Свободная социальная сеть' },
         { hid: 'og:image', name: 'og:image', content: 'http://only-one.su/img/OnlyOneSocial.png' }
