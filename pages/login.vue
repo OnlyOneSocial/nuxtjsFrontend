@@ -20,7 +20,7 @@
   </div>
 </template>
 
-<script lang="ts">
+<script >
 import Vue from 'vue'
 import { mapActions } from 'vuex'
 
@@ -31,6 +31,16 @@ export default Vue.extend({
       password: '',
       savePassword: false,
       captcha: ''
+    }
+  },
+  head () {
+    return {
+      title: 'Only One - Свободная социальная сеть',
+      description: 'Социальная сеть с открытым исходным кодом ',
+      meta: [
+        { hid: 'og:title', name: 'og:title', content: 'Only One - Свободная социальная сеть' },
+        { hid: 'og:image', name: 'og:image', content: 'http://only-one.su/img/OnlyOneSocial.png' }
+      ]
     }
   },
   mounted () {
