@@ -1,7 +1,7 @@
 <template>
   <div id="wall">
     <span>{{ $t('Wall') }}</span><div>
-      <NewsNewPost v-if="me" />
+      <NewsNewPost v-if="me" :update="update" />
     </div>
     <News :update="update" :posts="posts" />
   </div>
