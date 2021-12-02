@@ -4,6 +4,7 @@
     <i v-if="friendStatus.status===3" class="icon icon-add-friend" title="Отправить заявку в друзья" style="--size:16px" />
     <i v-else-if="friendStatus.status===1" class="icon icon-remove-friend" style="--size:16px" />
     <i v-else-if="friendStatus.status===0 && friendStatus.forme === true" class="icon icon-accept-friend" style="--size:16px" />
+    <i v-else-if="friendStatus.status===0 && friendStatus.forme === false" class="icon icon-cancel-friend" style="--size:16px" />
   </div>
 </template>
 <script>
@@ -26,6 +27,7 @@ export default {
         if (this.friendStatus.status === 3) { return 'Отправить заявку в друзья' }
         if (this.friendStatus.status === 1) { return 'Удалить из друзей' }
         if (this.friendStatus.status === 0 && this.friendStatus.forme === true) { return 'Принять заявку в друзья' }
+        if (this.friendStatus.status === 0 && this.friendStatus.forme === false) { return 'Отменить заявку в друзья' }
       }
       return ''
     }
@@ -51,6 +53,15 @@ export default {
 }
 </script>
 <style scoped>
+.icon-cancel-friend {
+  width: 16px;
+  height: 16px;
+  background: #8C99B2;
+  animation: 4s frames infinite linear;
+
+  -webkit-mask-image: url('/img/user/UserCancel.svg');
+  mask-image: url('/img/user/UserCancel.svg');
+}
 .icon-remove-friend {
   width: 16px;
   height: 16px;

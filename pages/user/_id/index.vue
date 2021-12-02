@@ -48,7 +48,7 @@
           Краткое описание: текст про текст
         </div>
       </div>
-      <div style="position:relative">
+      <div class="FriendsBlock" style="position:relative">
         <div style="position:absolute">
           <div class="friends">
             <div style="padding-top: 23px; padding-left: 28px;">
@@ -176,6 +176,7 @@ export default Vue.extend({
 })
 </script>
 <style scoped>
+
 .InputSearch{
   width:80%;
   height:32px;
@@ -206,6 +207,7 @@ export default Vue.extend({
   width: 49.6vw;
   padding: 16px 16px 12px 13px;
 }
+
 #EditUser {
     margin-left: 50px;
 }
@@ -264,7 +266,20 @@ export default Vue.extend({
   line-height: 31px;
   color: #000;
 }
-
+  @media only screen and (max-width: 768px) {
+    .AboutUser {
+      width: 100%;
+    }
+    .friendsAndWall{
+      width: 100%;
+    }
+    .Wall{
+      width: 100%;
+    }
+    .FriendsBlock{
+      display: none;
+    }
+  }
 @media screen and (orientation: portrait) {
   #aboutblock {
     left: unset !important;

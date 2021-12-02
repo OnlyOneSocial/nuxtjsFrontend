@@ -2,11 +2,11 @@
 <template style="">
   <div class="page-container_main">
     <section class="page-container">
-      <LayoutHeader />
+      <LayoutHeader v-if="$nuxt.$route.name!=='login'" />
       <section class="page-container__layout">
         <LayoutNav /><Nuxt class="page-container__content" />
       </section>
-      <LayoutFooter />
+      <LayoutFooter v-if="$nuxt.$route.name!=='login'" />
     </section>
     <section v-if="modal.type" class="modal" @click.self="Close">
       <UserAvatarChangeModal
