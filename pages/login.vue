@@ -48,13 +48,13 @@
           </div>
         </div>
 
-        <div style="text-align:center;">
-          <label for="SavePassword">{{ $t('SavePassword') }}?</label>
-          <input id="SavePassword" v-model="savePassword" type="checkbox">
+        <div class="login-form-store-password">
+          <input type="checkbox" id="login-form-store-password-checkbox" v-model="savePassword">
+          <label for="login-form-store-password-checkbox">{{ $t('SavePassword') }}?</label>
         </div>
 
-        <div id="captcha" style="text-align: -webkit-center">
-          <recaptcha class="test" />
+        <div class="login-form-captcha">
+          <recaptcha />
         </div>
 
         <div class="login-form-button">
@@ -65,7 +65,11 @@
       </div>
 
       <div class="login-footer">
-        <p>При нажатии Войти происходит проверка существования аккаунта, если аккаунт не найден, то вы успешно зарегистрируете новый аккаунт</p>
+
+        <div class="login-footer-string">
+          <span>При нажатии Войти происходит проверка существования аккаунта, если аккаунт не найден, то вы успешно зарегистрируете новый аккаунт</span>
+        </div>
+
       </div>
 
       <div v-if="false" class="login-footer">
@@ -146,10 +150,6 @@ export default Vue.extend({
 
 body {
     background: #E5E5E5;
-}
-
-.test {
-height: 123px;
 }
 
 .login-container {
@@ -253,8 +253,23 @@ height: 123px;
     cursor: pointer;
 }
 
+.login-form-store-password {
+    margin-left: 78px;
+    margin-top: 9px;
+
+    font-family: "Roboto", sans-serif;
+
+    color: #606580;
+}
+
+.login-form-captcha {
+    margin-left: 78px;
+    margin-top: 9px;
+}
+
 .login-form-button {
     margin-left: 76px;
+    margin-top: 12px;
 }
 .login-form-button > button {
     width: 426px;
@@ -278,7 +293,11 @@ height: 123px;
 
 .login-footer {
     text-align: center;
-    margin-top: 37px;
+
+    margin-left: 10px;
+    margin-right: 10px;
+
+    margin-top: 20px;
 }
 .login-footer-string {
     font-family: "Inter", sans-serif;
@@ -295,8 +314,8 @@ height: 123px;
 
 @media screen and (max-width: 578px) {
     .login-container {
-        width: 95%;
-
+        width: auto;
+        margin-top: auto;
     }
 
     .login-header-text {
@@ -324,6 +343,14 @@ height: 123px;
     }
     .login-form-inputbox > input {
         width: 65%;
+    }
+
+    .login-form-store-password {
+        margin-left: 38px;
+    }
+    
+    .login-form-captcha {
+        margin-left: 38px;
     }
 
     .login-form-button {
