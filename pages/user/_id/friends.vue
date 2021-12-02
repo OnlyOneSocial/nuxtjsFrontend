@@ -44,6 +44,26 @@ export default Vue.extend({
       ])
     }
   },
+  head () {
+    const friendsDesc =
+      this.user && this.user.friends && this.user.friends.count && this.user.friends.count > 0
+        ? `${this.user.friends.list
+            .slice(0, 6)
+            .map((user, index) => {
+              if (index < 6) { return user.username }
+              return ''
+            })}`
+        : ''
+
+    return {
+      title: `Список друзей ${this.user.username} - Only One`,
+      description: `список друзей пользователя ${this.user.username} дружит с  ${friendsDesc}`,
+      meta: [
+        { hid: 'og:title', name: 'og:title', content: `Список друзей ${this.user.username} - Only One` },
+        { hid: 'og:image', name: 'og:image', content: this.avatar }
+      ]
+    }
+  },
   computed: {
     ...mapState({
       user: state => state.UserPage.user,
