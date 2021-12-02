@@ -27,14 +27,14 @@ export default {
     }
   },
   created () {
-    this.$api.get(`/api/message/get/${this.$route.query.im}`).then((data) => {
+    this.$api.get(`/message/get/${this.$route.query.im}`).then((data) => {
       this.messages = data.data
     })
   },
   methods: {
     send () {
       // this.message = ''
-      this.$api.post('/api/message/send', {
+      this.$api.post('/message/send', {
         text: this.message,
         to: parseInt(this.$route.query.im)
       }).then((data) => {
