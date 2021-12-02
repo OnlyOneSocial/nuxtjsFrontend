@@ -5,7 +5,7 @@
         <div>
           <UserAvatar :update="UpdateUser" :avatar="avatar" />
           <div v-if="$store.state.me.id && !user.me" style="padding-top:10px">
-            <div class="iconBox">
+            <div class="iconBox" @click="$router.push(`/im?im=${user.id}`)">
               <img width="16px" height="16px" src="/img/user/message.svg">
             </div>
 
