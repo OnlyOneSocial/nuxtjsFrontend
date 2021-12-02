@@ -49,7 +49,7 @@
         </div>
 
         <div class="login-form-store-password">
-          <input type="checkbox" id="login-form-store-password-checkbox" v-model="savePassword">
+          <input id="login-form-store-password-checkbox" v-model="savePassword" type="checkbox">
           <label for="login-form-store-password-checkbox">{{ $t('SavePassword') }}?</label>
         </div>
 
@@ -65,11 +65,9 @@
       </div>
 
       <div class="login-footer">
-
         <div class="login-footer-string">
           <span>При нажатии Войти происходит проверка существования аккаунта, если аккаунт не найден, то вы успешно зарегистрируете новый аккаунт</span>
         </div>
-
       </div>
 
       <div v-if="false" class="login-footer">
@@ -348,7 +346,7 @@ body {
     .login-form-store-password {
         margin-left: 38px;
     }
-    
+
     .login-form-captcha {
         margin-left: 38px;
     }
