@@ -1,8 +1,8 @@
 /* eslint-disable no-trailing-spaces */
 <template>
   <div :title="title" @click="action">
-    <i v-if="friendStatus.status===3" class="icon icon-add-friend" title="Отправить заявку в друзья" style="--size:150px" />
-    <i v-else-if="friendStatus.status===1" class="icon icon-remove-friend" style="--size:150px" />
+    <i v-if="friendStatus.status===3" class="icon icon-add-friend" title="Отправить заявку в друзья" style="--size:16px" />
+    <i v-else-if="friendStatus.status===1" class="icon icon-remove-friend" style="--size:16px" />
     <i v-else-if="friendStatus.status===0 && friendStatus.forme === true" class="icon icon-accept-friend" style="--size:16px" />
   </div>
 </template>
@@ -51,6 +51,24 @@ export default {
 }
 </script>
 <style scoped>
+.icon-remove-friend {
+  width: 16px;
+  height: 16px;
+  background: #8C99B2;
+  animation: 4s frames infinite linear;
+
+  -webkit-mask-image: url('/img/user/UserDelete.svg');
+  mask-image: url('/img/user/UserDelete.svg');
+}
+.icon-add-friend {
+    width: 16px;
+  height: 16px;
+  background: #8C99B2;
+  animation: 4s frames infinite linear;
+
+  -webkit-mask-image: url('/img/user/UserAddUser.svg');
+  mask-image: url('/img/user/UserAddUser.svg');
+}
 .icon-accept-friend {
   width: 16px;
   height: 16px;
