@@ -1,12 +1,29 @@
 <template>
-  <div class="content">
-    друзья
+  <div>
+    <div style="text-align:center;width: 100%;">
+      <h3>друзья</h3>
+      <br>
+      <div v-if="user && user.friends" style="margin-left:0px">
+        <template v-for="(friend,index) in user.friends.list">
+          <div :key="index" style="width:100%;">
+            <div id="friend">
+              <NuxtLink :to="`/user/${friend.id}`">
+                <img height="41px" width="41px" style="border-radius: 100%;" alt="user avatar" :src="getAvatar(friend.id,friend.avatar)">
+                <span style="font-size: 18px; width: 41px; overflow: hidden; white-space: nowrap;">
+                  {{ friend.username.slice(0,10) }}
+                </span>
+              </NuxtLink>
+            </div>
+          </div>
+        </template>
+      </div>
+    </div>
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import Vue from 'vue'
-import { mapActions } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 
 export default Vue.extend({
   data () {
@@ -14,24 +31,31 @@ export default Vue.extend({
       numbers: [1, 2, 3, 4]
     }
   },
-  computed: {
-    avatar () {
-      const userid = this.user.id
-      const userAvatar = this.user.avatar
-      return this.getAvatar(userid, userAvatar)
-    },
-    user () {
-      return this.$store.state.user
+  async fetch () {
+    if (this.$store.state.UserPage.user.id !== this.$route.params.id) {
+      const cleanUser = Object.assign({}, this.$store.state.user)
+      cleanUser.username = ''
+      cleanUser.avatar = ''
+      cleanUser.id = ''
+      this.$store.commit('UserPage/SetUser', cleanUser)
+
+      Promise.all([
+        await this.getUser(this.$route.params.id)
+      ])
     }
   },
-  created () {
-    // this.getUser(this.$route.params.id)
+  computed: {
+    ...mapState({
+      user: state => state.UserPage.user,
+      friendStatus: state => state.UserPage.friendStatus,
+      posts: state => state.UserPage.posts
+    })
   },
   methods: {
     getAvatar (id, avatar) {
       if (avatar) { return `https://cdnsocial.katelinlis.xyz/public/clients/${id}/${avatar}` } else { return 'https://cdnsocial.katelinlis.xyz/public/UserProfileImage.svg' }
     },
-    ...mapActions(['getUser'])
+    ...mapActions({ getUser: 'UserPage/getUser' })
   }
 
 })
