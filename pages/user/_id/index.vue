@@ -53,7 +53,7 @@
           <div class="friends">
             <div style="padding-top: 23px; padding-left: 28px;">
               <span id="FriendsTitle">
-                <a href="/user/1/friends" style="text-decoration: unset; color: #000;">{{ $t('FriendsUser') }}</a>
+                <NuxtLink :to="`/user/${user.id}/friends`" style="text-decoration: unset; color: #000;">{{ $t('FriendsUser') }}</NuxtLink>
               </span>
               <span id="count_friends"> {{ user.friends && user.friends.count }}</span>
             </div>
