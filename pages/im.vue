@@ -35,7 +35,7 @@
           </div>
         </div>
       </div>
-      <div style="width:100%">
+      <div style="position: absolute;bottom: 0;left:80px;width:100%">
         <input v-model="message" style="height:40px;border: 2px solid gray;width:75%" type="text">
         <input style="height:40px;border: 2px solid gray;" type="button" value="Send" @click="send">
       </div>
@@ -108,12 +108,13 @@ export default {
 <style scoped>
 .messages-container {
   overflow: auto;
+  margin-bottom: 50px;
 }
 .message-container {
   background: #FFFFFF;
   margin-bottom: 10px;
   margin-left: 10px;
-  margin-right: 10px;
+  margin-right: 5px;
   padding-top: 10px;
   padding-bottom: 10px;
   padding-left: 10px;
