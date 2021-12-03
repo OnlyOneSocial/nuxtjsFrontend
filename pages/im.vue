@@ -108,6 +108,7 @@ export default {
 <style scoped>
 .messages-container {
   overflow: auto;
+  overflow-wrap: break-word;
   margin-bottom: 50px;
 }
 .message-container {
