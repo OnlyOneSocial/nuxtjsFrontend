@@ -17,6 +17,11 @@
             <img src="/img/menu/news.svg" style="margin-right:6px">{{ $t('Feed') }}
           </NuxtLink>
         </li>
+        <li class="nav-list__item">
+          <NuxtLink to="/im">
+            <img src="/img/menu/news.svg" style="margin-right:6px">Диалоги
+          </NuxtLink>
+        </li>
       </template>
       <li class="nav-list__item">
         <NuxtLink to="/users">
