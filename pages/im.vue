@@ -34,7 +34,7 @@
     </div>
     <div v-if="!$route.query.im" style="text-align:center;margin: 0 auto">
       <div v-for="(dialog,index) in dialogs" :key="index" style="text-align:center">
-        <NuxtLink :to="`/im?im=${dialog.sendto}`">
+        <NuxtLink v-if="dialog.sendto>0" :to="`/im?im=${dialog.sendto}`">
           <br>
           {{ dialog.username }} ({{ dialog.time }})
           <br>
@@ -56,19 +56,33 @@ export default {
     }
   },
   computed: {
+    ImID () {
+      return this.$route.query.im
+    },
     ...mapState({
       me: state => state.me
     })
   },
+  watch: {
+    ImID (last) {
+      this.getIm()
+    }
+  },
+
   created () {
-    this.$api.get(`/message/get/${this.$route.query.im}`).then((data) => {
-      this.messages = data.data
-    })
     this.$api.get('/message/im').then((data) => {
       this.dialogs = data.data
     })
+    this.getIm()
   },
   methods: {
+    async getIm () {
+      if (this.ImID > 0) {
+        await this.$api.get(`/message/get/${this.$route.query.im}`).then((data) => {
+          this.messages = data.data
+        })
+      }
+    },
     send () {
       // this.message = ''
       this.$api.post('/message/send', {
