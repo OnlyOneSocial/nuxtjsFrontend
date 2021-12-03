@@ -144,8 +144,6 @@ export default Vue.extend({
 })
 </script>
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Roboto:wght@500;700&display=swap');
-
 body {
     background: #E5E5E5;
 }
@@ -198,6 +196,7 @@ body {
     margin-top: 29px;
 
     font-family: "Roboto", sans-serif;
+    font-weight: 500;
 
     color: #606580;
 }
@@ -256,6 +255,7 @@ body {
     margin-top: 9px;
 
     font-family: "Roboto", sans-serif;
+    font-weight: 500;
 
     color: #606580;
 }
