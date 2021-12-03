@@ -35,7 +35,7 @@
           </div>
         </div>
       </div>
-      <div style="position: absolute;bottom: 0;left:80px;width:100%">
+      <div style="position: absolute;bottom: 0;left:10%;width:80%;" class="message-input-container">
         <input v-model="message" style="height:40px;border: 2px solid gray;width:75%" type="text">
         <input style="height:40px;border: 2px solid gray;" type="button" value="Send" @click="send">
       </div>
@@ -130,5 +130,10 @@ export default {
   color: #606580;
   font-size: 14px;
   text-decoration: none;
+}
+@media screen and (min-width: 730px) {
+  .message-input-container {
+    width: 95% !important;
+  }
 }
 </style>
