@@ -75,6 +75,8 @@ export default {
 </script>
 
 <style scoped>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Roboto:wght@400;500;700&display=swap');
+
   .modal{
     position:absolute;
     z-index:1000;
@@ -164,7 +166,7 @@ export default {
     padding: 0;
     border: 0;
     box-sizing: border-box;
-    font-family: sans-serif;
+    font-family: "Roboto", sans-serif;
   }
   button {
    border-radius: 4px;
