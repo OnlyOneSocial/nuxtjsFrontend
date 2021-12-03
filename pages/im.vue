@@ -39,7 +39,11 @@
         <input v-model="message" style="height:40px;border: 2px solid gray;width:75%" type="text">
         <input style="height:40px;border: 2px solid gray;" type="button" value="Send" @click="send">
       </div>
+      <div v-if="false">
+        <Emoji :select="selectEmoji2" />
+      </div>
     </div>
+
     <div v-if="!$route.query.im" style="text-align:center;margin: 0 auto">
       <div v-for="(dialog,index) in dialogs" :key="index" style="text-align:center">
         <NuxtLink v-if="dialog.sendto>0" :to="`/im?im=${dialog.sendto}`">
@@ -52,7 +56,9 @@
     </div>
   </div>
 </template>
+
 <script>
+
 import { mapState } from 'vuex'
 
 export default {
@@ -90,6 +96,9 @@ export default {
           this.messages = data.data
         })
       }
+    },
+    selectEmoji2 (emoji) {
+      this.message = this.message + emoji.data
     },
     send () {
       // this.message = ''
