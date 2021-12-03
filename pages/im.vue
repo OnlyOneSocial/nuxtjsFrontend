@@ -3,23 +3,31 @@
     <div v-if="$route.query.im" style="height:450px;text-align:center" class="messages-container">
       <div v-for="(msg,index) in messages" :key="index">
         <div style="display:block;">
-          <div v-if="me && msg.userid==parseInt(me.id)" style="text-align:left" class="message-container">
+          <div v-if="me && msg.userid==parseInt(me.id)" style="text-align:right" class="message-container">
             <div class="message-user-avatar">
-              <img :src="`https://cdnsocial.katelinlis.xyz/public/clients/${msg.userid}/${msg.avatar}`">
+              <a :href="'/user/' + me.id">
+                <img :src="`https://cdnsocial.katelinlis.xyz/public/clients/${msg.userid}/${msg.avatar}`">
+              </a>
             </div>
             <div class="message-username">
-              <span>{{ msg.username }}</span>
+              <a :href="'/user/' + me.id">
+                <span>{{ msg.username }}</span>
+              </a>
             </div>
             <div class="message-text">
               <span>{{ msg.text }}</span>
             </div>
           </div>
-          <div v-if="me && msg.userid!==parseInt(me.id)" style="text-align:right" class="message-container">
+          <div v-if="me && msg.userid!==parseInt(me.id)" style="text-align:left" class="message-container">
             <div class="message-user-avatar">
-              <img :src="`https://cdnsocial.katelinlis.xyz/public/clients/${msg.userid}/${msg.avatar}`">
+              <a :href="'/user/' + msg.userid">
+                <img :src="`https://cdnsocial.katelinlis.xyz/public/clients/${msg.userid}/${msg.avatar}`">
+              </a>
             </div>
             <div class="message-username">
-              <span>{{ msg.username }}</span>
+              <a :href="'/user/' + msg.userid">
+                <span>{{ msg.username }}</span>
+              </a>
             </div>
             <div class="message-text">
               <span>{{ msg.text }}</span>
@@ -27,7 +35,7 @@
           </div>
         </div>
       </div>
-      <div style="position: absolute;bottom: 0;width:100%">
+      <div style="width:100%">
         <input v-model="message" style="height:40px;border: 2px solid gray;width:75%" type="text">
         <input style="height:40px;border: 2px solid gray;" type="button" value="Send" @click="send">
       </div>
@@ -112,11 +120,14 @@ export default {
   padding-right: 10px;
   border-radius: 10px;
 }
-.message-user-avatar > img {
+.message-user-avatar > a > img {
+  width: 24px;
   height: 24px;
+  border-radius: 100%;
 }
-.message-username {
+.message-username > a {
   color: #606580;
   font-size: 14px;
+  text-decoration: none;
 }
 </style>
