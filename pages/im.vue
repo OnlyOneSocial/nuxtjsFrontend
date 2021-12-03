@@ -110,6 +110,7 @@ export default {
   overflow: auto;
   overflow-wrap: break-word;
   margin-bottom: 50px;
+  width: 100%;
 }
 .message-container {
   background: #FFFFFF;
