@@ -1,17 +1,38 @@
 <template>
   <div>
-    <div style="height:450px;width:90%;overflow:hidden;text-align:center">
+    <div style="height:450px;text-align:center" class="messages-container">
       <div v-for="(msg,index) in messages" :key="index">
         <div style="display:block;">
-          <div v-if="me && msg.userid==parseInt(me.id)" style="text-align:left">
-            {{ msg.username }}
-            <br>
-            {{ msg.text }}
+          <div v-if="me && msg.userid==parseInt(me.id)" style="text-align:left" class="message-container">
+
+            <div class="message-user-avatar">
+              <img src="https://cdnsocial.katelinlis.xyz/public/UserProfileImage.svg">
+            </div>
+
+            <div class="message-username">
+              <span>{{ msg.username }}</span>
+            </div>
+
+            <div class="message-text">
+              <span>{{ msg.text }}</span>
+            </div>
+
           </div>
-          <div v-if="me && msg.userid!==parseInt(me.id)" style="text-align:right">
-            {{ msg.username }}
-            <br>
-            {{ msg.text }}
+
+          <div v-if="me && msg.userid!==parseInt(me.id)" style="text-align:right" class="message-container">
+
+            <div class="message-user-avatar">
+              <img src="https://cdnsocial.katelinlis.xyz/public/UserProfileImage.svg">
+            </div>
+
+            <div class="message-username">
+              <span>{{ msg.username }}</span>
+            </div>
+
+            <div class="message-text">
+              <span>{{ msg.text }}</span>
+            </div>
+
           </div>
         </div>
       </div>
@@ -57,3 +78,29 @@ export default {
   }
 }
 </script>
+<style scoped>
+.messages-container {
+    overflow: auto;
+}
+.message-container {
+    background: #FFFFFF;
+
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+
+    border-radius: 10px;
+}
+.message-user-avatar > img {
+    height: 24px;
+}
+.message-username {
+    color: #606580;
+    font-size: 14px;
+}
+</style>
