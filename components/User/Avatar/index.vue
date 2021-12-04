@@ -48,7 +48,7 @@ export default {
 
       formData.append('photo', photo)
 
-      this.$api({ method: 'post', url: 'https://social.katelinlis.ru/api/user/upload_avatar', data: formData, headers: { 'Content-Type': 'multipart/form-data' } }).then(() => {
+      this.$api({ method: 'post', url: 'user/upload_avatar', data: formData, headers: { 'Content-Type': 'multipart/form-data' } }).then(() => {
         this.update()
       })
     }
