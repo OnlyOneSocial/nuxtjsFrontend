@@ -1,5 +1,5 @@
 <template>
-  <div id="AvatarBox" @mouseover="changeButton = true" @mouseleave="changeButton = false">
+  <div id="AvatarBox" @mouseover="me ? changeButton = true : ''" @mouseleave="changeButton = false">
     <img id="avatarPhoto" alt="user avatar" :src="avatar" @click="$store.commit('SetModal', { type: 'OpenUserAvatar', data: avatar })">
     <div v-if="changeButton" id="changeAvatarButton">
       <span id="ChangeAvatarButton" @click="clickforUpload">change avatar</span>
@@ -19,6 +19,10 @@
 export default {
 
   props: {
+    me: {
+      type: Boolean,
+      default: false
+    },
     avatar: {
       type: String,
       default: ''
