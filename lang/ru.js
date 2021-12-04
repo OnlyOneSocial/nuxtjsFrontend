@@ -1,6 +1,7 @@
 export default {
   MyPage: 'Моя страница',
   Contacts: 'Контакты',
+  Dialogues: 'Диалоги',
   Feed: 'Лента',
   UsersCatalog: 'Список пользователей',
   AboutProject: 'О проекте',

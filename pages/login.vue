@@ -1,84 +1,41 @@
-<!--
-    Сверстал Михаил Лебединец lebedinets.ru
-    Собрала и подключила к проекту Кейтлин Лис
--->
+
 <template>
   <div class="content">
-    <div class="login-container">
-      <div class="login-header">
-        <div class="login-header-text">
-          <span>{{ $t('Login') }}</span>
+    <div class="signin">
+      <div class="signin-form">
+        <div class="signin-form__header">
+          <UiBaseCaption
+            :title="$t('Login')"
+          />
+          <LogoIcon />
         </div>
-
-        <div class="login-header-logo">
-          <img src="/img/login/login-header-logo.svg" alt="Логотип OnlyOne">
-        </div>
-
-        <div class="login-header-line" />
-      </div>
-
-      <div class="login-form">
-        <div class="login-form-text">
-          <span>{{ $t('UserName') }}</span>
-        </div>
-        <div class="login-form-input-container">
-          <div class="login-form-input-icon">
-            <img src="/img/login/login-form-input-icon-login.svg">
-          </div>
-
-          <div class="login-form-inputbox">
-            <input v-model="login" type="text" placeholder="Введите Ваш логин">
-          </div>
-        </div>
-
-        <div class="login-form-text">
-          <span>{{ $t('UserPassword') }}</span>
-        </div>
-        <div class="login-form-input-container">
-          <div class="login-form-input-icon">
-            <img src="/img/login/login-form-input-icon-password.svg">
-          </div>
-
-          <div class="login-form-inputbox">
-            <input v-model="password" type="password" placeholder="Введите Ваш пароль">
-          </div>
-
-          <div v-if="false" class="login-form-input-show">
-            <img src="/img/login/login-form-input-show.svg">
-          </div>
-        </div>
-
+        <UiBaseInput
+          v-model="login"
+          :label="$t('UserName')"
+          placeholder="Введите Ваш логин"
+        />
+        <UiBaseInput
+          v-model="password"
+          :label="$t('UserPassword')"
+          type="password"
+          autocomplete="current-password"
+          placeholder="Введите Ваш пароль"
+        />
         <div class="login-form-store-password">
           <input id="login-form-store-password-checkbox" v-model="savePassword" type="checkbox">
           <label for="login-form-store-password-checkbox">{{ $t('SavePassword') }}?</label>
         </div>
-
-        <div class="login-form-captcha">
+        <div class="signin-form__captcha">
           <recaptcha />
         </div>
-
-        <div class="login-form-button">
-          <button title="Войти или создать новый аккаунт" @click="Auth">
-            {{ $t('Login') }}
-          </button>
-        </div>
-      </div>
-
-      <div class="login-footer">
-        <div class="login-footer-string">
-          <span>При нажатии Войти происходит проверка существования аккаунта, если аккаунт не найден, то вы успешно зарегистрируете новый аккаунт</span>
-        </div>
-      </div>
-
-      <div v-if="false" class="login-footer">
-        <div class="login-footer-string">
-          <span>У Вас нет аккаунта?</span>
-          <a href="#">Регистрация</a>
-        </div>
-
-        <div class="login-footer-string">
-          <span>Вы забыли пароль?</span>
-          <a href="#"><nobr>Восстановить пароль</nobr></a>
+        <UiBaseButton
+          :label="$t('Login')"
+          width="fluid"
+          size="lg"
+          @click="Auth"
+        />
+        <div class="signin-form__subtitle">
+          При нажатии Войти происходит проверка существования аккаунта, если аккаунт не найден, то вы успешно зарегистрируете новый аккаунт
         </div>
       </div>
     </div>
@@ -88,8 +45,10 @@
 <script >
 import Vue from 'vue'
 import { mapActions } from 'vuex'
+import LogoIcon from '~/assets/svg/logo.svg'
 
 export default Vue.extend({
+  components: { LogoIcon },
   data () {
     return {
       login: '',
@@ -143,220 +102,53 @@ export default Vue.extend({
 
 })
 </script>
-<style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Roboto:wght@500;700&display=swap');
+<style lang="postcss" scoped>
 
-body {
-    background: #E5E5E5;
-}
+.signin {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin: 8vh auto 0;
 
-.login-container {
-    width: 578px;
-    height: 676px;
+	&-form {
+		max-width: 578px;
+		padding: 20px 56px 48px;
+		border-radius: 14px;
+		background-color: #fff;
 
-    /* center */
-    margin-left: auto;
-    margin-right: auto;
+		& .input-group {
+			&:not(:last-child) {
+				margin-bottom: 20px;
+			}
+		}
 
-    margin-top: 0px;
+		&__header {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 12px 0;
+			border-bottom: 1px solid #e6eaef;
+			margin-bottom: 24px;
 
-    background: #FFFFFF;
+			& svg {
+				flex: none;
+			}
+		}
 
-    border-radius: 14px;
-}
+		&__subtitle {
+			margin-top: 24px;
+			text-align: center;
+			font-size: 1.4rem;
+			line-height: 150%;
+			font-weight: 400;
+		}
 
-.login-header-text {
-    margin-left: 78px;
-    padding-top: 51px;
-
-    font-size: 30px;
-    font-family: "Roboto", sans-serif;
-    font-weight: 700;
-}
-.login-header-logo {
-    position: relative;
-    float: right;
-
-    margin-right: 74.39px;
-    top: -37px;
-}
-.login-header-line {
-    width: 427px;
-    height: 1px;
-
-    /* center */
-    margin-left: auto;
-    margin-right: auto;
-
-    margin-top: 29px;
-
-    background: #D7E2F2;
-}
-
-.login-form-text {
-    margin-left: 78px;
-    margin-top: 29px;
-
-    font-family: "Roboto", sans-serif;
-
-    color: #606580;
-}
-.login-form-input-container {
-    width: 426px;
-    height: 64px;
-
-    /* center */
-    margin-left: auto;
-    margin-right: auto;
-
-    margin-top: 14px;
-
-    background: #F5F8FD;
-
-    border-radius: 6px;
-}
-
-.login-form-input-icon {
-    margin-left: 20.63px;
-    padding-top: 18.56px;
-}
-
-.login-form-inputbox {
-    position: relative;
-
-    margin-left: 64px;
-    top: -45.5px;
-}
-.login-form-inputbox > input {
-    height: 58px;
-    width: 290px;
-
-    border: none;
-    background: none;
-
-    font-size: 14px;
-    color: #8C99B2;
-
-    outline: none;
-}
-
-.login-form-input-show {
-    position: relative;
-    float: right;
-
-    margin-right: 27px;
-    top: -82px;
-}
-.login-form-input-show:hover {
-    cursor: pointer;
-}
-
-.login-form-store-password {
-    margin-left: 78px;
-    margin-top: 9px;
-
-    font-family: "Roboto", sans-serif;
-
-    color: #606580;
-}
-
-.login-form-captcha {
-    margin-left: 78px;
-    margin-top: 9px;
-}
-
-.login-form-button {
-    margin-left: 76px;
-    margin-top: 12px;
-}
-.login-form-button > button {
-    width: 426px;
-    height: 64px;
-
-    background: #0F62FE;
-    border: none;
-
-    color: #FFFFFF;
-    font-family: "Inter", sans-serif;
-    font-size: 16px;
-
-    border-radius: 6px;
-
-    transition: 0.25s;
-}
-.login-form-button > button:hover {
-    cursor: pointer;
-    background: #0d57e0;
-}
-
-.login-footer {
-    text-align: center;
-
-    margin-left: 10px;
-    margin-right: 10px;
-
-    margin-top: 20px;
-}
-.login-footer-string {
-    font-family: "Inter", sans-serif;
-    margin-bottom: 14px;
-}
-.login-footer-string > span {
-    color: #696F79;
-    margin-right: 6px;
-}
-.login-footer-string > a{
-    color: #0F62FE;
-    text-decoration: none;
-}
-
-@media screen and (max-width: 578px) {
-    .login-container {
-        width: auto;
-        margin-top: auto;
-    }
-
-    .login-header-text {
-        margin-left: 38px;
-        padding-top: 31px;
-    }
-    .login-header-logo {
-        margin-right: 38px;
-    }
-    .login-header-line {
-        width: auto;
-
-        margin-left: 38px;
-        margin-right: 38px;
-    }
-
-    .login-form-text {
-        margin-left: 38px;
-    }
-    .login-form-input-container {
-        width: auto;
-
-        margin-left: 38px;
-        margin-right: 38px;
-    }
-    .login-form-inputbox > input {
-        width: 65%;
-    }
-
-    .login-form-store-password {
-        margin-left: 38px;
-    }
-
-    .login-form-captcha {
-        margin-left: 38px;
-    }
-
-    .login-form-button {
-        margin-left: 38px;
-        margin-right: 38px;
-    }
-    .login-form-button > button {
-        width: 100%;
-    }
+		&__captcha {
+			margin-top: 10px;
+			margin-bottom: 12px;
+			display: flex;
+			justify-content: center;
+		}
+	}
 }
 </style>

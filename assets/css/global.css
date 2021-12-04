@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-@import 'node_modules/modern-normalize/modern-normalize.css';
+@import '~/node_modules/modern-normalize/modern-normalize.css';
 
 html {
 	font-size: 62.5%;

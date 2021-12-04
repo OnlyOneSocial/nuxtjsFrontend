@@ -5,6 +5,10 @@
   --transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0s;
 
   --primary: #5b58fb;
+	--danger: #e73570;
+
+	--primary-hover: #4e3df7;
+	--danger-hover: #dd5277;
 }
 
 [data-theme="light"] {
@@ -14,6 +18,11 @@
   --color-text-accent:#44465c;
 
   --body-bg: #f3f4f7;
+
+	--color-form-label: #585d7a;
+	--color-form-input: #14161b;
+	--color-form-bg: #e6e6ff;
+	--color-form-bg-focus: #e6e6ff;
 }
 
 

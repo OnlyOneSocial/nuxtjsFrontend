@@ -2,6 +2,7 @@ export default {
   MyPage: 'My profile',
   Contacts: 'My contacts',
   Feed: 'Feed',
+  Dialogues: 'Dialogues',
   UsersCatalog: 'User Catalog',
   AboutProject: 'About',
   Wall: 'Wall',

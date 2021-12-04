@@ -1,50 +1,46 @@
 <template>
-  <nav class="nav-container">
-    <ul class="nav-list">
+  <aside class="nav">
+    <nav class="nav-list">
       <template v-if="me.id">
-        <li class="nav-list__item">
-          <NuxtLink :to="`/user/${me.id}`">
-            <img src="/img/menu/my_page.svg" style="margin-right:6px;filter: invert(0.5) sepia(1) saturate(5) hue-rotate(175deg)">{{ $t('MyPage') }}
-          </NuxtLink>
-        </li>
-        <li class="nav-list__item">
-          <NuxtLink :to="`/user/${me.id}/friends`">
-            <img src="/img/menu/contacts.svg" style="margin-right:6px">{{ $t('Contacts') }}
-          </NuxtLink>
-        </li>
-        <li class="nav-list__item">
-          <NuxtLink to="/news">
-            <img src="/img/menu/news.svg" style="margin-right:6px">{{ $t('Feed') }}
-          </NuxtLink>
-        </li>
-        <li class="nav-list__item">
-          <NuxtLink to="/im">
-            <img src="/img/menu/news.svg" style="margin-right:6px">Диалоги
-          </NuxtLink>
-        </li>
+        <NuxtLink :to="`/user/${me.id}`" class="nav-list__item">
+          <img src="/img/menu/my_page.svg">
+          {{ $t('MyPage') }}
+        </NuxtLink>
+        <NuxtLink :to="`/user/${me.id}/friends`" class="nav-list__item">
+          <img src="/img/menu/contacts.svg">
+          {{ $t('Contacts') }}
+        </NuxtLink>
+        <NuxtLink to="/news" class="nav-list__item">
+          <img src="/img/menu/news.svg">
+          {{ $t('Feed') }}
+        </NuxtLink>
+        <NuxtLink to="/im" class="nav-list__item">
+          <img src="/img/menu/news.svg">
+          {{ $t('Dialogues') }}
+        </NuxtLink>
       </template>
-      <li class="nav-list__item">
-        <NuxtLink to="/users">
-          <img src="/img/menu/people.svg" style="margin-right:6px">{{ $t('UsersCatalog') }}
+      <template v-else>
+        <NuxtLink to="/users" class="nav-list__item">
+          <img src="/img/menu/people.svg">
+          {{ $t('UsersCatalog') }}
         </NuxtLink>
-      </li>
-      <li class="nav-list__item">
-        <NuxtLink to="/about">
-          <img src="/img/menu/about.svg" style="margin-right:6px">{{ $t('AboutProject') }}
+        <NuxtLink to="/about" class="nav-list__item">
+          <img src="/img/menu/about.svg">
+          {{ $t('AboutProject') }}
         </NuxtLink>
-      </li>
-      <li v-if="$i18n.localeProperties.code=='ru'" class="nav-list__item">
-        <span @click="$i18n.setLocale('en')">
-          Change to English
-        </span>
-      </li>
-      <li v-else-if="$i18n.localeProperties.code=='en'" class="nav-list__item">
-        <span @click="$i18n.setLocale('ru')">
-          Сменить на Русский
-        </span>
-      </li>
-    </ul>
-  </nav>
+        <div v-if="$i18n.localeProperties.code=='ru'">
+          <span @click="$i18n.setLocale('en')">
+            Change to English
+          </span>
+        </div>
+        <div v-else-if="$i18n.localeProperties.code=='en'" class="nav-list__item">
+          <span @click="$i18n.setLocale('ru')">
+            Сменить на Русский
+          </span>
+        </div>
+      </template>
+    </nav>
+  </aside>
 </template>
 <script>
 import { mapState } from 'vuex'
@@ -58,36 +54,34 @@ export default {
 }
 </script>
 
-<style scoped>
-   .nav-list__item > a {
-    color: black;
-    text-decoration: none;
-        font-family: Roboto;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 16px;
-    line-height: 17px;
-    letter-spacing: 0.01em;
+<style lang="postcss" scoped>
+.nav {
+	flex: none;
+	width: 320px;
+	margin-right: 40px;
+	padding: 1.5em 16px 32px;
+	height: calc(100% - 1.5em);
+	background-color: #fff;
 
-  }
-  .nav-list__item > a > img {
-    margin-right:6px
-  }
+	&-list {
+		&__item {
+			margin: 12px 0;
+			text-decoration: none;
+			display: flex;
+			font-size: 1.6rem;
+			align-items: center;
+			color: var(--color-text);
+			transition: color var(--transition-base);
 
-  .nav-container{
-    background: #FFFFFF;
-    border-radius: 8px;
-    padding: 27px 18px 38.5px 31px;
-  }
+			&:hover {
+				color: var(--primary);
+			}
 
-  .nav-list__item {
-    list-style-type: none;
-    margin-bottom: 1vw;
-  }
-
-  @media screen and (orientation: portrait) {
-    .page-container__layout nav {
-      display: none;
-    }
-  }
+			& img {
+				flex: none;
+				margin-right: 6px;
+			}
+		}
+	}
+}
 </style>
