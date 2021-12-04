@@ -30,6 +30,7 @@ export default {
   head () {
     return {
       bodyAttrs: {
+        'data-theme': 'light',
         style: this.modal.type ? ' overflow: hidden;' : ''
       },
       meta: [
@@ -153,26 +154,4 @@ export default {
     }
   }
 
-</style>
-
-<style>
-  body{
-    background: #F5F8FD;
-  }
-  * {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    box-sizing: border-box;
-    font-family: sans-serif;
-  }
-  button {
-   border-radius: 4px;
-   margin: 4px 0;
-   padding: 4px;
-  }
-  html, body, #__nuxt, #__layout {
-    width: 100%;
-    height: 100%;
-  }
 </style>

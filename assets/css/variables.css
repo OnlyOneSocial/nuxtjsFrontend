@@ -1,0 +1,27 @@
+:root {
+  color-scheme: var(--color-scheme);
+
+  --font-size: 1.8rem;
+  --transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+
+  --primary: #5b58fb;
+}
+
+[data-theme="light"] {
+  --color-scheme: light;
+  --color-text:  #71799b;
+  --color-text-head: #0b0c0e;
+  --color-text-accent:#44465c;
+
+  --body-bg: #f3f4f7;
+}
+
+
+[data-theme="dark"] {
+  --color-scheme: dark;
+  --color-text:  #71799b;
+  --color-text-head: #fff;
+  --color-text-accent:#b0b7cb;
+
+  --body-bg: #14161b;
+}
