@@ -6,12 +6,12 @@
           <div v-if="me && msg.userid==parseInt(me.id)" style="text-align:right" class="message-container">
             <div class="message-user-avatar">
               <a :href="'/user/' + me.id">
-                <img :src="`https://cdnsocial.katelinlis.xyz/public/clients/${msg.userid}/${msg.avatar}`">
+                <img :src="`https://cdnsocial.katelinlis.xyz/public/clients/${msg.userid}/${me.avatar}`">
               </a>
             </div>
             <div class="message-username">
               <a :href="'/user/' + me.id">
-                <span>{{ msg.username }}</span>
+                <span>{{ me.username }}</span>
               </a>
             </div>
             <div class="message-text">
@@ -88,6 +88,9 @@ export default {
       if (this.ImID > 0) {
         await this.$api.get(`/message/get/${this.$route.query.im}`).then((data) => {
           this.messages = data.data
+          this.$nextTick(() => {
+            document.getElementsByClassName('messages-container')[0].scrollTop = document.getElementsByClassName('messages-container')[0].scrollHeight
+          })
         })
       }
     },
@@ -100,6 +103,9 @@ export default {
         console.log(data.data)
         this.message = ''
         this.messages.push(data.data)
+        this.$nextTick(() => {
+          document.getElementsByClassName('messages-container')[0].scrollTop = document.getElementsByClassName('messages-container')[0].scrollHeight
+        })
       })
     }
   }
