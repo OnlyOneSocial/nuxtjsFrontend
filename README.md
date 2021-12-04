@@ -39,9 +39,9 @@ $ npm run test
 ```
   
 ## Другие репозитории
-<a href="https://github.com/katelinlis/Wallbackend">github.com/katelinlis/Wallbackend</a> - Бэкенд для  стены
-<a href="https://github.com/katelinlis/MessagesBackend">github.com/katelinlis/MessagesBackend</a> - Бэкенд для сообщений
-<a href="https://github.com/katelinlis/AuthBackend">github.com/katelinlis/AuthBackend</a> - Бэкенд для Авторизации используется пока что авторизация на nodejs
+<a href="https://github.com/katelinlis/Wallbackend">github.com/katelinlis/Wallbackend</a> - Бэкенд для  стены <br>
+<a href="https://github.com/katelinlis/MessagesBackend">github.com/katelinlis/MessagesBackend</a> - Бэкенд для сообщений <br>
+<a href="https://github.com/katelinlis/AuthBackend">github.com/katelinlis/AuthBackend</a> - Бэкенд для Авторизации (используется пока что авторизация на nodejs)
   
 
 ## Donate
