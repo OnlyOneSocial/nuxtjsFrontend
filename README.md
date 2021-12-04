@@ -1,69 +1,56 @@
-# nuxtjs2
+<p align="center">
+  <a href="http://social.katelinlis.xyz/" target="blank"><img src="https://social.katelinlis.xyz/img/Logo.svg" width="320" alt="MSN logo" /></a>
+</p>
+<p align="center">Social network pet project </p>
 
-## Build Setup
+## Description
+опенсурс Платформа рабочей социальной сети с поддержкой серверного рендеринга
+<br/>
+адрес
+<a href="https://only-one.su/">social.katelinlis.xyz<a/>
+![image](https://user-images.githubusercontent.com/56870191/144715313-8e187d98-7675-4d88-9c02-1e314e308357.png)
+
+
+
+
+
+## Installation
 
 ```bash
-# install dependencies
 $ npm install
-
-# serve with hot reload at localhost:3000
-$ npm run dev
-
-# build for production and launch server
-$ npm run build
-$ npm run start
-
-# generate static project
-$ npm run generate
 ```
 
-For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
+## Running the app
 
-## Special Directories
+```bash
+# development
+$ npm run dev
 
-You can create the following extra directories, some of which have special behaviors. Only `pages` is required; you can delete them if you don't want to use their functionality.
+# production mode
+$ npm run build 
+$ npm run start
+```
 
-### `assets`
+## Test
 
-The assets directory contains your uncompiled assets such as Stylus or Sass files, images, or fonts.
+```bash
+# unit tests
+$ npm run test
+```
+  
+## Другие репозитории
+<a href="https://github.com/katelinlis/Wallbackend">github.com/katelinlis/Wallbackend</a> - Бэкенд для  стены <br>
+<a href="https://github.com/katelinlis/MessagesBackend">github.com/katelinlis/MessagesBackend</a> - Бэкенд для сообщений <br>
+<a href="https://github.com/katelinlis/AuthBackend">github.com/katelinlis/AuthBackend</a> - Бэкенд для Авторизации (используется пока что авторизация на nodejs)
+  
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/assets).
+## Donate
+support
+https://www.buymeacoffee.com/katelinlis
 
-### `components`
+## Stay in touch
 
-The components directory contains your Vue.js components. Components make up the different parts of your page and can be reused and imported into your pages, layouts and even other components.
+- Author - [Katelinlis](https://vk.com/katelinlis)
+## Stars
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/components).
-
-### `layouts`
-
-Layouts are a great help when you want to change the look and feel of your Nuxt app, whether you want to include a sidebar or have distinct layouts for mobile and desktop.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/layouts).
-
-
-### `pages`
-
-This directory contains your application views and routes. Nuxt will read all the `*.vue` files inside this directory and setup Vue Router automatically.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/get-started/routing).
-
-### `plugins`
-
-The plugins directory contains JavaScript plugins that you want to run before instantiating the root Vue.js Application. This is the place to add Vue plugins and to inject functions or constants. Every time you need to use `Vue.use()`, you should create a file in `plugins/` and add its path to plugins in `nuxt.config.js`.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/plugins).
-
-### `static`
-
-This directory contains your static files. Each file inside this directory is mapped to `/`.
-
-Example: `/static/robots.txt` is mapped as `/robots.txt`.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/static).
-
-### `store`
-
-This directory contains your Vuex store files. Creating a file in this directory automatically activates Vuex.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/store).
+![Stargazers over time](https://starchart.cc/katelinlis/nuxtjsFrontend.svg)
