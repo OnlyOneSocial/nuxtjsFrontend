@@ -1,5 +1,4 @@
-
-<template style="">
+<template>
   <div class="wrapper">
     <LayoutHeader v-if="$nuxt.$route.name!=='login'" />
     <div class="content">
@@ -54,7 +53,6 @@ export default {
   computed: {
     ...mapState({
       modal: state => state.modal
-
     })
 
   },
@@ -63,7 +61,6 @@ export default {
   },
   methods: {
     Close () {
-      console.log(event)
       this.$store.commit('SetModal', { type: '', data: {} })
     },
     async Update () {

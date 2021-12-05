@@ -1,56 +1,71 @@
 <template>
-  <button
-    v-bind="$attrs"
-    :disabled="disabled"
-    :class="[
-      'button',
-      `button-${color}`,
-      `button-${width}`,
-      `button-${size}`,
-    ]"
-    v-on="$listeners"
-  >
-    <span>{{ label }}</span>
-  </button>
+	<component
+		v-bind="$attrs"
+		:is="component"
+		:disabled="disabled"
+		:class="[
+			'button',
+			`button-${color}`,
+      		`button-${width}`,
+      		`button-${size}`,
+		]"
+		:type="type === 'submit' ? 'submit' : 'button'"
+		v-on="$listeners"
+	>
+		<slot>
+			<span>{{ label }}</span>
+		</slot>
+	</component>
 </template>
-<script>
-export default {
-  props: {
-    label: {
-      type: String,
-      default: '&nbsp;'
-    },
-    disabled: {
-      type: Boolean,
-      default: false
-    },
-    // eslint-disable-next-line vue/require-default-prop
-    color: {
-      type: String,
-      default: 'primary',
-      validator (color) {
-        // The value must match one of these strings
-        return ['primary', 'danger'].includes(color)
-      }
-    },
-    width: {
-      type: String,
-      default: 'auto',
-      validator (width) {
-        // The value must match one of these strings
-        return ['auto', 'fluid', 'long'].includes(width)
-      }
-    },
-    size: {
-      type: String,
-      default: 'md',
-      validator (size) {
-        // The value must match one of these strings
-        return ['md', 'sm', 'lg'].includes(size)
-      }
-    }
-  }
-}
+<script lang="ts">
+import { PropType, defineComponent, computed } from '@vue/composition-api';
+const typeToTagEnum = {
+	button: 'button',
+	submit: 'button',
+	link: 'NuxtLink',
+	external_link: 'a'
+};
+
+export default defineComponent({
+	props: {
+		label: {
+			type: String as PropType<string>,
+			default: '&nbsp;'
+		},
+		type: {
+			type: String as PropType<'button' | 'submit' | 'link' | 'external_link'>,
+			default: 'button'
+		},
+		color: {
+			type: String as PropType<'primary' | 'danger'>,
+			default: 'primary'
+		},
+
+		width: {
+			type: String as PropType<'auto' | 'fluid'>,
+			default: 'auto'
+		},
+
+		size: {
+			type: String as PropType<'md' | 'lg'>,
+			default: 'md'
+		},
+
+		disabled: {
+			type: Boolean as PropType<boolean>,
+			default: false
+		},
+	},
+	setup(props) {
+		const component = computed(() => (
+			typeToTagEnum[props.type]
+		));
+
+		return {
+			component
+		};
+	}
+});
 </script>
 <style lang="postcss">
 .button {
