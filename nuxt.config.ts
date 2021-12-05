@@ -1,5 +1,4 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-
 import { NuxtConfig } from '@nuxt/types';
 import axios from 'axios'
 
@@ -59,7 +58,8 @@ const nuxtConfig: NuxtConfig = {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    '@/plugins/axios'
+    '@/plugins/axios',
+		'@/plugins/composition-api',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -71,7 +71,7 @@ const nuxtConfig: NuxtConfig = {
     // '@nuxtjs/eslint-module',
 	// https://go.nuxtjs.dev/typescript
     '@nuxt/typescript-build',
-	'@nuxt/postcss8'
+		'@nuxt/postcss8'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
