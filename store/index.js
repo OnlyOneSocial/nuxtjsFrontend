@@ -40,7 +40,7 @@ export const actions = {
       const res = await this.$axios.get(`${serverUrl}/auth/user/`, { headers }).catch((err) => {
         if (err.response.status === 401) {
           this.$cookies.remove('token')
-          redirect('/login')
+          // redirect('/login')
         }
       })
 
