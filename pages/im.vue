@@ -3,8 +3,7 @@
         <div v-if="$route.query.im" class="messages-container" style="text-align:center">
             <div v-for="(msg,index) in messages" :key="index">
                 <div style="display:block;">
-
-                    <div v-if="me && msg.userid===parseInt(me.id)" class="message-container" style="text-align:right">
+<div v-if="me && msg.userid===parseInt(me.id)" class="message-container" style="text-align:right">
                         <div class="message-user-avatar">
                             <a :href="'/user/' + me.id">
                                 <img :src="`https://cdnsocial.katelinlis.xyz/public/clients/${msg.userid}/${me.avatar}`" alt="">
@@ -170,6 +169,7 @@ export default {
     margin-right: 5px;
     padding: 10px;
     border-radius: 10px;
+    font-family: "Noto Color Emoji" ,emoji;
 }
 
 .message-user-avatar > a > img {
@@ -198,5 +198,9 @@ export default {
     .message-input-container {
         width: 95% !important;
     }
+}
+@font-face {
+    font-family: 'Noto Color Emoji';
+    src: url(https://github.com/googlefonts/noto-emoji/raw/main/fonts/NotoColorEmoji_WindowsCompatible.ttf);
 }
 </style>
