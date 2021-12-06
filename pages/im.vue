@@ -36,7 +36,7 @@
         </div>
       </div>
       <div style="position: absolute;bottom: 0;left:10%;width:80%;" class="message-input-container">
-        <input v-model="message" style="height:40px;border: 2px solid gray;width:75%" type="text">
+        <input v-model="message" style="height:40px;border: 2px solid gray;width:75%" type="text" @keyup.enter="send">
         <input style="height:40px;border: 2px solid gray;" type="button" value="Send" @click="send">
       </div>
     </div>
