@@ -3,18 +3,18 @@
     <div class="userAvatarAndAbout">
       <div class="AboutUser">
         <div>
-          <UserAvatar :update="UpdateUser" :avatar="avatar" />
+          <UserAvatar :update="UpdateUser" :me="user.me" :avatar="avatar" />
           <div v-if="$store.state.me.id && !user.me" style="padding-top:10px">
-            <div class="iconBox" @click="$router.push(`/im?im=${user.id}`)">
+            <div class="iconBox" title="Отправить сообщение" @click="$router.push(`/im?im=${user.id}`)">
               <img width="16px" height="16px" src="/img/user/message.svg">
             </div>
 
             <UserActionAddDeleteFriend v-if="$store.state.me.id && !user.me" :friend-status="friendStatus" :userid="user.id" class="iconBox Offset12" />
 
-            <div class="iconBox Offset12">
+            <div class="iconBox Offset12" title="Перевести коины">
               <img src="/img/user/wallet.svg">
             </div>
-            <div class="iconBox Offset12">
+            <div class="iconBox Offset12" title="Заблокировать">
               <img src="/img/user/forbidden.svg">
             </div>
           </div>
@@ -27,10 +27,11 @@
                 <span style="color: #0BA4A4;">Online</span>
 
                 <img
+                  v-if="user.me"
                   src="/img/settings.svg"
                   title="settings"
                   style="display:inline-block;margin-left: 30vw;"
-                  data-v-8c57f232=""
+                  @click="$router.push(`/settings`)"
                 >
               </div>
               <div>
@@ -64,10 +65,16 @@
             </div>
 
             <div style="padding: 19px 28px 16px 28px;">
-              Друзья Подписчики Запросы (2)
+              <span>Друзья</span>
+              <span>Подписчики</span>
+              <span v-if="user.me">Запросы (0)</span>
             </div>
 
-            <div data-v-398b3732="" style="opacity: 0.5; border: 1px solid rgb(215, 226, 242); box-sizing: border-box; width: 84%; height: 0px;margin: 0px 15% 8px 8%;" />
+            <div
+              data-v-398b3732="
+                "
+              style="opacity: 0.5; border: 1px solid rgb(215, 226, 242); box-sizing: border-box; width: 84%; height: 0px;margin: 0px 15% 8px 8%;"
+            />
 
             <div v-if="user.friends" style="margin-left:6px">
               <template v-for="(friend,index) in user.friends.list">
