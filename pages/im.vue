@@ -53,7 +53,7 @@
               </div>
 
               <button slot="reference" style="background-color:unset">
-                <img style="width:24px" src="/img/im/smile2.svg">
+                <img style="width:24px" src="/img/im/smile.svg">
               </button>
             </popper>
           </no-ssr>
