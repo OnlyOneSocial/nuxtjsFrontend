@@ -35,29 +35,30 @@
           </div>
         </div>
       </div>
+
       <div style="position: absolute;bottom: 0;left:10%;width:80%;" class="message-input-container">
         <input v-model="message" style="height:40px;border: 2px solid gray;width:75%" type="text" @keyup.enter="send">
+        <div style="position: absolute;display: inline-block;" class="SmilePopup">
+          <no-ssr>
+            <popper
+
+              trigger="hover"
+              :options="{
+                placement: 'top',
+                modifiers: { offset: { offset: '0,10px' } }
+              }"
+            >
+              <div class="popper">
+                <Emoji :select="selectEmoji2" />
+              </div>
+
+              <button slot="reference" style="background-color:unset">
+                <img style="width:24px" src="/img/im/smile2.svg">
+              </button>
+            </popper>
+          </no-ssr>
+        </div>
         <input style="height:40px;border: 2px solid gray;" type="button" value="Send" @click="send">
-      </div>
-      <div>
-        <no-ssr placeholder="loading...">
-          <popper
-
-            trigger="clickToOpen"
-            :options="{
-              placement: 'top',
-              modifiers: { offset: { offset: '0,10px' } }
-            }"
-          >
-            <div class="popper">
-              <Emoji :select="selectEmoji2" />
-            </div>
-
-            <button slot="reference">
-              click
-            </button>
-          </popper>
-        </no-ssr>
       </div>
     </div>
 
@@ -177,6 +178,16 @@ export default {
   font-size: 14px;
   text-decoration: none;
 }
+.SmilePopup{
+  right: 15%;
+}
+
+@media only screen and (max-width: 768px) {
+  .SmilePopup{
+    right: 20%;
+  }
+}
+
 @media screen and (min-width: 730px) {
   .message-input-container {
     width: 95% !important;

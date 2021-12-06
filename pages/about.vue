@@ -30,10 +30,21 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import Vue from 'vue'
 
-export default Vue.extend({})
+export default Vue.extend({
+  head () {
+    return {
+      title: 'Про проект Only One',
+      description: 'Социальная сеть с открытым исходным кодом, основная цель проекта позволить пользователям проявлять активность в разработке ',
+      meta: [
+        { hid: 'og:title', name: 'og:title', content: 'Про проект Only One' },
+        { hid: 'og:image', name: 'og:image', content: 'http://only-one.su/img/OnlyOneSocial.png' }
+      ]
+    }
+  }
+})
 </script>
 <style scoped>
 p {
