@@ -42,7 +42,7 @@
           <no-ssr>
             <popper
 
-              trigger="hover"
+              trigger="clickToToggle"
               :options="{
                 placement: 'top',
                 modifiers: { offset: { offset: '0,10px' } }
