@@ -2,83 +2,83 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="512"
-   height="512"
-   viewBox="0 0 512 512"
-   version="1.1"
-   id="svg5"
-   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20, custom)"
-   sodipodi:docname="Icon_AddToFriends.svg"
-   inkscape:export-filename="/home/vicsave/Documents/OnlyOne_SN/icons/dark/renders/Icon_Profile.png"
-   inkscape:export-xdpi="192"
-   inkscape:export-ydpi="192"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:svg="http://www.w3.org/2000/svg">
-  <sodipodi:namedview
-     id="namedview7"
-     pagecolor="#ffffff"
-     bordercolor="#999999"
-     borderopacity="1"
-     inkscape:pageshadow="0"
-     inkscape:pageopacity="0"
-     inkscape:pagecheckerboard="0"
-     inkscape:document-units="px"
-     showgrid="false"
-     inkscape:zoom="0.36009959"
-     inkscape:cx="-130.51945"
-     inkscape:cy="215.21824"
-     inkscape:window-width="1366"
-     inkscape:window-height="698"
-     inkscape:window-x="0"
-     inkscape:window-y="0"
-     inkscape:window-maximized="1"
-     inkscape:current-layer="layer1" />
-  <defs
-     id="defs2">
-    <inkscape:path-effect
-       effect="bspline"
-       id="path-effect905"
-       is_visible="true"
-       lpeversion="1"
-       weight="33.333333"
-       steps="2"
-       helper_size="0"
-       apply_no_weight="true"
-       apply_with_weight="true"
-       only_selected="false" />
-  </defs>
-  <g
-     inkscape:label="Слой 1"
-     inkscape:groupmode="layer"
-     id="layer1">
-    <path
-       id="path950"
-       style="fill:#000000"
-       d="M 175.74219 273.94531 C 170.34644 273.94327 165.22102 274.62105 160.42578 276.29297 C 134.85119 285.20987 118.7002 322.40296 116.50781 357.25 C 114.31542 392.09705 126.08058 424.59837 131.9375 440.52344 C 137.79442 456.44851 137.74256 455.79806 157.43359 435.75586 C 177.12463 415.71366 216.5581 376.28075 255.99219 376.28125 C 295.42628 376.28175 334.86024 415.71424 354.55078 435.75586 C 374.24132 455.79748 374.18984 456.44679 380.04688 440.52148 C 385.12504 426.71391 394.63076 400.44202 395.65625 370.96875 A 60.832966 60.832966 0 0 1 357.93359 384.24414 A 60.832966 60.832966 0 0 1 297.09961 323.41211 A 60.832966 60.832966 0 0 1 320.9082 275.33203 C 300.93194 278.71038 278.47504 286.68518 256.01172 286.70508 C 227.56187 286.73027 199.12374 273.95418 175.74219 273.94531 z " />
-    <circle
-       style="fill:#000000"
-       id="path846"
-       cx="255.9926"
-       cy="168.53391"
-       r="108.23757" />
-    <rect
-       style="fill:#000000"
-       id="rect994"
-       width="14.803466"
-       height="90.058556"
-       x="351.63593"
-       y="276.1709"
-       ry="7.4017329" />
-    <rect
-       style="fill:#000000"
-       id="rect996"
-       width="14.803466"
-       height="90.058556"
-       x="313.79843"
-       y="-404.06693"
-       ry="7.4017329"
-       transform="rotate(90)" />
-  </g>
+    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+    width="512"
+    height="512"
+    viewBox="0 0 512 512"
+    version="1.1"
+    id="svg5"
+    inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20, custom)"
+    sodipodi:docname="Icon_AddToFriends.svg"
+    inkscape:export-filename="/home/vicsave/Documents/OnlyOne_SN/icons/dark/renders/Icon_Profile.png"
+    inkscape:export-xdpi="192"
+    inkscape:export-ydpi="192"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <sodipodi:namedview
+        id="namedview7"
+        pagecolor="#ffffff"
+        bordercolor="#999999"
+        borderopacity="1"
+        inkscape:pageshadow="0"
+        inkscape:pageopacity="0"
+        inkscape:pagecheckerboard="0"
+        inkscape:document-units="px"
+        showgrid="false"
+        inkscape:zoom="0.36009959"
+        inkscape:cx="-130.51945"
+        inkscape:cy="215.21824"
+        inkscape:window-width="1366"
+        inkscape:window-height="698"
+        inkscape:window-x="0"
+        inkscape:window-y="0"
+        inkscape:window-maximized="1"
+        inkscape:current-layer="layer1"/>
+    <defs
+        id="defs2">
+        <inkscape:path-effect
+            effect="bspline"
+            id="path-effect905"
+            is_visible="true"
+            lpeversion="1"
+            weight="33.333333"
+            steps="2"
+            helper_size="0"
+            apply_no_weight="true"
+            apply_with_weight="true"
+            only_selected="false"/>
+    </defs>
+    <g
+        inkscape:label="Слой 1"
+        inkscape:groupmode="layer"
+        id="layer1">
+        <path
+            id="path950"
+            style="fill:#000000"
+            d="M 175.74219 273.94531 C 170.34644 273.94327 165.22102 274.62105 160.42578 276.29297 C 134.85119 285.20987 118.7002 322.40296 116.50781 357.25 C 114.31542 392.09705 126.08058 424.59837 131.9375 440.52344 C 137.79442 456.44851 137.74256 455.79806 157.43359 435.75586 C 177.12463 415.71366 216.5581 376.28075 255.99219 376.28125 C 295.42628 376.28175 334.86024 415.71424 354.55078 435.75586 C 374.24132 455.79748 374.18984 456.44679 380.04688 440.52148 C 385.12504 426.71391 394.63076 400.44202 395.65625 370.96875 A 60.832966 60.832966 0 0 1 357.93359 384.24414 A 60.832966 60.832966 0 0 1 297.09961 323.41211 A 60.832966 60.832966 0 0 1 320.9082 275.33203 C 300.93194 278.71038 278.47504 286.68518 256.01172 286.70508 C 227.56187 286.73027 199.12374 273.95418 175.74219 273.94531 z "/>
+        <circle
+            style="fill:#000000"
+            id="path846"
+            cx="255.9926"
+            cy="168.53391"
+            r="108.23757"/>
+        <rect
+            style="fill:#000000"
+            id="rect994"
+            width="14.803466"
+            height="90.058556"
+            x="351.63593"
+            y="276.1709"
+            ry="7.4017329"/>
+        <rect
+            style="fill:#000000"
+            id="rect996"
+            width="14.803466"
+            height="90.058556"
+            x="313.79843"
+            y="-404.06693"
+            ry="7.4017329"
+            transform="rotate(90)"/>
+    </g>
 </svg>

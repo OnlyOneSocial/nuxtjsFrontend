@@ -1,43 +1,49 @@
 <template>
-  <div id="wall">
-    <span>{{ $t('Wall') }}</span><div>
-      <NewsNewPost v-if="me" :update="update" />
+    <div id="wall">
+        <span>{{ $t('Wall') }}</span>
+        <div>
+            <NewsNewPost v-if="me" :update="update" />
+        </div>
+        <News :posts="posts" :update="update" />
     </div>
-    <News :update="update" :posts="posts" />
-  </div>
 </template>
 <script>
 export default {
-  props: {
-    me: {
-      type: Boolean
-    },
-    update: {
-      type: Function,
-      default: () => { console.log('set update function') }
-    },
-    posts: {
-      type: Array,
-      // eslint-disable-next-line vue/require-valid-default-prop
-      default: []
+    props: {
+        me: {
+            type: Boolean
+        },
+        update: {
+            type: Function,
+            default: () => {
+                console.log('set update function')
+            }
+        },
+        posts: {
+            type: Array,
+            // eslint-disable-next-line vue/require-valid-default-prop
+            default: []
+        }
     }
-  }
 }
 </script>
 <style scoped>
-  .w {
-    width:100%
-  }
-  .tar{
-    text-align:right
-  }
-  .tal{
-    text-area:left
-  }
-  #wallInput{
-    height:50px;
-    max-height:90px;
-    min-height:50px;
-    resize:vertical
-  }
+.w {
+    width: 100%
+}
+
+.tar {
+    text-align: right
+}
+
+.tal {
+    text-area: left
+}
+
+#wallInput {
+    height: 50px;
+    max-height: 90px;
+    min-height: 50px;
+    resize: vertical
+}
 </style>
