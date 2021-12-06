@@ -39,8 +39,25 @@
         <input v-model="message" style="height:40px;border: 2px solid gray;width:75%" type="text" @keyup.enter="send">
         <input style="height:40px;border: 2px solid gray;" type="button" value="Send" @click="send">
       </div>
-      <div v-if="false">
-        <Emoji :select="selectEmoji2" />
+      <div>
+        <no-ssr placeholder="loading...">
+          <popper
+
+            trigger="clickToOpen"
+            :options="{
+              placement: 'top',
+              modifiers: { offset: { offset: '0,10px' } }
+            }"
+          >
+            <div class="popper">
+              <Emoji :select="selectEmoji2" />
+            </div>
+
+            <button slot="reference">
+              click
+            </button>
+          </popper>
+        </no-ssr>
       </div>
     </div>
 
@@ -60,13 +77,19 @@
 <script>
 
 import { mapState } from 'vuex'
+import Popper from 'vue-popperjs'
+import 'vue-popperjs/dist/vue-popper.css'
 
 export default {
+  components: {
+    popper: Popper
+  },
   data () {
     return {
       messages: [],
       dialogs: [],
-      message: ''
+      message: '',
+      loading: false
     }
   },
   computed: {
@@ -82,7 +105,11 @@ export default {
       this.getIm()
     }
   },
-
+  mounted () {
+    this.$nextTick(() => {
+      this.loading = true
+    })
+  },
   created () {
     this.$api.get('/message/im').then((data) => {
       this.dialogs = data.data
@@ -94,9 +121,11 @@ export default {
       if (this.ImID > 0) {
         await this.$api.get(`/message/get/${this.$route.query.im}`).then((data) => {
           this.messages = data.data
-          this.$nextTick(() => {
-            document.getElementsByClassName('messages-container')[0].scrollTop = document.getElementsByClassName('messages-container')[0].scrollHeight
-          })
+          if (this.loading) {
+            this.$nextTick(() => {
+              document.getElementsByClassName('messages-container')[0].scrollTop = document.getElementsByClassName('messages-container')[0].scrollHeight
+            })
+          }
         })
       }
     },

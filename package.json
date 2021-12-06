@@ -23,7 +23,8 @@
     "nuxt": "^2.15.7",
     "nuxt-ssr-cache": "^1.5.2",
     "v-emoji-picker": "^2.3.3",
-    "vue-advanced-cropper": "^1.8.2"
+    "vue-advanced-cropper": "^1.8.2",
+    "vue-popperjs": "^2.3.0"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.14.7",
