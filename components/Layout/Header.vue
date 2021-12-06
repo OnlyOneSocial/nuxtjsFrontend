@@ -1,7 +1,7 @@
 <template>
     <header class="header-container">
         <NuxtLink to="/">
-            <img alt="MSN - modern social network alpha" class="header-logo" src="/img/Logo.svg">
+            <img alt="OnlyOne" class="header-logo" src="/img/Logo.svg">
         </NuxtLink>
         <template v-if="me.id">
             <button class="login-container" @click="logout">
@@ -80,7 +80,7 @@ a {
     display: block;
     top: 50%;
     right: 12px;
-    -webkit-transform: translateY(-65%);
-    transform: translateY(-65%);
+    -webkit-transform: translateY(-70%);
+    transform: translateY(-70%);
 }
 </style>

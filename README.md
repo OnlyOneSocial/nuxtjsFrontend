@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="http://social.katelinlis.xyz/" target="blank"><img src="https://social.katelinlis.xyz/img/Logo.svg" width="320" alt="MSN logo" /></a>
+  <a href="https://social.katelinlis.xyz/" target="blank"><img src="https://social.katelinlis.xyz/img/Logo.svg" width="320" alt="OnlyOne logo" /></a>
 </p>
 <p align="center">Social network pet project </p>
 

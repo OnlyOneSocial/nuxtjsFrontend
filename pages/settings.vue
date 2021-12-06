@@ -1,11 +1,11 @@
 <template>
     <div>
         <ul>
-            <li @click="()=> new Select(0)">
+            <li @click="() => new Select(0)">
                 Общая информация
             </li>
             <br>
-            <li @click="()=> new Select(1)">
+            <li @click="() => new Select(1)">
                 Безопасность
             </li>
         </ul>

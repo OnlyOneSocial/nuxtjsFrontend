@@ -3,21 +3,24 @@
         <div class="userAvatarAndAbout">
             <div class="AboutUser">
                 <div>
-                    <UserAvatar :avatar="avatar" :me="user.me" :update="UpdateUser"/>
+                    <UserAvatar :avatar="avatar" :me="user.me" :update="UpdateUser" />
                     <div v-if="$store.state.me.id && !user.me" style="padding-top:10px">
                         <div class="iconBox" title="Отправить сообщение" @click="$router.push(`/im?im=${user.id}`)">
-                            <img height="16px" src="/img/user/message.svg" width="16px">
+                            <img height="16px" src="/img/user/message.svg" width="16px" alt="">
                         </div>
 
-                        <UserActionAddDeleteFriend v-if="$store.state.me.id && !user.me" :friend-status="friendStatus" :userid="user.id"
-                                                   class="iconBox Offset12"
+                        <UserActionAddDeleteFriend
+                            v-if="$store.state.me.id && !user.me"
+                            :friend-status="friendStatus"
+                            :userid="user.id"
+                            class="iconBox Offset12"
                         />
 
                         <div class="iconBox Offset12" title="Перевести коины">
-                            <img src="/img/user/wallet.svg">
+                            <img alt="" src="/img/user/wallet.svg">
                         </div>
                         <div class="iconBox Offset12" title="Заблокировать">
-                            <img src="/img/user/forbidden.svg">
+                            <img alt="" src="/img/user/forbidden.svg">
                         </div>
                     </div>
                 </div>
@@ -30,6 +33,7 @@
 
                                 <img
                                     v-if="user.me"
+                                    alt=""
                                     src="/img/settings.svg"
                                     style="display:inline-block;margin-left: 30vw;"
                                     title="settings"
@@ -41,7 +45,7 @@
                             </div>
                         </div>
                     </div>
-                    <div style="opacity: 0.5;border: 1px solid #D7E2F2;box-sizing: border-box;width: 100%;height: 0px;"/>
+                    <div style="opacity: 0.5;border: 1px solid #D7E2F2;box-sizing: border-box;width: 100%;height: 0;" />
                     Возраст: 10
                     <br>
                     Пол: Женский
@@ -83,12 +87,16 @@
                                 <div :key="friend.id" style="width:80%;margin: 0 auto">
                                     <div v-if="index<4" id="friend">
                                         <NuxtLink :to="`/user/${friend.id}`">
-                                            <img :src="getAvatar(friend.id,friend.avatar)" alt="user avatar" height="41px" style="border-radius: 100%;"
-                                                 width="41px"
+                                            <img
+                                                :src="getAvatar(friend.id,friend.avatar)"
+                                                alt="user avatar"
+                                                height="41px"
+                                                style="border-radius: 100%;"
+                                                width="41px"
                                             >
                                             <span style="font-size: 18px; width: 41px; overflow: hidden; white-space: nowrap;">
-                        {{ friend.username.slice(0, 10) }}
-                      </span>
+                                                {{ friend.username.slice(0, 10) }}
+                                            </span>
                                             <div>Online</div>
                                         </NuxtLink>
                                     </div>
@@ -100,9 +108,9 @@
             </div>
         </div>
         <div class="friendsAndWall">
-            <UserWall :me="user.me" :posts="posts" :update="UpdatePosts" class="Wall"/>
+            <UserWall :me="user.me" :posts="posts" :update="UpdatePosts" class="Wall" />
         </div>
-        <div class="networkwall"/>
+        <div class="networkwall" />
     </div>
 </template>
 
@@ -125,9 +133,8 @@ export default Vue.extend({
             cleanUser.id = ''
             this.$store.commit('UserPage/SetUser', cleanUser)
             this.$store.commit('UserPage/SetPosts', [])
-            // if (process.env.VUE_ENV === 'server') {  }
 
-            Promise.all([
+            await Promise.all([
                 await this.getUser(this.$route.params.id),
                 await this.UpdatePosts()
             ])
@@ -152,13 +159,13 @@ export default Vue.extend({
             }`
           : '' */
         return {
-            title: `${this.user.username} - Modern Social Network`,
+            title: `${this.user.username} - Only One`,
             description: `Пользователь ${this.user.username} ${friendsDesc}`,
             meta: [
                 {
                     hid: 'og:title',
                     name: 'og:title',
-                    content: `${this.user.username} - Modern Social Network`
+                    content: `${this.user.username} - Only One`
                 },
                 {
                     hid: 'og:image',
@@ -295,7 +302,7 @@ export default Vue.extend({
 }
 
 #FriendsTitle {
-    font-family: Roboto;
+    font-family: Roboto, serif;
     font-size: 24px;
     line-height: 31px;
     color: #000;

@@ -11,7 +11,6 @@
         <section v-if="modal.type" class="modal" @click.self="Close">
             <UserAvatarChangeModal
                 v-if="modal.type === 'updateUserAvatar'"
-
                 :avatar="'https://cdnsocial.katelinlis.xyz/public/clients/1/cc31b175288b869bd96c18fa2070f9cc.jpeg'"
             />
             <UserAvatarOpenAvatar

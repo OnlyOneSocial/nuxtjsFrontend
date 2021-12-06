@@ -1,8 +1,9 @@
 <template>
     <div>
-        <div v-if="$route.query.im" class="messages-container" style="height:450px;text-align:center">
+        <div v-if="$route.query.im" class="messages-container" style="text-align:center">
             <div v-for="(msg,index) in messages" :key="index">
                 <div style="display:block;">
+
                     <div v-if="me && msg.userid===parseInt(me.id)" class="message-container" style="text-align:right">
                         <div class="message-user-avatar">
                             <a :href="'/user/' + me.id">
@@ -41,11 +42,10 @@
                 <div class="SmilePopup" style="position: absolute;display: inline-block;">
                     <client-only>
                         <popper
-
                             :options="{
-                placement: 'top',
-                modifiers: { offset: { offset: '0,10px' } }
-              }"
+                                placement: 'top',
+                                modifiers: { offset: { offset: '0,10px' } }
+                            }"
                             trigger="clickToToggle"
                         >
                             <div class="popper">
@@ -135,12 +135,13 @@ export default {
             this.message = this.message + emoji.data
         },
         send () {
-            // this.message = ''
+            if (this.message === '') {
+                return
+            }
             this.$api.post('/message/send', {
                 text: this.message,
                 to: parseInt(this.$route.query.im)
             }).then((data) => {
-                // console.log(data.data)
                 this.message = ''
                 this.messages.push(data.data)
                 this.$nextTick(() => {
@@ -152,12 +153,14 @@ export default {
     }
 }
 </script>
+
 <style scoped>
 .messages-container {
     overflow: auto;
     overflow-wrap: break-word;
     margin-bottom: 50px;
     width: 100%;
+    max-height: 85vh;
 }
 
 .message-container {

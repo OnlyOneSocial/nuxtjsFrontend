@@ -37,7 +37,7 @@ export default Vue.extend({
         }
     },
     async fetch () {
-        await this.getUsers()
+        await this.getUsers() // FIXME
     },
     head () {
         // TODO: Wtf?

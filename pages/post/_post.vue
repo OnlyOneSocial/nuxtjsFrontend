@@ -1,14 +1,14 @@
 <template>
     <div style="">
         <div style="width:600px;margin: 0 auto;">
-            <NewsPost :post="post" style="width:600px"/>
+            <NewsPost :post="post" style="width:600px" />
             <br>
-            <News :posts="answers"/>
+            <News :posts="answers" />
             <br>
             <template v-if="checkAnswer">
                 Ответ
             </template>
-            <NewsNewPost v-if="checkAnswer" :answer="post.random_id"/>
+            <NewsNewPost v-if="checkAnswer" :answer="post.random_id" />
         </div>
     </div>
 </template>
@@ -19,13 +19,12 @@ import { mapActions, mapState } from 'vuex'
 export default Vue.extend({
 
     async fetch () {
-        // if (process.env.VUE_ENV === 'server') {  }
-
-        Promise.all([
+        await Promise.all([
             await this.getPost({ PostID: this.$route.params.post })
         ])
     },
     head () {
+        // TODO: Wtf
         /* const postsDesc = posts
           ? `,написал(а) ${
               posts[0] ? `${posts[0].time + ': ' + posts[0].text}` : ''
@@ -62,6 +61,5 @@ export default Vue.extend({
 
         ...mapActions({ getPost: 'getPost' })
     }
-
 })
 </script>

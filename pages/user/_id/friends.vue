@@ -3,15 +3,21 @@
         <div style="text-align:center;width: 100%;">
             <h3>друзья</h3>
             <br>
-            <div v-if="user && user.friends" style="margin-left:0px">
+            <div v-if="user && user.friends" style="margin-left:0">
                 <template v-for="(friend,index) in user.friends.list">
                     <div :key="index" style="width:100%;">
                         <div id="friend">
                             <NuxtLink :to="`/user/${friend.id}`">
-                                <img :src="getAvatar(friend.id,friend.avatar)" alt="user avatar" height="41px" style="border-radius: 100%;" width="41px">
+                                <img
+                                    :src="getAvatar(friend.id,friend.avatar)"
+                                    alt="user avatar"
+                                    height="41px"
+                                    style="border-radius: 100%;"
+                                    width="41px"
+                                >
                                 <span style="font-size: 18px; width: 41px; overflow: hidden; white-space: nowrap;">
-                  {{ friend.username.slice(0, 10) }}
-                </span>
+                                    {{ friend.username.slice(0, 10) }}
+                                </span>
                             </NuxtLink>
                         </div>
                     </div>
@@ -39,7 +45,7 @@ export default Vue.extend({
             cleanUser.id = ''
             this.$store.commit('UserPage/SetUser', cleanUser)
 
-            Promise.all([
+            await Promise.all([
                 await this.getUser(this.$route.params.id)
             ])
         }
