@@ -59,6 +59,11 @@ export default Vue.extend({
       title: `Список друзей ${this.user.username} - Only One`,
       description: `список друзей пользователя ${this.user.username} дружит с  ${friendsDesc}`,
       meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: `Список друзей пользователя ${this.user.username} дружит с  ${friendsDesc}`
+        },
         { hid: 'og:title', name: 'og:title', content: `Список друзей ${this.user.username} - Only One` },
         { hid: 'og:image', name: 'og:image', content: this.avatar }
       ]

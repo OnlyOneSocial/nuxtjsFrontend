@@ -44,9 +44,13 @@ export default Vue.extend({
         }`
       : '' */
     return {
-      title: 'Users - Modern Social Network',
-      description: 'Пользователи',
+      title: 'Users - Only one',
       meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'Каталог пользователей социальной сети Only one'
+        },
         { property: 'og:title', content: 'пользователи - Modern Social Network' }
       ]
     }

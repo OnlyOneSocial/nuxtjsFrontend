@@ -145,10 +145,14 @@ export default Vue.extend({
         }`
       : '' */
     return {
-      title: `${this.user.username} - Modern Social Network`,
-      description: `Пользователь ${this.user.username} ${friendsDesc}`,
+      title: `${this.user.username} - Only one`,
       meta: [
-        { hid: 'og:title', name: 'og:title', content: `${this.user.username} - Modern Social Network` },
+        {
+          hid: 'description',
+          name: 'description',
+          content: `Пользователь ${this.user.username} ${friendsDesc}`
+        },
+        { hid: 'og:title', name: 'og:title', content: `${this.user.username} - Only one` },
         { hid: 'og:image', name: 'og:image', content: this.avatar }
       ]
     }
