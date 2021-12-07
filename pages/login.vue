@@ -105,7 +105,7 @@ export default Vue.extend({
         {
           hid: 'description',
           name: 'description',
-          content: 'Страница авторизации в социальной сети Only one'
+          content: 'Добро пожаловать в свободную социальную сеть Only one, тебя тут ждет новый огромный мир, а так же ты сможешь создавать свои миры, нас уже больше 500 человек'
         },
         { hid: 'og:title', name: 'og:title', content: 'Only One - Свободная социальная сеть' },
         { hid: 'og:image', name: 'og:image', content: 'http://only-one.su/img/OnlyOneSocial.png' }
