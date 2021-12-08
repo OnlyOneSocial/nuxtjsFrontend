@@ -44,7 +44,7 @@
           <br>
           Пол: Женский
           <br>
-          <NuxtLink :to="`/user/${user.id}/contacts`">
+          <NuxtLink v-if="false" :to="`/user/${user.id}/contacts`">
             Контакты и страницы
           </NuxtLink>
           <br>
