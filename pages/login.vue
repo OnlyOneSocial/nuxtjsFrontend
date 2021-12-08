@@ -27,7 +27,7 @@
           </div>
 
           <div class="login-form-inputbox">
-            <input v-model="login" name="name" type="text" placeholder="Введите Ваш логин">
+            <input v-model="login" name="login" type="text" placeholder="Введите Ваш логин">
           </div>
         </div>
 
