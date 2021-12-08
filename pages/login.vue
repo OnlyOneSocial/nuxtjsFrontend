@@ -27,7 +27,7 @@
           </div>
 
           <div class="login-form-inputbox">
-            <input v-model="login" type="text" placeholder="Введите Ваш логин">
+            <input v-model="login" name="name" type="text" placeholder="Введите Ваш логин">
           </div>
         </div>
 
@@ -40,7 +40,7 @@
           </div>
 
           <div class="login-form-inputbox">
-            <input v-model="password" type="password" placeholder="Введите Ваш пароль">
+            <input v-model="password" name="password" type="password" placeholder="Введите Ваш пароль">
           </div>
 
           <div v-if="false" class="login-form-input-show">
