@@ -127,7 +127,7 @@ export default Vue.extend({
       // if (process.env.VUE_ENV === 'server') {  }
 
       Promise.all([
-        await this.getUser(this.$route.params.id),
+        await this.UpdateUser(),
         await this.UpdatePosts()
       ])
     }
@@ -180,7 +180,9 @@ export default Vue.extend({
       await this.getPosts(this.$route.params.id)
     },
     async UpdateUser () {
-      await this.getUser(this.$route.params.id)
+      await this.getUser(this.$route.params.id).catch((err) => {
+        if (err.message === '404') { this.$nuxt.error({ statusCode: 404, message: '' }) }
+      })
     },
     getAvatar (id, avatar) {
       if (avatar) { return `https://cdnsocial.katelinlis.xyz/public/clients/${id}/${avatar}` } else { return 'https://cdnsocial.katelinlis.xyz/public/UserProfileImage.svg' }

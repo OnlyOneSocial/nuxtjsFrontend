@@ -18,14 +18,16 @@ export const state = () => ({
 
 export const actions = {
   async getUser ({ commit }, userid) {
-    const response = await this.$api.$get(`${serverUrl}/user/get/${userid}`)
-    if (response) {
+    const response = await this.$api.$get(`${serverUrl}/user/get/${userid}`).catch((err) => {
+      if (err.response.status === 404) { return '404' }
+    })
+    if (response.user) {
       const user = response.user
       const friendStatus = response.friend_status
       commit('SetUser', user)
       commit('SetFriendStatus', friendStatus)
     }
-    return true
+    if (response === '404') { throw new Error('404') }
   },
   async getPosts ({ commit }, userid) {
     const response = await this.$api.$get(`${serverNewsUrl}/wall/get/${userid}`)
