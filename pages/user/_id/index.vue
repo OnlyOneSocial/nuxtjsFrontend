@@ -80,7 +80,7 @@
               style="opacity: 0.5; border: 1px solid rgb(215, 226, 242); box-sizing: border-box; width: 84%; height: 0px;margin: 0px 15% 8px 8%;"
             />
 
-            <div v-if="friends" style="margin-left:6px">
+            <div v-if="user && friends" style="margin-left:6px">
               <template v-for="(friend,index) in friends.list">
                 <div :key="friend.user.id" style="width:80%;margin: 0 auto">
                   <div v-if="index<4" id="friend">

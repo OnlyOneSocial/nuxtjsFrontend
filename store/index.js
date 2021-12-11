@@ -1,6 +1,7 @@
 let serverUrl = 'https://only-one.su/api'
 let serverNewsUrl = serverUrl
-if (process.env.NODE_ENV === 'production' && process.env.VUE_ENV === 'server') { serverUrl = 'http://localhost:3044/api'; serverNewsUrl = 'http://localhost:3053/api' }
+let serverUsersUrl = serverUrl
+if (process.env.NODE_ENV === 'production' && process.env.VUE_ENV === 'server') { serverUrl = 'http://localhost:3044/api'; serverNewsUrl = 'http://localhost:3053/api'; serverUsersUrl = 'http://localhost:3046/api' }
 
 export const state = () => ({
   me: {
@@ -48,7 +49,7 @@ export const actions = {
     }
   },
   async getUsers ({ commit }, userid) {
-    const response = await this.$api.$get(`${serverUrl}/user/get`).catch((err) => {
+    const response = await this.$api.$get(`${serverUsersUrl}/user/get`).catch((err) => {
       console.log(err)
     })
     if (response) {

@@ -3,14 +3,14 @@
     <div style="text-align:center;width: 100%;">
       <h3>друзья</h3>
       <br>
-      <div v-if="user && user.friends" style="margin-left:0px">
-        <template v-for="(friend,index) in user.friends.list">
+      <div v-if="user && friends" style="margin-left:0px">
+        <template v-for="(friend,index) in friends.list">
           <div :key="index" style="width:100%;">
             <div id="friend">
-              <NuxtLink :to="`/user/${friend.id}`">
-                <img height="41px" width="41px" style="border-radius: 100%;" alt="user avatar" :src="getAvatar(friend.id,friend.avatar)">
+              <NuxtLink :to="`/user/${friend.user.id}`">
+                <img height="41px" width="41px" style="border-radius: 100%;" alt="user avatar" :src="getAvatar(friend.user.id,friend.user.avatar)">
                 <span style="font-size: 18px; width: 41px; overflow: hidden; white-space: nowrap;">
-                  {{ friend.username.slice(0,10) }}
+                  {{ friend.user.username }}
                 </span>
               </NuxtLink>
             </div>
@@ -39,15 +39,15 @@ export default Vue.extend({
       cleanUser.id = ''
       this.$store.commit('UserPage/SetUser', cleanUser)
 
-      Promise.all([
-        await this.getUser(this.$route.params.id)
-      ])
+      await this.getUser(this.$route.params.id).catch((err) => {
+        if (err.message === '404') { this.$nuxt.error({ statusCode: 404, message: '' }) }
+      })
     }
   },
   head () {
     const friendsDesc =
-      this.user && this.user.friends && this.user.friends.count && this.user.friends.count > 0
-        ? `${this.user.friends.list
+      this.user && this.friends && this.friends.count && this.friends.count > 0
+        ? `${this.friends.list
             .slice(0, 6)
             .map((user, index) => {
               if (index < 6) { return user.username }
@@ -72,6 +72,7 @@ export default Vue.extend({
   computed: {
     ...mapState({
       user: state => state.UserPage.user,
+      friends: state => state.UserPage.friends,
       friendStatus: state => state.UserPage.friendStatus,
       posts: state => state.UserPage.posts
     })
