@@ -35,7 +35,7 @@
                 >
               </div>
               <div>
-                <input id="status" style="color:#8C99B2;border:none;width:37vw" value="text">
+                <input id="status" style="color:#8C99B2;border:none;width:37vw" placeholder="Опишите ваше состояние в 80 символов" :value="user.status" @change="ChangeStatus">
               </div>
             </div>
           </div>
@@ -177,6 +177,9 @@ export default Vue.extend({
     // this.getUser(this.$route.params.id)
   },
   methods: {
+    async ChangeStatus (data) {
+      await this.$api.put('/user/status', { status: data.target.value })
+    },
     async UpdatePosts () {
       await this.getPosts(this.$route.params.id)
     },

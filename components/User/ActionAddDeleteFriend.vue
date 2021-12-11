@@ -11,8 +11,8 @@
 export default {
   props: {
     userid: {
-      type: String,
-      default: '0'
+      type: Number,
+      default: 0
     },
     friendStatus: {
       type: Object,
