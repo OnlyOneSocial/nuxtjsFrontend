@@ -60,7 +60,7 @@
               <span id="FriendsTitle">
                 <NuxtLink :to="`/user/${user.id}/friends`" style="text-decoration: unset; color: #000;">{{ $t('FriendsUser') }}</NuxtLink>
               </span>
-              <span id="count_friends"> {{ user.friends && user.friends.count }}</span>
+              <span id="count_friends"> {{ friends && friends.count }}</span>
             </div>
             <br>
             <div class="InputSearch">
@@ -80,14 +80,14 @@
               style="opacity: 0.5; border: 1px solid rgb(215, 226, 242); box-sizing: border-box; width: 84%; height: 0px;margin: 0px 15% 8px 8%;"
             />
 
-            <div v-if="user.friends" style="margin-left:6px">
-              <template v-for="(friend,index) in user.friends.list">
-                <div :key="friend.id" style="width:80%;margin: 0 auto">
+            <div v-if="friends" style="margin-left:6px">
+              <template v-for="(friend,index) in friends.list">
+                <div :key="friend.user.id" style="width:80%;margin: 0 auto">
                   <div v-if="index<4" id="friend">
-                    <NuxtLink :to="`/user/${friend.id}`">
-                      <img height="41px" width="41px" style="border-radius: 100%;" alt="user avatar" :src="getAvatar(friend.id,friend.avatar)">
+                    <NuxtLink :to="`/user/${friend.user.id}`">
+                      <img height="41px" width="41px" style="border-radius: 100%;" alt="user avatar" :src="getAvatar(friend.user.id,friend.user.avatar)">
                       <span style="font-size: 18px; width: 41px; overflow: hidden; white-space: nowrap;">
-                        {{ friend.username.slice(0,10) }}
+                        {{ friend.user.username }}
                       </span>
                       <div>Online</div>
                     </NuxtLink>
@@ -134,8 +134,8 @@ export default Vue.extend({
   },
   head () {
     const friendsDesc =
-      this.user && this.user.friends && this.user.friends.count && this.user.friends.count > 0
-        ? `дружит с ${this.user.friends.count} пользователями ${this.user.friends.list
+      this.user && this.friends && this.friends.count && this.friends.count > 0
+        ? `дружит с ${this.friends.count} пользователями ${this.friends.list
             .slice(0, 6)
             .map((user, index) => {
               if (index < 6) { return user.username }
@@ -165,6 +165,7 @@ export default Vue.extend({
   computed: {
     ...mapState({
       user: state => state.UserPage.user,
+      friends: state => state.UserPage.friends,
       friendStatus: state => state.UserPage.friendStatus,
       posts: state => state.UserPage.posts
     }),

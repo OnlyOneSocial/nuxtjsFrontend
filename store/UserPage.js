@@ -6,11 +6,11 @@ export const state = () => ({
   user: {
     username: 'asdasdsd',
     id: '',
-    avatar: '',
-    friends: {
-      list: [],
-      count: 0
-    }
+    avatar: ''
+  },
+  friends: {
+    list: [],
+    count: 0
   },
   friendStatus: {},
   posts: []
@@ -23,8 +23,10 @@ export const actions = {
     })
     if (response.user) {
       const user = response.user
+      const friends = response.friends
       const friendStatus = response.friend_status
       commit('SetUser', user)
+      commit('SetFriends', friends)
       commit('SetFriendStatus', friendStatus)
     }
     if (response === '404') { throw new Error('404') }
@@ -42,6 +44,9 @@ export const actions = {
 export const mutations = {
   SetUser (state, content) {
     state.user = content
+  },
+  SetFriends (state, content) {
+    state.friends = content
   },
   SetFriendStatus (state, content) {
     state.friendStatus = content
