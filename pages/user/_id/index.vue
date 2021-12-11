@@ -137,8 +137,8 @@ export default Vue.extend({
       this.user && this.friends && this.friends.count && this.friends.count > 0
         ? `дружит с ${this.friends.count} пользователями ${this.friends.list
             .slice(0, 6)
-            .map((user, index) => {
-              if (index < 6) { return user.username }
+            .map((friend, index) => {
+              if (index < 6) { return friend.user.username }
               return ''
             })}`
         : ''
