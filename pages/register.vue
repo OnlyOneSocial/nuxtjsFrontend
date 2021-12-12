@@ -137,7 +137,7 @@ export default Vue.extend({
         return
       }
       const captcha = await this.$recaptcha.getResponse()
-      this.$api.$post('/user/register', {
+      this.$api.$post('user/register', {
         username: this.login,
         password: this.password,
         captcha
