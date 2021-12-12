@@ -146,12 +146,12 @@ export default Vue.extend({
         localStorage.setItem('login', this.login)
         localStorage.setItem('password', this.password)
         localStorage.setItem('token', this.password)
-        this.$cookies.set('token', data.token, {
+        this.$cookies.set('token', data.jwt, {
           path: '/',
           maxAge: 60 * 60 * 24 * 7
         })
         localStorage.setItem('savePassword', this.savePassword)
-        location.href = `/user/${data.userid}`
+        location.href = `/user/${data.id}`
         // this.$router.push(`/user/${data.userid}`)
       })
       await this.$recaptcha.reset()
