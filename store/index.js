@@ -20,9 +20,13 @@ export const actions = {
   async nuxtServerInit ({ commit, state }, { app, redirect }) {
     const token = this.$cookies.get('token')
     const namePage = app.router.history.current.name
-    if (!token && namePage === 'index') {
+
+    const AuthRequiredPages = ['index', 'news', 'im']
+
+    if (!token && AuthRequiredPages.includes(namePage)) {
       redirect('/login')
     }
+
     if (token && namePage === 'index') {
       redirect('/news')
     }

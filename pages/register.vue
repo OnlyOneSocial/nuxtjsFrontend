@@ -7,7 +7,7 @@
     <div class="login-container">
       <div class="login-header">
         <div class="login-header-text">
-          <span>{{ $t('Login') }}</span>
+          <span>{{ $t('Register') }}</span>
         </div>
 
         <div class="login-header-logo">
@@ -48,6 +48,23 @@
           </div>
         </div>
 
+        <div class="login-form-text">
+          <span>{{ $t('Repeat Password') }}</span>
+        </div>
+        <div class="login-form-input-container">
+          <div class="login-form-input-icon">
+            <img src="/img/login/login-form-input-icon-password.svg">
+          </div>
+
+          <div class="login-form-inputbox">
+            <input v-model="password2" name="passwordRepeat" type="password" placeholder="Введите Ваш пароль еще раз">
+          </div>
+
+          <div v-if="false" class="login-form-input-show">
+            <img src="/img/login/login-form-input-show.svg">
+          </div>
+        </div>
+
         <div class="login-form-store-password">
           <input id="login-form-store-password-checkbox" v-model="savePassword" type="checkbox">
           <label for="login-form-store-password-checkbox">{{ $t('SavePassword') }}?</label>
@@ -66,9 +83,9 @@
 
       <div v-if="true" class="login-footer">
         <div class="login-footer-string">
-          <span>У Вас нет аккаунта?</span>
-          <NuxtLink :to="`/register`">
-            Регистрация
+          <span>Вы уже зарегистрированы ?</span>
+          <NuxtLink to="/login">
+            Авторизация
           </NuxtLink>
         </div>
 
@@ -90,6 +107,7 @@ export default Vue.extend({
     return {
       login: '',
       password: '',
+      password2: '',
       savePassword: false,
       captcha: ''
     }
@@ -109,32 +127,31 @@ export default Vue.extend({
     }
   },
   mounted () {
-    // eslint-disable-next-line no-undef
 
-    this.login = localStorage.getItem('login')
-    this.password = localStorage.getItem('password')
-    this.savePassword = localStorage.getItem('savePassword')
   },
 
   methods: {
     async Auth () {
+      if (this.password !== this.password2) {
+        alert('Пароли не совпадают')
+        return
+      }
       const captcha = await this.$recaptcha.getResponse()
-      this.$api.$post('/user/login', {
+      this.$axios.$post('/user/register', {
         username: this.login,
         password: this.password,
         captcha
 
       }).then((data) => {
-        console.log(data)
         localStorage.setItem('login', this.login)
         localStorage.setItem('password', this.password)
         localStorage.setItem('token', this.password)
-        this.$cookies.set('token', data.jwt, {
+        this.$cookies.set('token', data.token, {
           path: '/',
           maxAge: 60 * 60 * 24 * 7
         })
         localStorage.setItem('savePassword', this.savePassword)
-        location.href = `/user/${data.id}`
+        location.href = `/user/${data.userid}`
         // this.$router.push(`/user/${data.userid}`)
       })
       await this.$recaptcha.reset()
@@ -153,7 +170,7 @@ body {
 
 .login-container {
     width: 578px;
-    height: 676px;
+    height: 776px;
 
     /* center */
     margin-left: auto;
