@@ -158,12 +158,21 @@ export default Vue.extend({
         }).catch((err) => {
           if (err.response.status === 400) {
             this.err = err.response.data.error
+            this.$toast.error(err.response.data.error, {
+              position: 'bottom-center',
+              duration: 5000
+            })
           // redirect('/login')
           }
         })
         await this.$recaptcha.reset()
       } catch (error) {
-        if (error === 'Failed to execute') { this.err = 'Вы не прошли капчу' }
+        if (error === 'Failed to execute') {
+          this.$toast.error('Вы не прошли капчу', {
+            position: 'bottom-center',
+            duration: 5000
+          })
+        }
       }
     },
     ...mapActions(['getMe'])
