@@ -129,9 +129,6 @@ export default Vue.extend({
           captcha
 
         }).then((data) => {
-          console.log(data)
-          localStorage.setItem('login', this.login)
-          localStorage.setItem('password', this.password)
           localStorage.setItem('token', this.password)
           this.$cookies.set('token', data.jwt, {
             path: '/',
