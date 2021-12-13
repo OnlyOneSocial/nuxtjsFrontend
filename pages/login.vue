@@ -18,6 +18,8 @@
       </div>
 
       <div class="login-form">
+        <span v-if="err">{{ err }}</span>
+
         <div class="login-form-text">
           <span>{{ $t('UserName') }}</span>
         </div>
@@ -91,7 +93,8 @@ export default Vue.extend({
       login: '',
       password: '',
       savePassword: false,
-      captcha: ''
+      captcha: '',
+      err: ''
     }
   },
   head () {
@@ -118,26 +121,35 @@ export default Vue.extend({
 
   methods: {
     async Auth () {
-      const captcha = await this.$recaptcha.getResponse()
-      this.$api.$post('/user/login', {
-        username: this.login,
-        password: this.password,
-        captcha
+      try {
+        const captcha = await this.$recaptcha.getResponse()
+        this.$api.$post('/user/login', {
+          username: this.login,
+          password: this.password,
+          captcha
 
-      }).then((data) => {
-        console.log(data)
-        localStorage.setItem('login', this.login)
-        localStorage.setItem('password', this.password)
-        localStorage.setItem('token', this.password)
-        this.$cookies.set('token', data.jwt, {
-          path: '/',
-          maxAge: 60 * 60 * 24 * 7
-        })
-        localStorage.setItem('savePassword', this.savePassword)
-        location.href = `/user/${data.id}`
+        }).then((data) => {
+          console.log(data)
+          localStorage.setItem('login', this.login)
+          localStorage.setItem('password', this.password)
+          localStorage.setItem('token', this.password)
+          this.$cookies.set('token', data.jwt, {
+            path: '/',
+            maxAge: 60 * 60 * 24 * 7
+          })
+          localStorage.setItem('savePassword', this.savePassword)
+          location.href = `/user/${data.id}`
         // this.$router.push(`/user/${data.userid}`)
-      })
-      await this.$recaptcha.reset()
+        }).catch((err) => {
+          if (err.response.status === 400) {
+            this.err = err.response.data.error
+          // redirect('/login')
+          }
+        })
+        await this.$recaptcha.reset()
+      } catch (error) {
+        if (error === 'Failed to execute') { this.err = 'Вы не прошли капчу' }
+      }
     },
     ...mapActions(['getMe'])
   }
