@@ -18,6 +18,18 @@ export default {
       { rel: 'icon', type: 'image/x-icon', href: '/icons/favicon.ico' }
     ]
   },
+  toast: {
+    position: 'bottom-right',
+    register: [ // Register custom toasts
+      {
+        name: 'my-error',
+        message: 'Oops...Something went wrong',
+        options: {
+          type: 'error'
+        }
+      }
+    ]
+  },
   cache: {
     // ....
     store: {
@@ -62,7 +74,8 @@ export default {
     '@nuxtjs/recaptcha',
     '@nuxtjs/sitemap',
     '@nuxtjs/yandex-metrika',
-    '@nuxtjs/i18n'
+    '@nuxtjs/i18n',
+    '@nuxtjs/toast'
   ],
   i18n: {
     strategy: 'no_prefix',

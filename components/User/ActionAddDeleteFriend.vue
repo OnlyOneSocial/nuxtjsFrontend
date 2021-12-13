@@ -39,15 +39,24 @@ export default {
       if (this.friendStatus.status === 0 && this.friendStatus.forme === true) { this.RequestAccept() }
     },
     async RequestAccept () {
-      const info = await this.$api.post(`friends/request_accept/${this.userid}`)
-      if (info.data.request.status) { this.$store.commit('UserPage/SetFriendStatus', { status: 1, forme: true }) }
+      const info = await this.$api.post(`/friends/request_accept/${this.userid}`)
+      if (info.data.status === 1) {
+        this.$store.commit('UserPage/SetFriendStatus', { status: 1, forme: true })
+        this.$toast.success('Заявка в друзья принята')
+      }
     },
     async Request () {
-      const info = await this.$api.post(`friends/request/${this.userid}`)
-      if (info.data.request.status) { this.$store.commit('UserPage/SetFriendStatus', { status: info.data.request.status, forme: false }) }
+      const info = await this.$api.post(`/friends/request/${this.userid}`)
+      console.log(info.data)
+      if (info.data && info.data) {
+        if (info.data.status === 0) {
+          this.$store.commit('UserPage/SetFriendStatus', { status: info.data.status, forme: false })
+          this.$toast.success('Заявка в друзья отправлена')
+        }
+      }
     },
     async Cancel () {
-      await this.$api.post(`friends/request_cancel/${this.userid}`)
+      await this.$api.post(`/friends/request_cancel/${this.userid}`)
     }
   }
 }
