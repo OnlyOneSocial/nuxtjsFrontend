@@ -31,11 +31,14 @@ export default Vue.extend({
           posts[0] ? `${posts[0].time + ': ' + posts[0].text}` : ''
         }`
       : '' */
+    const d = new Date(this.post.Timestamp * 1000)
+    const date = `${d.getDate()}.${d.getMonth() + 1}.${d.getFullYear()} ${d.getHours()}:${('0' + d.getMinutes()).slice(-2)}`
     return {
-      title: `${this.post.text.slice(0, 40)}...`,
+
+      title: `${this.post.text.slice(0, 50)} от ${date}`,
       description: this.post.text,
       meta: [
-        { hid: 'og:title', name: 'og:title', content: `${this.post.text.slice(0, 40)}...` }
+        { hid: 'og:title', name: 'og:title', content: `${this.post.text.slice(0, 50)}` }
 
       ]
     }
