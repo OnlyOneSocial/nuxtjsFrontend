@@ -17,8 +17,6 @@
         <div class="login-header-line" />
       </div>
 
-      <span v-if="err">{{ err }}</span>
-
       <div class="login-form">
         <div class="login-form-text">
           <span>{{ $t('UserName') }}</span>

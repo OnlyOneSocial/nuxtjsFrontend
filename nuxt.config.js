@@ -121,11 +121,12 @@ export default {
       sitemaps: [
         {
           path: '/sitemap-main.xml',
-          routes: ['/users', '/login', '/about']
+          routes: ['/users', '/login', '/about'],
+          exclude: ['/im', '/news', '/', '/settings', '/wallet']
         },
         {
           path: '/sitemap-users.xml',
-          exclude: ['/users', '/login', '/about', '/news', '/'],
+          exclude: ['/users', '/login', '/about', '/news', '/', '/settings', '/wallet'],
           routes: async () => {
             const array = []
             const { data } = await axios.get('https://social.katelinlis.xyz/api/user/get')
