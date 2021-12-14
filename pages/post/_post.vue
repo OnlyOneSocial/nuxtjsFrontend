@@ -35,7 +35,7 @@ export default Vue.extend({
     const date = `${d.getDate()}.${d.getMonth() + 1}.${d.getFullYear()} ${d.getHours()}:${('0' + d.getMinutes()).slice(-2)}`
     return {
 
-      title: `${this.post.text.slice(0, 50)} от ${date}`,
+      title: `${this.post.text.slice(0, 43)} | ${this.post.author_username} от ${date}`,
       meta: [
         {
           hid: 'description',
