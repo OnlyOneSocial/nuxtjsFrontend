@@ -36,8 +36,12 @@ export default Vue.extend({
     return {
 
       title: `${this.post.text.slice(0, 50)} от ${date}`,
-      description: this.post.text,
       meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.post.text
+        },
         { hid: 'og:title', name: 'og:title', content: `${this.post.text.slice(0, 50)}` }
 
       ]
