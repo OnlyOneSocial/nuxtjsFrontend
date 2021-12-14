@@ -1,7 +1,7 @@
 <template>
   <div>
     <div style="text-align:center;width: 100%;">
-      <h3>друзья</h3>
+      <h1>друзья ({{ friends.count }}) {{ user.username }}</h1>
       <br>
       <div v-if="user && friends" style="margin-left:0px">
         <template v-for="(friend,index) in friends.list">

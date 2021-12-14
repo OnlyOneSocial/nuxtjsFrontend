@@ -6,9 +6,9 @@
   <div class="content">
     <div class="login-container">
       <div class="login-header">
-        <div class="login-header-text">
+        <h1 class="login-header-text">
           <span>{{ $t('Register') }}</span>
-        </div>
+        </h1>
 
         <div class="login-header-logo">
           <img src="/img/login/login-header-logo.svg" alt="Логотип OnlyOne">
@@ -115,14 +115,14 @@ export default Vue.extend({
   },
   head () {
     return {
-      title: 'Авторизация в Only One | Свободная социальная сеть',
+      title: 'Регистрация в Only One | Свободная социальная сеть',
       meta: [
         {
           hid: 'description',
           name: 'description',
-          content: 'Добро пожаловать в свободную социальную сеть Only one, тебя тут ждет новый огромный мир, а так же ты сможешь создавать свои миры, нас уже больше 500 человек'
+          content: 'На данной странице вы можете создать аккаунт в социальной сети Only one'
         },
-        { hid: 'og:title', name: 'og:title', content: 'Авторизация в Only One | Свободная социальная сеть' },
+        { hid: 'og:title', name: 'og:title', content: 'Регистрация в Only One | Свободная социальная сеть' },
         { hid: 'og:image', name: 'og:image', content: 'http://only-one.su/img/OpenGraphLogo.png' }
       ]
     }

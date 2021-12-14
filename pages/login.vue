@@ -6,9 +6,9 @@
   <div class="content">
     <div class="login-container">
       <div class="login-header">
-        <div class="login-header-text">
-          <span>{{ $t('Login') }}</span>
-        </div>
+        <h1 class="login-header-text">
+          {{ $t('Login') }}
+        </h1>
 
         <div class="login-header-logo">
           <img src="/img/login/login-header-logo.svg" alt="Логотип OnlyOne">
