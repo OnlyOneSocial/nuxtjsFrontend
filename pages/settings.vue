@@ -39,22 +39,25 @@
       <div v-else-if="element===0" class="settings-edit-user">
         <h3>Общая информация</h3><br>
         <span>Дата рождения</span><br>
-        <input type="date"><br>
+        <input v-model="mainSettings.birthday" type="date"><br>
         <br>
         <span>Ваш пол</span><br>
-        <select>
+        <select v-model="mainSettings.genderOption">
           <option>Женский</option>
           <option>Мужской</option>
           <option>Другой</option>
         </select>
+        <input v-if="mainSettings.genderOption==='Другой'" v-model="mainSettings.gender">
         <br><br>
         <span>Местоположение</span><br>
-        <input placeholder="Страна"><input style="margin-left:10px" placeholder="Населенный пункт">
+        <input v-model="mainSettings.Country" placeholder="Страна"><input v-model="mainSettings.City" style="margin-left:10px" placeholder="Населенный пункт">
         <br><br>
         <span>Краткое описание</span><br>
-        <textarea placeholder="Расскажите о себе" style="width:350px;height:100px;background-color:#f5f8fd" />
+        <textarea v-model="mainSettings.bio" placeholder="Расскажите о себе" style="width:350px;height:100px;background-color:#f5f8fd" />
         <br>
-        <button>Сохранить</button>
+        <button @click="ChangeMainSettings">
+          Сохранить
+        </button>
       </div>
     </div>
     <div class="settings-menu-container">
@@ -86,16 +89,71 @@
   </div>
 </template>
 <script>
+
+import { mapState, mapActions } from 'vuex'
+
 export default {
   data: () => {
     return {
+      mainSettings: {
+        birthday: '',
+        genderOption: 'Другой',
+        gender: 'Женский',
+        Country: '',
+        City: '',
+        bio: ''
+      },
       element: 0
     }
+  },
+  async fetch () {
+    await this.UpdateUser().then(() => {
+      // alert(this.user.id)
+      this.mainSettings.Country = this.user.country
+      this.mainSettings.City = this.user.city
+      this.mainSettings.gender = this.user.gender
+      this.mainSettings.bio = this.user.bio
+
+      if (!this.GenderISBinare(this.user.gender)) { this.mainSettings.genderOption = 'Другой' }
+
+      this.mainSettings.birthday = new Date(this.user.birthday_date * 1000).toISOString().slice(0, 10)
+    })
+  },
+  computed: {
+    ...mapState({
+      user: state => state.UserPage.user,
+      me: state => state.me
+    })
   },
   methods: {
     Select (num) {
       this.element = num
-    }
+    },
+    GenderISBinare (gender) {
+      if (gender === 'Женский' || gender === 'Мужской') { return true } else { return false }
+    },
+    ChangeMainSettings () {
+      if (this.GenderISBinare(this.mainSettings.genderOption)) { this.mainSettings.gender = this.mainSettings.genderOption }
+
+      this.$api.put('/user/settings', {
+        birthday: new Date(this.mainSettings.birthday).getTime() / 1000,
+        gender: this.mainSettings.gender,
+        country: this.mainSettings.Country,
+        city: this.mainSettings.City,
+        bio: this.mainSettings.bio
+      }).then(() => {
+        this.$toast.success('Обновленно')
+      })
+    },
+    async UpdateUser () {
+      if (this.me.id) {
+        await this.getUser(this.me.id).catch((err) => {
+          if (err.message === '404') { this.$nuxt.error({ statusCode: 404, message: '' }) }
+        })
+      }
+    },
+
+    ...mapActions({ getUser: 'UserPage/getUser', getPosts: 'UserPage/getPosts' })
   }
 }
 </script>

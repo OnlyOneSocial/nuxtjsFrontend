@@ -40,17 +40,18 @@
             </div>
           </div>
           <div style="opacity: 0.5;border: 1px solid #D7E2F2;box-sizing: border-box;width: 100%;height: 0px;" />
-          Возраст: 10
+          Дата рождения:
+          {{ new Date(user.birthday_date * 1000).toLocaleDateString() }} ({{ Math.floor((new Date()-new Date(user.birthday_date * 1000))/1000/60/60/24/365) }})
           <br>
-          Пол: Женский
+          Пол: {{ user.gender }}
           <br>
           <NuxtLink v-if="false" :to="`/user/${user.id}/contacts`">
             Контакты и страницы
           </NuxtLink>
           <br>
-          Местоположение: Россия, Москва
+          Местоположение: {{ user.country }}, {{ user.city }}
           <br>
-          Краткое описание: текст про текст
+          Краткое описание: {{ user.bio }}
         </div>
       </div>
       <div class="FriendsBlock" style="position:relative">
