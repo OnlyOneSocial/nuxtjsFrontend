@@ -24,13 +24,13 @@
             <div>
               <div>
                 <span id="username">{{ user.username }}</span>
-                <span style="color: #0BA4A4;">Online</span>
+                <span style="color: #0BA4A4;">{{ 120 > Math.floor(new Date().getTime()/1000 - user.online) ? "Онлайн":"Не в сети" }}</span>
 
                 <img
                   v-if="user.me"
                   src="/img/settings.svg"
                   title="settings"
-                  style="display:inline-block;margin-left: 30vw;"
+                  style="display:inline-block;margin-left: 28vw;"
                   @click="$router.push(`/settings`)"
                 >
               </div>
