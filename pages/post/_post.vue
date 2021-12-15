@@ -31,8 +31,11 @@ export default Vue.extend({
           posts[0] ? `${posts[0].time + ': ' + posts[0].text}` : ''
         }`
       : '' */
-    const d = new Date(this.post.Timestamp * 1000)
-    const date = `${d.getDate()}.${d.getMonth() + 1}.${d.getFullYear()} ${d.getHours()}:${('0' + d.getMinutes()).slice(-2)}`
+    let date = ''
+    if (this.post && this.post.Timestamp) {
+      const d = new Date(this.post.Timestamp * 1000)
+      date = `${d.getDate()}.${d.getMonth() + 1}.${d.getFullYear()} ${d.getHours()}:${('0' + d.getMinutes()).slice(-2)}`
+    }
     return {
 
       title: `${this.post.text.slice(0, 43)} | ${this.post.author_username} от ${date}`,

@@ -4,14 +4,16 @@
       <div v-if="element===1" class="settings-edit-password">
         <h3>Смена пароля</h3><br>
         <span>Прошлый пароль</span><br>
-        <input type="password" placeholder="Введите прошлый пароль">
+        <input v-model="ChangePassword.OldPassword" type="password" placeholder="Введите прошлый пароль">
         <br><br>
         <span>Новый пароль</span><br>
-        <input type="password" placeholder="Введите новый пароль"><br>
+        <input v-model="ChangePassword.NewPassword" type="password" placeholder="Введите новый пароль"><br>
         <span>Повторите пароль</span><br>
-        <input type="password" placeholder="Введите пароль повторно">
+        <input v-model="ChangePassword.NewPassword2" type="password" placeholder="Введите пароль повторно">
         <br><br>
-        <button>Сохранить</button>
+        <button @click="changePassword">
+          Сохранить
+        </button>
       </div>
       <div v-if="element===2" class="settings-edit-password">
         <h3>Контакты, ссылки и привязки</h3><br>
@@ -21,6 +23,7 @@
         <span>Email для связи</span><br>
         <input type="password" placeholder="введите Email">
         <br><br>
+        <button>Сохранить</button>
         <h4>Привязка социальных сетей</h4>
         <br>
         Привязка VK
@@ -33,7 +36,6 @@
         <br>
         Привязка Shikimori
         <br>
-        <button>Сохранить</button>
       </div>
 
       <div v-else-if="element===0" class="settings-edit-user">
@@ -95,6 +97,11 @@ import { mapState, mapActions } from 'vuex'
 export default {
   data: () => {
     return {
+      ChangePassword: {
+        OldPassword: '',
+        NewPassword: '',
+        NewPassword2: ''
+      },
       mainSettings: {
         birthday: '',
         genderOption: 'Другой',
@@ -129,6 +136,33 @@ export default {
     Select (num) {
       this.element = num
     },
+    changePassword () {
+      if (this.ChangePassword.NewPassword !== this.ChangePassword.NewPassword2) {
+        this.$toast.success('Пароли не совпали', {
+          position: 'bottom-center',
+          duration: 5000
+        })
+        return
+      }
+      this.$api.put('/user/password', {
+        OldPassword: this.ChangePassword.OldPassword,
+        password: this.ChangePassword.NewPassword
+      }).then(() => {
+        this.$toast.success('Измененно', {
+          position: 'bottom-center',
+          duration: 5000
+        })
+      }).catch((err) => {
+        if (err.response.status === 400) {
+          this.err = err.response.data.error
+          this.$toast.error(err.response.data.error, {
+            position: 'bottom-center',
+            duration: 5000
+          })
+          // redirect('/login')
+        }
+      })
+    },
     GenderISBinare (gender) {
       if (gender === 'Женский' || gender === 'Мужской') { return true } else { return false }
     },
@@ -142,7 +176,10 @@ export default {
         city: this.mainSettings.City,
         bio: this.mainSettings.bio
       }).then(() => {
-        this.$toast.success('Обновленно')
+        this.$toast.success('Обновленно', {
+          position: 'bottom-center',
+          duration: 5000
+        })
       })
     },
     async UpdateUser () {

@@ -134,7 +134,10 @@ export default Vue.extend({
   methods: {
     async Auth () {
       if (this.password !== this.password2) {
-        alert('Пароли не совпадают')
+        this.$toast.error('Пароли не совпадают', {
+          position: 'bottom-center',
+          duration: 5000
+        })
         return
       }
       try {
