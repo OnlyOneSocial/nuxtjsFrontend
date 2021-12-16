@@ -32,6 +32,8 @@ jobs:
         script: |
           cd ${{ secrets.REMOTE_TARGET }}
           git pull
+          export NVM_DIR=~/.nvm
+          source ~/.nvm/nvm.sh
           npm i
           npm run build
           pm2 restart 10
