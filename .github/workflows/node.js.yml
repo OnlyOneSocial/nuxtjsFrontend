@@ -24,9 +24,14 @@ jobs:
     - run: npm run build --if-present
     - run: npm test
     - name: Deploy to server
-      uses: cross-the-world/ssh-pipeline@master
+      uses: appleboy/ssh-action@master
       with:
-        script: cd ${{ secrets.REMOTE_TARGET }} && git pull && npm i && npm run build && pm2 restart 10
         key: ${{ secrets.SERVER_SSH_KEY }}
         host: ${{ secrets.REMOTE_HOST }}
-        user: ${{ secrets.REMOTE_USER }}
+        username: ${{ secrets.REMOTE_USER }}
+        script: |
+          cd ${{ secrets.REMOTE_TARGET }}
+          git pull
+          npm i
+          npm run build
+          pm2 restart 10
