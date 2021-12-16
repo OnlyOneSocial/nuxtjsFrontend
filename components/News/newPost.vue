@@ -1,17 +1,10 @@
 <template>
   <div>
     <div class="w">
-      <textarea id="wallInput" v-model="wallInput" class="w" @keyup.enter="WallSend" />
-      <div class="w tar">
-        <span>
-          <span>photo</span>
-        </span>
-        <span class="w tar">
-          <button class="tal" @click="WallSend">
-            {{ $t('Send') }}
-          </button>
-        </span>
+      <div style="position:absolute;z-index: 100;right: 2%;top: 26%;">
+        <img src="/img/post/send.svg" class="tal" @click="WallSend">
       </div>
+      <textarea id="wallInput" v-model="wallInput" placeholder="Напишите что-нибудь...." class="w" @keyup.enter="WallSend" />
     </div>
   </div>
 </template>
@@ -44,8 +37,14 @@ export default {
 </script>
 
 <style scoped>
+#wallInput::placeholder {
+
+  padding-top: 15px;
+  padding-left: 8px;
+}
   .w {
-    width:100%
+    width:100%;
+    position: relative;
   }
   .tar{
     text-align:right

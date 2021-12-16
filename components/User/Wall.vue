@@ -1,8 +1,10 @@
 <template>
   <div id="wall">
-    <span>{{ $t('Wall') }}</span><div>
+    <br>
+    <div>
       <NewsNewPost v-if="me" :update="update" />
     </div>
+    <br>
     <News :update="update" :posts="posts" />
   </div>
 </template>

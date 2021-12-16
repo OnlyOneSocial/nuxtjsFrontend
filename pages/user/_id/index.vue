@@ -9,7 +9,7 @@
               <img width="16px" height="16px" src="/img/user/message.svg">
             </div>
 
-            <UserActionAddDeleteFriend v-if="$store.state.me.id && !user.me" :friend-status="friendStatus" :userid="user.id" class="iconBox Offset12" />
+            <UserActionAddDeleteFriend v-if="$store.state.me.id && user.id && !user.me" :friend-status="friendStatus" :userid="user.id" class="iconBox Offset12" />
 
             <div class="iconBox Offset12" title="Перевести коины">
               <img src="/img/user/wallet.svg">
@@ -90,7 +90,7 @@
                       <span style="font-size: 18px; width: 41px; overflow: hidden; white-space: nowrap;">
                         {{ friend.user.username }}
                       </span>
-                      <div>Online</div>
+                      <div>{{ 120 > Math.floor(new Date().getTime()/1000 - friend.user.online) ? "Онлайн":"Не в сети" }}</div>
                     </NuxtLink>
                   </div>
                 </div>
@@ -111,6 +111,7 @@ import Vue from 'vue'
 import { mapState, mapActions } from 'vuex'
 
 export default Vue.extend({
+  name: 'UserPage',
   data () {
     return {
       fetchedId: 0,

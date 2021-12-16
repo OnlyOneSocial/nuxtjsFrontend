@@ -3,7 +3,7 @@
     <div style="width:600px;margin: 0 auto;">
       <NewsPost style="width:600px" :post="post" />
       <br>
-      <News :posts="answers" />
+      <News v-if="answers" :posts="answers" />
       <br>
       <template v-if="checkAnswer">
         Ответ
