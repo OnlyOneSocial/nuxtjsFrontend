@@ -47,8 +47,8 @@
           <br>
           <NuxtLink v-if="false" :to="`/user/${user.id}/contacts`">
             Контакты и страницы
+            <br>
           </NuxtLink>
-          <br>
           Местоположение: {{ user.country }}, {{ user.city }}
           <br>
           Краткое описание: {{ user.bio }}
