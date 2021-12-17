@@ -34,6 +34,6 @@ jobs:
           git pull
           export NVM_DIR=/usr/local/nvm
           source /opt/nvm/nvm.sh
+          nvm use 16
           npm i
-          npm run build
-          pm2 restart 10
+          npm run build && pm2 restart 0
