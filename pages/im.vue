@@ -26,7 +26,7 @@
             </div>
             <div class="message-username">
               <a :href="'/user/' + msg.userid">
-                <span>{{ msg.username }}</span>
+                <span>{{ msg.username }}({{msg.time}})</span>
               </a>
             </div>
             <div class="message-text">
