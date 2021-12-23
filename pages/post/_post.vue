@@ -8,7 +8,7 @@
       <template v-if="checkAnswer">
         Ответ
       </template>
-      <NewsNewPost v-if="checkAnswer" :answer="post.random_id" />
+      <NewsNewPost v-if="checkAnswer" :update="getThisPost" :answer="post.random_id" />
     </div>
   </div>
 </template>
@@ -22,7 +22,7 @@ export default Vue.extend({
     // if (process.env.VUE_ENV === 'server') {  }
 
     Promise.all([
-      await this.getPost({ PostID: this.$route.params.post })
+      await this.getThisPost()
     ])
   },
   head () {
@@ -74,7 +74,9 @@ export default Vue.extend({
     // this.getUser(this.$route.params.id)
   },
   methods: {
-
+    async getThisPost () {
+      return await this.getPost({ PostID: this.$route.params.post })
+    },
     ...mapActions({ getPost: 'getPost' })
   }
 
