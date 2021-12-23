@@ -13,7 +13,10 @@ export const state = () => ({
   },
   news: [],
   users: [],
-  post: {}
+  post: {
+    text: '',
+    author_username: ''
+  }
 })
 
 export const actions = {

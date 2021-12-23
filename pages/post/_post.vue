@@ -36,16 +36,25 @@ export default Vue.extend({
       const d = new Date(this.post.Timestamp * 1000)
       date = `${d.getDate()}.${d.getMonth() + 1}.${d.getFullYear()} ${d.getHours()}:${('0' + d.getMinutes()).slice(-2)}`
     }
+
+    let textPost = ''
+    if (this.post.text && this.post.text.length >= 43) {
+      textPost = this.post.text.slice(0, 43)
+    } else if (this.post.text) {
+      textPost = this.post.text
+    } else {
+      textPost = 'not found'
+    }
     return {
 
-      title: `${this.post.text.slice(0, 43)} | ${this.post.author_username} от ${date}`,
+      title: `${textPost} | ${this.post.author_username} от ${date}`,
       meta: [
         {
           hid: 'description',
           name: 'description',
           content: this.post.text
         },
-        { hid: 'og:title', name: 'og:title', content: `${this.post.text.slice(0, 50)}` }
+        { hid: 'og:title', name: 'og:title', content: `${textPost}` }
 
       ]
     }
