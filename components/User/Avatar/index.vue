@@ -77,9 +77,18 @@ export default {
   border-radius: 11px;
   object-fit: cover;
 }
-
 #AvatarBox {
   width: 160px;
   height: 160px;
 }
+  @media only screen and (max-width: 768px) {
+    #AvatarBox {
+      width: 130px;
+      height: 130px;
+    }
+    #avatarPhoto {
+      width: 130px;
+      height: 130px;
+    }
+  }
 </style>

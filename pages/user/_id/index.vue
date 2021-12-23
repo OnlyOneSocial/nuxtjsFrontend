@@ -19,18 +19,19 @@
             </div>
           </div>
         </div>
-        <div style="padding-left:16px;width: 100%;">
+        <div style="width: 100%;margin-left:16px">
           <div style="">
             <div>
-              <div>
-                <span id="username">{{ user.username }}</span>
-                <span style="color: #0BA4A4;">{{ 120 > Math.floor(new Date().getTime()/1000 - user.online) ? "Онлайн":"Не в сети" }}</span>
-
+              <div style="display:flex; flex-direction: row;justify-content: space-between;width:100%">
+                <div style="display:inline-block;">
+                  <span id="username">{{ user.username }}</span>
+                  <span style="color: #0BA4A4;">{{ 120 > Math.floor(new Date().getTime()/1000 - user.online) ? "Онлайн":"Не в сети" }}</span>
+                </div>
                 <img
                   v-if="user.me"
                   src="/img/settings.svg"
                   title="settings"
-                  style="display:inline-block;margin-left: 28vw;"
+                  style="display:inline-block;"
                   @click="$router.push(`/settings`)"
                 >
               </div>
@@ -226,7 +227,6 @@ export default Vue.extend({
   display: flex;
   background: #FFFFFF;
   border-radius: 8px;
-  height: 237px;
   width: 49.6vw;
   padding: 16px 16px 12px 13px;
 }
