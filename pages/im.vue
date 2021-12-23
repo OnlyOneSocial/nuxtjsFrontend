@@ -11,11 +11,11 @@
             </div>
             <div class="message-username">
               <a :href="'/user/' + me.id">
-                <span>{{ me.username }}({{msg.time}})</span>
+                <span>{{ me.username }}({{ msg.time }})</span>
               </a>
             </div>
             <div class="message-text">
-              <span>{{ msg.text }}</span>
+              <span style="white-space: pre-wrap;">{{ msg.text }}</span>
             </div>
           </div>
           <div v-if="me && msg.userid!==parseInt(me.id)" style="text-align:left" class="message-container">
@@ -26,18 +26,18 @@
             </div>
             <div class="message-username">
               <a :href="'/user/' + msg.userid">
-                <span>{{ msg.username }}({{msg.time}})</span>
+                <span>{{ msg.username }}({{ msg.time }})</span>
               </a>
             </div>
             <div class="message-text">
-              <span>{{ msg.text }}</span>
+              <span style="white-space: pre-wrap;">{{ msg.text }}</span>
             </div>
           </div>
         </div>
       </div>
 
       <div style="position: absolute;bottom: 0;left:10%;width:80%;" class="message-input-container">
-        <input v-model="message" style="height:40px;border: 2px solid gray;width:75%" type="text" @keyup.enter="send">
+        <input v-model="message" style="height:40px;border: 2px solid gray;width:75%" type="text" @keyup.enter="EnterKey">
         <div style="position: absolute;display: inline-block;" class="SmilePopup">
           <no-ssr>
             <popper
@@ -118,6 +118,10 @@ export default {
     this.getIm()
   },
   methods: {
+    EnterKey (e) {
+      if (e.shiftKey) { return }
+      this.send()
+    },
     async getIm () {
       if (this.ImID > 0) {
         await this.$api.get(`/message/get/${this.$route.query.im}`).then((data) => {
@@ -139,8 +143,8 @@ export default {
         text: this.message,
         to: parseInt(this.$route.query.im)
       }).then((data) => {
-        console.log(data.data)
         this.message = ''
+        data.data.time = 'сейчас'
         this.messages.push(data.data)
         this.$nextTick(() => {
           document.getElementsByClassName('messages-container')[0].scrollTop = document.getElementsByClassName('messages-container')[0].scrollHeight

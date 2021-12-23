@@ -1,6 +1,6 @@
 <template>
-  <article v-if="post" style="background-color:#FFFFFF; min-height:150px;position:relative;    margin-bottom: 10px;padding-top:16px;padding-left:13px;padding-right:21px">
-    <div style="display:flex;justify-content: space-between;">
+  <article v-if="post" style="">
+    <div class="ArticleHeader">
       <div style="display:flex">
         <img
           data-v-398b3732=""
@@ -35,14 +35,26 @@
         </div>
       </div>
     </div>
-    <p style="margin: 0;">
-      {{ post.text }}
-    </p><div style="position:absolute;bottom:0;display: flex;flex-direction: row;width: 100%;justify-content: space-between;">
-      <div style="">
-        {{ post.Likes }} {{ $t('LikePost') }}
-      </div>
-      <div style="padding-right:21px" @click="$router.push(`/post/${post.random_id}/?answer`)">
-        {{ $t('AnswerPost') }}({{ post.answercount }})
+    <p style="margin: 0;white-space: pre-wrap;" v-text="post.text" />
+    <div
+      :style="(post.text==`Тестирование отображения видеороликов, а так же оптимизация блока поста ` ? 'padding-bottom:0px;':'')+'position: relative;'"
+    >
+      <lite-youtube
+        v-if="post.text==`Тестирование отображения видеороликов, а так же оптимизация блока поста `"
+        style=""
+        videoid="1eLuB5CoryM"
+        playlabel="BABYMETAL // SYNCOPATION「シンコペーション」"
+        params="controls=1&start=0&end=0&modestbranding=2&rel=0&enablejsapi=1"
+      />
+      <div
+        class="ArticleActions"
+      >
+        <div>
+          {{ post.Likes }} {{ $t('LikePost') }}
+        </div>
+        <div @click="$router.push(`/post/${post.random_id}/?answer`)">
+          {{ $t('AnswerPost') }}({{ post.answercount }})
+        </div>
       </div>
     </div>
   </article>
@@ -63,5 +75,28 @@ export default {
 a {
     color: unset;
     text-decoration: none;
+}
+article {
+  background-color:#FFFFFF;
+  position:relative;
+  margin-bottom: 10px;
+  padding: 16px 21px 45px 13px;
+}
+.ArticleHeader {
+  display:flex;
+  justify-content: space-between;
+}
+
+.ArticleActions{
+  position:absolute;
+  bottom: -30px;
+  display:flex;
+  flex-direction:row;
+  width:100%;
+  justify-content: space-between;
+}
+.ArticleActions > div {
+  display:inline-block;
+
 }
 </style>

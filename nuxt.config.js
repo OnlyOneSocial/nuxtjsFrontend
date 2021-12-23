@@ -46,12 +46,11 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [
-  ],
-
+  css: ['node_modules/lite-youtube-embed/src/lite-yt-embed.css'],
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    '~/plugins/axios'
+    '~/plugins/axios',
+    '~/plugins/youtube.client.js'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

@@ -2,9 +2,9 @@
   <div>
     <div class="w">
       <div style="position:absolute;z-index: 100;right: 2%;top: 26%;">
-        <img src="/img/post/send.svg" class="tal" @click="WallSend">
+        <img src="/img/post/send.svg" class="tal" @click="EnterKey">
       </div>
-      <textarea id="wallInput" v-model="wallInput" placeholder="Напишите что-нибудь...." class="w" @keyup.enter="WallSend" />
+      <textarea id="wallInput" v-model="wallInput" placeholder="Напишите что-нибудь...." class="w" @keyup.enter="EnterKey" />
     </div>
   </div>
 </template>
@@ -26,11 +26,17 @@ export default {
     }
   },
   methods: {
+    EnterKey (e) {
+      if (e.shiftKey) { return }
+      this.WallSend()
+    },
     WallSend () {
-      this.$api.post('wall/send', { text: this.wallInput, answer: this.answer }).then((data) => {
-        this.wallInput = ''
-        this.update()
-      })
+      if (this.wallInput !== '') {
+        this.$api.post('wall/send', { text: this.wallInput, answer: this.answer }).then((data) => {
+          this.wallInput = ''
+          this.update()
+        })
+      }
     }
   }
 }
