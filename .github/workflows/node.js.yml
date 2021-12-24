@@ -31,6 +31,7 @@ jobs:
         username: ${{ secrets.REMOTE_USER }}
         script: |
           cd ${{ secrets.REMOTE_TARGET }}
+          git reset --hard
           git pull
           export NVM_DIR=/usr/local/nvm
           source /opt/nvm/nvm.sh
