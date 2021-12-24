@@ -183,7 +183,7 @@ export default Vue.extend({
   methods: {
     OfflinefromOnline (online) {
       if (!online) { return 'offline' }
-      return moment(online * 1000).fromNow()
+      return moment(online * 1000).locale(this.$i18n.localeProperties.code).fromNow()
     },
     async ChangeStatus (data) {
       await this.$api.put('/user/status', { status: data.target.value })
