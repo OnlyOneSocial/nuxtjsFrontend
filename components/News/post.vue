@@ -19,7 +19,7 @@
           <h3>
             <div style="font-size:14px;color:gray">
               <NuxtLink :to="`/post/${post.random_id}`">
-                {{ post.time }}
+                {{ FromNowTime(post.Timestamp) }}
               </NuxtLink>
             </div>
           </h3>
@@ -60,6 +60,7 @@
   </article>
 </template>
 <script>
+import moment from 'moment'
 export default {
   props: {
     post: {
@@ -68,6 +69,12 @@ export default {
       default: () => { return {} }
     }
 
+  },
+  methods: {
+    FromNowTime (online) {
+      if (!online) { return 'offline' }
+      return moment(online * 1000).locale(this.$i18n.localeProperties.code).fromNow()
+    }
   }
 }
 </script>
