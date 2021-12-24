@@ -25,7 +25,7 @@
               <div style="display:flex; flex-direction: row;justify-content: space-between;width:100%">
                 <div style="display:inline-block;">
                   <span id="username">{{ user.username }}</span>
-                  <span style="color: #0BA4A4;">{{ 120 > Math.floor(new Date().getTime()/1000 - user.online) ? "Онлайн":"Не в сети" }}</span>
+                  <span style="color: #0BA4A4;">{{ 120 > Math.floor(new Date().getTime()/1000 - user.online) ? "Онлайн":OfflinefromOnline(user.online) }}</span>
                 </div>
                 <img
                   v-if="user.me"
@@ -91,7 +91,7 @@
                       <span style="font-size: 18px; width: 41px; overflow: hidden; white-space: nowrap;">
                         {{ friend.user.username }}
                       </span>
-                      <div>{{ 120 > Math.floor(new Date().getTime()/1000 - friend.user.online) ? "Онлайн":"Не в сети" }}</div>
+                      <div>{{ 120 > Math.floor(new Date().getTime()/1000 - friend.user.online) ? "Онлайн":OfflinefromOnline(friend.user.online) }}</div>
                     </NuxtLink>
                   </div>
                 </div>
@@ -110,6 +110,7 @@
 <script>
 import Vue from 'vue'
 import { mapState, mapActions } from 'vuex'
+import moment from 'moment'
 
 export default Vue.extend({
   name: 'UserPage',
@@ -180,6 +181,10 @@ export default Vue.extend({
     // this.getUser(this.$route.params.id)
   },
   methods: {
+    OfflinefromOnline (online) {
+      if (!online) { return 'offline' }
+      return moment(online * 1000).fromNow()
+    },
     async ChangeStatus (data) {
       await this.$api.put('/user/status', { status: data.target.value })
     },
