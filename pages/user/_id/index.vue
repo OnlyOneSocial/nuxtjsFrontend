@@ -62,7 +62,6 @@
               <span id="FriendsTitle">
                 <NuxtLink :to="`/user/${user.id}/friends`" style="text-decoration: unset; color: #000;">{{ $t('FriendsUser') }}</NuxtLink>
               </span>
-              <span id="count_friends"> {{ friends && friends.count }}</span>
             </div>
             <br>
             <div class="InputSearch">
@@ -71,9 +70,9 @@
             </div>
 
             <div style="padding: 19px 28px 16px 28px;">
-              <span>Друзья</span>
-              <span>Подписчики</span>
-              <span v-if="user.me">Запросы (0)</span>
+              <span :class="{'textBold':NetworkSelectNum===1}" @click="NetworkSelect(1)">Друзья</span>
+              <span :class="{'textBold':NetworkSelectNum===2}" @click="NetworkSelect(2)">Подписки</span>
+              <span v-if="user.me" :class="{'textBold':NetworkSelectNum===3}" @click="NetworkSelect(3)">Запросы ({{ requests.count }})</span>
             </div>
 
             <div
@@ -82,10 +81,26 @@
               style="opacity: 0.5; border: 1px solid rgb(215, 226, 242); box-sizing: border-box; width: 84%; height: 0px;margin: 0px 15% 8px 8%;"
             />
 
-            <div v-if="user && friends" style="margin-left:6px">
+            <div v-if="user && friends && NetworkSelectNum===1" style="margin-left:6px">
               <template v-for="(friend,index) in friends.list">
                 <div :key="friend.user.id" style="width:80%;margin: 0 auto">
                   <div v-if="index<4" id="friend">
+                    <NuxtLink :to="`/user/${friend.user.id}`">
+                      <img height="41px" width="41px" style="border-radius: 100%;" alt="user avatar" :src="getAvatar(friend.user.id,friend.user.avatar)">
+                      <span style="font-size: 18px; width: 41px; overflow: hidden; white-space: nowrap;">
+                        {{ friend.user.username }}
+                      </span>
+                      <div>{{ 120 > Math.floor(new Date().getTime()/1000 - friend.user.online) ? "Онлайн":OfflinefromOnline(friend.user.online) }}</div>
+                    </NuxtLink>
+                  </div>
+                </div>
+              </template>
+            </div>
+
+            <div v-if="user && friends && NetworkSelectNum===3" style="margin-left:6px">
+              <template v-for="(friend,index) in requests.list">
+                <div :key="friend.user.id" style="width:80%;margin: 0 auto">
+                  <div v-if="index" id="friend">
                     <NuxtLink :to="`/user/${friend.user.id}`">
                       <img height="41px" width="41px" style="border-radius: 100%;" alt="user avatar" :src="getAvatar(friend.user.id,friend.user.avatar)">
                       <span style="font-size: 18px; width: 41px; overflow: hidden; white-space: nowrap;">
@@ -117,7 +132,11 @@ export default Vue.extend({
   data () {
     return {
       fetchedId: 0,
-      numbers: [1, 2, 3, 4]
+      NetworkSelectNum: 1,
+      numbers: [1, 2, 3, 4],
+      requests: {
+        list: []
+      }
     }
   },
   async fetch () {
@@ -134,6 +153,7 @@ export default Vue.extend({
         await this.UpdateUser(),
         await this.UpdatePosts()
       ])
+      if (this.user.me) { await this.GetRequests() }
     }
   },
   head () {
@@ -181,12 +201,20 @@ export default Vue.extend({
     // this.getUser(this.$route.params.id)
   },
   methods: {
+    NetworkSelect (num) {
+      this.NetworkSelectNum = num
+    },
     OfflinefromOnline (online) {
       if (!online) { return 'offline' }
       return moment(online * 1000).locale(this.$i18n.localeProperties.code).fromNow()
     },
     async ChangeStatus (data) {
       await this.$api.put('/user/status', { status: data.target.value })
+    },
+    async GetRequests () {
+      await this.$api.get('/friends/request').then((data) => {
+        this.requests = data.data
+      })
     },
     async UpdatePosts () {
       await this.getPosts(this.$route.params.id)
@@ -205,7 +233,9 @@ export default Vue.extend({
 })
 </script>
 <style scoped>
-
+.textBold {
+      font-weight: bold;
+}
 .InputSearch{
   width:80%;
   height:32px;
