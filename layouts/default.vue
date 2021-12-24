@@ -29,6 +29,9 @@ import { mapState, mapActions } from 'vuex'
 export default {
   head () {
     return {
+      htmlAttrs: {
+        lang: this.$i18n.localeProperties.code
+      },
       bodyAttrs: {
         style: this.modal.type ? ' overflow: hidden;' : ''
       },
