@@ -6,7 +6,7 @@
           <div v-if="me && msg.userid==parseInt(me.id)" style="text-align:right" class="message-container">
             <div class="message-user-avatar">
               <a :href="'/user/' + me.id">
-                <img :src="`https://cdnsocial.katelinlis.xyz/public/clients/${msg.userid}/${me.avatar}`">
+                <img :src="getAvatar(msg.userid,msg.avatar)">
               </a>
             </div>
             <div class="message-username">
@@ -21,7 +21,7 @@
           <div v-if="me && msg.userid!==parseInt(me.id)" style="text-align:left" class="message-container">
             <div class="message-user-avatar">
               <a :href="'/user/' + msg.userid">
-                <img :src="`https://cdnsocial.katelinlis.xyz/public/clients/${msg.userid}/${msg.avatar}`">
+                <img :src="getAvatar(msg.userid,msg.avatar)">
               </a>
             </div>
             <div class="message-username">
@@ -62,13 +62,17 @@
       </div>
     </div>
 
-    <div v-if="!$route.query.im" style="text-align:center;margin: 0 auto">
+    <div v-if="!$route.query.im" style="text-align:center;margin: 0 auto;background: rgb(255, 255, 255);padding: 10px 20px 20px 20px;width:50%">
+      Диалоги
       <div v-for="(dialog,index) in dialogs" :key="index" style="text-align:center">
         <NuxtLink v-if="dialog.sendto>0" :to="`/im?im=${dialog.sendto}`">
           <br>
+          <div class="message-user-avatar">
+            <img :src="getAvatar(dialog.sendto,dialog.avatar)">
+          </div>
           {{ dialog.username }} ({{ dialog.time }})
           <br>
-          {{ dialog.text }}
+          {{ 30 > dialog.text.length ? dialog.text : dialog.text.slice(0,30) }}
         </NuxtLink>
       </div>
     </div>
@@ -118,6 +122,9 @@ export default {
     this.getIm()
   },
   methods: {
+    getAvatar (id, avatar) {
+      if (avatar) { return `https://cdnsocial.katelinlis.xyz/public/clients/${id}/${avatar}` } else { return 'https://cdnsocial.katelinlis.xyz/public/UserProfileImage.svg' }
+    },
     EnterKey (e) {
       if (e.shiftKey) { return }
       this.send()
@@ -155,6 +162,10 @@ export default {
 }
 </script>
 <style scoped>
+a {
+  text-decoration: unset;
+  color: unset;
+}
 .messages-container {
   overflow: auto;
   overflow-wrap: break-word;
@@ -175,6 +186,11 @@ export default {
 .message-user-avatar > a > img {
   width: 24px;
   height: 24px;
+  border-radius: 100%;
+}
+.message-user-avatar > img {
+  width: 40px;
+  height: 40px;
   border-radius: 100%;
 }
 .message-username > a {
