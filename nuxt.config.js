@@ -128,7 +128,7 @@ export default {
           exclude: ['/users', '/login', '/about', '/news', '/', '/settings', '/wallet'],
           routes: async () => {
             const array = []
-            const { data } = await axios.get('https://social.katelinlis.xyz/api/user/get')
+            const { data } = await axios.get('https://only-one.su/api/user/get')
             array.push(...data.users.map(user => `/user/${user.id}`))
             array.push(...data.users.map(user => `/user/${user.id}/friends`))
             return array
