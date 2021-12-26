@@ -4,31 +4,33 @@
       <div v-for="(msg,index) in messages" :key="index">
         <div style="display:block;">
           <div v-if="me && msg.userid==parseInt(me.id)" style="text-align:right" class="message-container">
-            <div class="message-user-avatar">
-              <a :href="'/user/' + me.id">
-                <img :src="getAvatar(msg.userid,msg.avatar)">
-              </a>
-            </div>
-            <div class="message-username">
-              <a :href="'/user/' + me.id">
-                <span>{{ me.username }}({{ msg.time }})</span>
-              </a>
-            </div>
+            <NuxtLink :to="'/user/' + msg.userid">
+              <div style="display: flex;align-items: flex-start;justify-content: flex-end;">
+                <div class="message-user-avatar mini">
+                  <img :src="getAvatar(msg.userid,msg.avatar)">
+                </div>
+                <div style="padding-left: 5px;" class="message-username">
+                  <span>{{ msg.username }}({{ msg.time }})</span>
+                </div>
+              </div>
+            </NuxtLink>
+
             <div class="message-text">
               <span style="white-space: pre-wrap;">{{ msg.text }}</span>
             </div>
           </div>
           <div v-if="me && msg.userid!==parseInt(me.id)" style="text-align:left" class="message-container">
-            <div class="message-user-avatar">
-              <a :href="'/user/' + msg.userid">
-                <img :src="getAvatar(msg.userid,msg.avatar)">
-              </a>
-            </div>
-            <div class="message-username">
-              <a :href="'/user/' + msg.userid">
-                <span>{{ msg.username }}({{ msg.time }})</span>
-              </a>
-            </div>
+            <NuxtLink :to="'/user/' + msg.userid">
+              <div style="display: flex;align-items: flex-start;">
+                <div class="message-user-avatar mini">
+                  <img :src="getAvatar(msg.userid,msg.avatar)">
+                </div>
+                <div style="padding-left: 5px;" class="message-username">
+                  <span>{{ msg.username }}({{ msg.time }})</span>
+                </div>
+              </div>
+            </NuxtLink>
+
             <div class="message-text">
               <span style="white-space: pre-wrap;">{{ msg.text }}</span>
             </div>
@@ -64,16 +66,21 @@
 
     <div v-if="!$route.query.im" style="text-align:center;margin: 0 auto;background: rgb(255, 255, 255);padding: 10px 20px 20px 20px;width:50%">
       Диалоги
-      <div v-for="(dialog,index) in dialogs" :key="index" style="text-align:center">
+      <div v-for="(dialog,index) in dialogs" :key="index" style="text-align:left">
         <NuxtLink v-if="dialog.sendto>0" :to="`/im?im=${dialog.sendto}`">
-          <br>
-          <div class="message-user-avatar">
-            <img :src="getAvatar(dialog.sendto,dialog.avatar)">
+          <div style="display: flex;align-items: flex-start;margin-top:10px">
+            <div class="message-user-avatar mini">
+              <img :src="getAvatar(dialog.sendto,dialog.avatar)">
+            </div>
+            <div style="padding-left: 5px;" class="message-username">
+              <span>{{ dialog.username }} ({{ dialog.time }})</span>
+            </div>
           </div>
-          {{ dialog.username }} ({{ dialog.time }})
-          <br>
-          {{ 30 > dialog.text.length ? dialog.text : dialog.text.slice(0,30) }}
+          <div style="margin-top: -5px;">
+            {{ 30 > dialog.text.length ? dialog.text : dialog.text.slice(0,30) }}
+          </div>
         </NuxtLink>
+        <br>
       </div>
     </div>
   </div>
@@ -183,15 +190,15 @@ a {
   padding-right: 10px;
   border-radius: 10px;
 }
-.message-user-avatar > a > img {
-  width: 24px;
-  height: 24px;
-  border-radius: 100%;
-}
+
 .message-user-avatar > img {
   width: 40px;
   height: 40px;
   border-radius: 100%;
+}
+.message-user-avatar.mini > img  {
+  width: 30px;
+  height: 30px;
 }
 .message-username > a {
   color: #606580;
