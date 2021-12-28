@@ -46,9 +46,9 @@ export default {
       const photo = document.getElementById('avatarUpload').files[0]
       const formData = new FormData()
 
-      formData.append('photo', photo)
+      formData.append('myFile', photo)
 
-      this.$api({ method: 'post', url: 'user/upload_avatar', data: formData, headers: { 'Content-Type': 'multipart/form-data' } }).then(() => {
+      this.$api({ method: 'put', url: 'user/avatar', data: formData, headers: { 'Content-Type': 'multipart/form-data' } }).then(() => {
         this.update()
       })
     }
