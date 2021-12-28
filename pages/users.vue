@@ -9,7 +9,7 @@
               height="
             40px"
               width="40px"
-              :src="`${user.avatar ? `https://cdnsocial.katelinlis.xyz/public/clients/${user.id}/100-${user.avatar}`:`https://cdnsocial.katelinlis.xyz/public/UserProfileImage.svg`}`"
+              :src="`${user.avatar ? `https://cdn.only-one.su/public/clients/${user.id}/100-${user.avatar}`:`https://cdn.only-one.su/public/UserProfileImage.svg`}`"
             >
             <span
               style="overflow: hidden; text-overflow: ellipsis;"

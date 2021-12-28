@@ -79,7 +79,7 @@ export default Vue.extend({
   },
   methods: {
     getAvatar (id, avatar) {
-      if (avatar) { return `https://cdnsocial.katelinlis.xyz/public/clients/${id}/${avatar}` } else { return 'https://cdnsocial.katelinlis.xyz/public/UserProfileImage.svg' }
+      if (avatar) { return `https://cdn.only-one.su/public/clients/${id}/${avatar}` } else { return 'https://cdn.only-one.su/public/UserProfileImage.svg' }
     },
     ...mapActions({ getUser: 'UserPage/getUser' })
   }

@@ -7,7 +7,7 @@
           height="32px"
           width="32px"
           alt="user avatar"
-          src="https://cdnsocial.katelinlis.xyz/public/UserProfileImage.svg"
+          src="https://cdn.only-one.su/public/UserProfileImage.svg"
           style="border-radius: 100%;"
         >
         <div>
