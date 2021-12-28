@@ -36,23 +36,25 @@
                 >
               </div>
               <div>
-                <input id="status" style="color:#8C99B2;border:none;width:37vw" placeholder="Опишите ваше состояние в 80 символов" :value="user.status" @change="ChangeStatus">
+                <input id="status" style="color:#8C99B2;border:none;" placeholder="Опишите ваше состояние в 80 символов" :value="user.status" @change="ChangeStatus">
               </div>
             </div>
           </div>
           <div style="opacity: 0.5;border: 1px solid #D7E2F2;box-sizing: border-box;width: 100%;height: 0px;" />
-          Дата рождения:
-          {{ new Date(user.birthday_date * 1000).toLocaleDateString() }} ({{ Math.floor((new Date()-new Date(user.birthday_date * 1000))/1000/60/60/24/365) }})
-          <br>
-          Пол: {{ user.gender }}
-          <br>
-          <NuxtLink v-if="false" :to="`/user/${user.id}/contacts`">
-            Контакты и страницы
+          <div>
+            Дата рождения:
+            {{ new Date(user.birthday_date * 1000).toLocaleDateString() }} ({{ Math.floor((new Date()-new Date(user.birthday_date * 1000))/1000/60/60/24/365) }})
             <br>
-          </NuxtLink>
-          Местоположение: {{ user.country }}, {{ user.city }}
-          <br>
-          Краткое описание: {{ user.bio }}
+            Пол: {{ user.gender }}
+            <br>
+            <NuxtLink v-if="false" :to="`/user/${user.id}/contacts`">
+              Контакты и страницы
+              <br>
+            </NuxtLink>
+            Местоположение: {{ user.country }}, {{ user.city }}
+            <br>
+            Краткое описание: <span>{{ user.bio }}</span>
+          </div>
         </div>
       </div>
       <div class="FriendsBlock" style="position:relative">
