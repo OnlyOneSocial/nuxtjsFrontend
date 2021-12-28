@@ -11,6 +11,7 @@
                 <img height="41px" width="41px" style="border-radius: 100%;" alt="user avatar" :src="getAvatar(friend.user.id,friend.user.avatar)">
                 <span style="font-size: 18px; width: 41px; overflow: hidden; white-space: nowrap;">
                   {{ friend.user.username }}
+                  <div>{{ 120 > Math.floor(new Date().getTime()/1000 - friend.user.online) ? "Онлайн":OfflinefromOnline(friend.user.online) }}</div>
                 </span>
               </NuxtLink>
             </div>
