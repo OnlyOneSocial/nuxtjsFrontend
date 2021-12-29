@@ -25,6 +25,7 @@
 <script>
 import Vue from 'vue'
 import { mapState, mapActions } from 'vuex'
+import moment from 'moment'
 
 export default Vue.extend({
   data () {
@@ -79,6 +80,10 @@ export default Vue.extend({
     })
   },
   methods: {
+    OfflinefromOnline (online) {
+      if (!online) { return 'offline' }
+      return moment(online * 1000).locale(this.$i18n.localeProperties.code).fromNow()
+    },
     getAvatar (id, avatar) {
       if (avatar) { return `https://cdn.only-one.su/public/clients/${id}/${avatar}` } else { return 'https://cdn.only-one.su/public/UserProfileImage.svg' }
     },
