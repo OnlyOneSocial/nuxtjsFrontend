@@ -7,10 +7,10 @@
             <NuxtLink :to="'/user/' + msg.userid">
               <div style="display: flex;align-items: flex-start;justify-content: flex-end;">
                 <div class="message-user-avatar mini">
-                  <img :src="getAvatar(msg.userid,msg.avatar)">
+                  <img :src="getAvatar(msg.userid,me.avatar)">
                 </div>
                 <div style="padding-left: 5px;" class="message-username">
-                  <span>{{ msg.username }}({{ msg.time }})</span>
+                  <span>{{ me.username }}({{ msg.time }})</span>
                 </div>
               </div>
             </NuxtLink>
