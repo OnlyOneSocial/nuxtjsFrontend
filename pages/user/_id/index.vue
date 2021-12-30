@@ -99,7 +99,7 @@
               </template>
             </div>
 
-            <div v-if="user && friends && NetworkSelectNum===3" style="margin-left:6px">
+            <div v-if="user && requests && NetworkSelectNum===3" style="margin-left:6px">
               <template v-for="(friend,index) in requests.list">
                 <div :key="friend.user.id" style="width:80%;margin: 0 auto">
                   <div v-if="index" id="friend">
