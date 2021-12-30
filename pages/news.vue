@@ -4,7 +4,7 @@
       <h2 style="text-align:center">
         News
       </h2>
-      <News :posts="news" />
+      <News :posts="news.list" @scroll="Scroll" />
     </div>
   </div>
 </template>
@@ -14,6 +14,11 @@ import Vue from 'vue'
 import { mapState, mapActions } from 'vuex'
 
 export default Vue.extend({
+  data () {
+    return {
+      loading: false
+    }
+  },
   computed: {
     ...mapState({
       news: state => state.news
@@ -22,9 +27,30 @@ export default Vue.extend({
   created () {
     this.Update()
   },
+  beforeMount () {
+    window.addEventListener('scroll', this.Scroll)
+  },
+  beforeDestroy () {
+    window.removeEventListener('scroll', this.Scroll)
+  },
   methods: {
+    async Scroll () {
+      // this.$nextTick(() => {
+      const clientHeight = document.getElementsByClassName('page-container_main')[0].clientHeight
+      const percent = clientHeight - window.scrollY
+
+      console.log(percent)
+
+      if (percent < 1800 && !this.loading && !this.news.end) {
+        this.loading = true
+        console.log(percent)
+        await this.getNews({ offset: this.news.list.length, limit: 30 })
+        this.loading = false
+      }
+    // })
+    },
     async Update () {
-      await this.getNews()
+      await this.getNews({ offset: 0, limit: 30 })
     },
     ...mapActions(['getNews'])
   }

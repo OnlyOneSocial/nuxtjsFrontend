@@ -11,7 +11,7 @@ export const state = () => ({
     type: false,
     data: ''
   },
-  news: [],
+  news: { list: [], end: false },
   users: [],
   post: {
     text: '',
@@ -65,13 +65,13 @@ export const actions = {
     }
     return true
   },
-  async getNews ({ commit }) {
-    const response = await this.$api.$get(`${serverNewsUrl}/wall/get`).catch((err) => {
+  async getNews ({ commit }, { offset, limit }) {
+    const response = await this.$api.$get(`${serverNewsUrl}/wall/get?offset=${offset}&limit=${limit}`).catch((err) => {
       console.log(err)
     })
     if (response) {
       const content = response
-      commit('SetNews', content)
+      commit('SetNews', { content, offset })
     }
     return true
   },
@@ -105,7 +105,8 @@ export const mutations = {
     }
   },
   SetNews (state, content) {
-    state.news = content
+    if (content.content.length === 0 && content.offset !== 0) { state.news.end = true }
+    if (content.offset === 0) { state.news.list = content.content } else { state.news.list.push(...content.content) }
   },
   SetPost (state, content) {
     state.post = content

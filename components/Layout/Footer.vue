@@ -12,12 +12,25 @@
         src="/img/footer/user.svg"
       >
     </NuxtLink>
-    <NuxtLink to="/users">
+    <NuxtLink v-if="!me.id" to="/users">
       <img class="ICON" src="/img/footer/users.svg">
+    </NuxtLink>
+    <NuxtLink v-if="me.id" to="/im">
+      <img src="/img/menu/news.svg" class="ICON">
     </NuxtLink>
   </footer>
 </template>
+<script>
+import { mapState } from 'vuex'
 
+export default {
+  computed: {
+    ...mapState({
+      me: state => state.me
+    })
+  }
+}
+</script>
 <style>
   .footer-mobile {
     display: none;
@@ -28,7 +41,7 @@
       display: block;
       font-size: x-large;
       position: fixed;
-      background-color: wheat;
+      background-color: rgb(232, 235, 255);
       height: 40px;
       width: 100%;
       left: 0;
