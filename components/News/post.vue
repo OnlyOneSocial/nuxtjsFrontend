@@ -7,9 +7,10 @@
           height="32px"
           width="32px"
           alt="user avatar"
-          src="https://cdn.only-one.su/public/UserProfileImage.svg"
+          :src="getAvatar(post.author,post.author_avatar)"
           style="border-radius: 100%;"
         >
+
         <div>
           <h3 style="font-size:15px;margin: 0;">
             <NuxtLink :to="`/user/${post.author}`">
@@ -71,6 +72,9 @@ export default {
 
   },
   methods: {
+    getAvatar (id, avatar) {
+      if (avatar) { return `https://cdn.only-one.su/public/clients/${id}/${avatar}` } else { return 'https://cdn.only-one.su/public/UserProfileImage.svg' }
+    },
     FromNowTime (online) {
       if (!online) { return 'offline' }
       return moment(online * 1000).locale(this.$i18n.localeProperties.code).fromNow()
