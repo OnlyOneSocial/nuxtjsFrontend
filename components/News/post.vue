@@ -85,7 +85,7 @@ export default {
     })
   },
   created () {
-    if (this.me.id && this.post.likes.includes(parseInt(this.me.id))) {
+    if (this.me.id && this.post && this.post.likes && this.post.likes.includes(parseInt(this.me.id))) {
       this.liked = 1
     }
   },
