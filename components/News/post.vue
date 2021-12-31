@@ -50,8 +50,8 @@
       <div
         class="ArticleActions"
       >
-        <div>
-          {{ post.Likes }} {{ $t('LikePost') }}
+        <div :class="{red:liked===1}" @click="Like(post.random_id)">
+          <span>{{ !post.likes ? 0 : post.likes.length+locallike }}</span> {{ $t('LikePost') }}
         </div>
         <div @click="$router.push(`/post/${post.random_id}/?answer`)">
           {{ $t('AnswerPost') }}({{ post.answercount }})
@@ -61,6 +61,8 @@
   </article>
 </template>
 <script>
+import { mapState } from 'vuex'
+
 import moment from 'moment'
 export default {
   props: {
@@ -71,6 +73,22 @@ export default {
     }
 
   },
+  data () {
+    return {
+      liked: 0,
+      locallike: 0
+    }
+  },
+  computed: {
+    ...mapState({
+      me: state => state.me
+    })
+  },
+  created () {
+    if (this.me.id && this.post.likes.includes(parseInt(this.me.id))) {
+      this.liked = 1
+    }
+  },
   methods: {
     getAvatar (id, avatar) {
       if (avatar) { return `https://cdn.only-one.su/public/clients/${id}/${avatar}` } else { return 'https://cdn.only-one.su/public/UserProfileImage.svg' }
@@ -78,6 +96,11 @@ export default {
     FromNowTime (online) {
       if (!online) { return 'offline' }
       return moment(online * 1000).locale(this.$i18n.localeProperties.code).fromNow()
+    },
+    Like (id) {
+      this.$api.post('wall/like/' + id).then((data) => {
+        if (this.liked) { this.locallike--; this.liked = 0 } else { this.locallike++; this.liked = 1 }
+      })
     }
   }
 }
@@ -109,5 +132,8 @@ article {
 .ArticleActions > div {
   display:inline-block;
 
+}
+.red {
+  color: red
 }
 </style>
