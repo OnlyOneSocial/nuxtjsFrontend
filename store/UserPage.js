@@ -14,7 +14,10 @@ export const state = () => ({
     count: 0
   },
   friendStatus: {},
-  posts: []
+  posts: {
+    list: [],
+    end: false
+  }
 })
 
 export const actions = {
@@ -32,11 +35,11 @@ export const actions = {
     }
     if (response === '404') { throw new Error('404') }
   },
-  async getPosts ({ commit }, userid) {
-    const response = await this.$api.$get(`${serverNewsUrl}/wall/get/${userid}`)
+  async getPosts ({ commit }, { offset, limit, userid }) {
+    const response = await this.$api.$get(`${serverNewsUrl}/wall/get/${userid}?offset=${offset}&limit=${limit}`)
     if (response) {
       const content = response
-      commit('SetPosts', content)
+      commit('SetPosts', { content, offset })
     }
     return true
   }
@@ -53,6 +56,7 @@ export const mutations = {
     state.friendStatus = content
   },
   SetPosts (state, content) {
-    state.posts = content
+    if (content.content.length === 0 && content.offset !== 0) { state.posts.end = true }
+    if (content.offset === 0) { state.posts.list = content.content } else { state.posts.list.push(...content.content) }
   }
 }

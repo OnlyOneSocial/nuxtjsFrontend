@@ -118,7 +118,7 @@
         </div>
       </div>
     </div><div class="friendsAndWall">
-      <UserWall class="Wall" :me="user.me" :update="UpdatePosts" :posts="posts" />
+      <UserWall class="Wall" :me="user.me" :update="UpdatePosts" :posts="posts.list" />
     </div>
     <div class="networkwall" />
   </div>
@@ -135,6 +135,7 @@ export default Vue.extend({
     return {
       fetchedId: 0,
       NetworkSelectNum: 1,
+      loading: false,
       numbers: [1, 2, 3, 4],
       requests: {
         list: []
@@ -148,7 +149,10 @@ export default Vue.extend({
       cleanUser.avatar = ''
       cleanUser.id = ''
       this.$store.commit('UserPage/SetUser', cleanUser)
-      this.$store.commit('UserPage/SetPosts', [])
+      this.$store.commit('UserPage/SetPosts', {
+        content: [],
+        offset: 0
+      })
       // if (process.env.VUE_ENV === 'server') {  }
 
       Promise.all([
@@ -202,7 +206,25 @@ export default Vue.extend({
   created () {
     // this.getUser(this.$route.params.id)
   },
+  beforeMount () {
+    window.addEventListener('scroll', this.Scroll)
+  },
+  beforeDestroy () {
+    window.removeEventListener('scroll', this.Scroll)
+  },
   methods: {
+    async Scroll () {
+      // this.$nextTick(() => {
+      const clientHeight = document.getElementsByClassName('page-container_main')[0].clientHeight
+      const percent = clientHeight - window.scrollY
+
+      if (percent < 1800 && !this.loading && !this.posts.end) {
+        this.loading = true
+        await this.getPosts({ userid: this.$route.params.id, offset: this.posts.list.length, limit: 30 })
+        this.loading = false
+      }
+    // })
+    },
     NetworkSelect (num) {
       this.NetworkSelectNum = num
     },
@@ -219,7 +241,7 @@ export default Vue.extend({
       })
     },
     async UpdatePosts () {
-      await this.getPosts(this.$route.params.id)
+      await this.getPosts({ userid: this.$route.params.id, offset: this.posts.list.length, limit: 30 })
     },
     async UpdateUser () {
       await this.getUser(this.$route.params.id).catch((err) => {
