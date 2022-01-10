@@ -42,7 +42,7 @@
           </div>
           <div style="opacity: 0.5;border: 1px solid #D7E2F2;box-sizing: border-box;width: 100%;height: 0px;" />
           <div>
-            <template v-if="user.birthday_date">
+            <template v-if="user.birthday_date!==0">
               Дата рождения:
               {{ new Date(user.birthday_date * 1000).toLocaleDateString() }} ({{ Math.floor((new Date()-new Date(user.birthday_date * 1000))/1000/60/60/24/365) }})
             </template>
