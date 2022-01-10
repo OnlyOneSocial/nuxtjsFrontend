@@ -35,13 +35,13 @@ export default {
       bodyAttrs: {
         style: this.modal.type ? ' overflow: hidden;' : ''
       },
-      meta: [
-        // hid is used as unique identifier. Do not use `vmid` for it as it will not work
-        // <link rel="canonical" href="https://yoast.com/wordpress-seo/" />
+      link: [
         {
           rel: 'canonical',
           href: 'https://only-one.su' + this.$nuxt.$route.path
-        },
+        }
+      ]
+      meta: [
         {
           name: 'viewport',
           content: 'width=device-width,initial-scale=1.0'
