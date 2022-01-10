@@ -40,7 +40,7 @@ export default {
           rel: 'canonical',
           href: 'https://only-one.su' + this.$nuxt.$route.path
         }
-      ]
+      ],
       meta: [
         {
           name: 'viewport',
