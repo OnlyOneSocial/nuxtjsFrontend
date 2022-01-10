@@ -8,7 +8,8 @@
 <br/>
 адрес
 <a href="https://only-one.su/">only-one.su<a/>
-![image](https://user-images.githubusercontent.com/56870191/144715313-8e187d98-7675-4d88-9c02-1e314e308357.png)
+![image](https://user-images.githubusercontent.com/56870191/148779078-391ab787-204f-4256-b5cd-abd1378cef7f.png)
+
 
 
 
