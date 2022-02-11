@@ -12,7 +12,7 @@
                   <span data-v-bd7b612a="" style="font-size: 18px; width: 41px; overflow: hidden; white-space: nowrap;">
                       {{ friend.user.username }}
                    </span> 
-                  <div style="font-size: small;>{{ 120 > Math.floor(new Date().getTime()/1000 - friend.user.online) ? "Онлайн":OfflinefromOnline(friend.user.online) }}</div>
+                  <div style="font-size: small;">{{ 120 > Math.floor(new Date().getTime()/1000 - friend.user.online) ? "Онлайн":OfflinefromOnline(friend.user.online) }}</div>
               </NuxtLink>
             </div>
           </div>
