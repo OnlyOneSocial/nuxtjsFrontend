@@ -38,7 +38,14 @@
                 >
               </div>
               <div>
-                <input id="status" style="color:#8C99B2;border:none;" placeholder="Опишите ваше состояние в 80 символов" :value="user.status" @change="ChangeStatus">
+                <input
+                  id="status"
+                  style="color:#8C99B2;border:none;"
+                  :disabled="!user.me"
+                  placeholder="Опишите ваше состояние в 80 символов"
+                  :value="user.status"
+                  @change="ChangeStatus"
+                >
               </div>
             </div>
           </div>

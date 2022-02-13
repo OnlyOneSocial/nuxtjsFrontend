@@ -1,10 +1,13 @@
 <template>
   <div>
     <div class="w">
-      <div style="position:absolute;z-index: 100;right: 2%;top: 26%;">
-        <img src="/img/post/send.svg" class="tal" @click="EnterKey">
+      <div class="EditorBox">
+        <textarea id="wallInput" v-model="wallInput" placeholder="Напишите что-нибудь...." class="w" @keyup.enter="EnterKey" />
+        <div>
+          <div><img style="margin-right:20px;height:20px" src="/img/post/send.svg" class="tal" @click="EnterKey"></div>
+          <img style="height:13px" src="/img/post/photo.svg">
+        </div>
       </div>
-      <textarea id="wallInput" v-model="wallInput" placeholder="Напишите что-нибудь...." class="w" @keyup.enter="EnterKey" />
     </div>
   </div>
 </template>
@@ -48,20 +51,28 @@ export default {
   padding-top: 15px;
   padding-left: 8px;
 }
-  .w {
-    width:100%;
-    position: relative;
+
+  .EditorBox{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    background:white;
+    border-radius: 15px;
   }
-  .tar{
-    text-align:right
-  }
-  .tal{
-    text-align:left
+  #wallInput:focus-visible {
+    outline: none;
   }
   #wallInput{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    overflow: hidden;
+    padding-left: 15px;
+    width: 90%;
     height:50px;
     max-height:90px;
     min-height:50px;
-    resize:vertical
+    resize:none;
+    border-radius: 15px;
+    background: transparent;
   }
 </style>
