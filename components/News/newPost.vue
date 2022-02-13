@@ -3,9 +3,9 @@
     <div class="w">
       <div class="EditorBox">
         <textarea id="wallInput" v-model="wallInput" placeholder="Напишите что-нибудь...." class="w" @keyup.enter="EnterKey" />
-        <div>
-          <div><img style="margin-right:20px;height:20px" src="/img/post/send.svg" class="tal" @click="EnterKey"></div>
-          <img style="height:13px" src="/img/post/photo.svg">
+        <div class="wallInputActions">
+          <div class="wallInputActionsSend"><img src="/img/post/send.svg" class="tal" @click="EnterKey"></div>
+          <img class="wallInputActionsPhoto" src="/img/post/photo.svg">
         </div>
       </div>
     </div>
@@ -74,5 +74,23 @@ export default {
     resize:none;
     border-radius: 15px;
     background: transparent;
+  }
+  .wallInputActions{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    margin: 15px;
+  }
+  .wallInputActionsSend{
+    display: flex;
+    align-items: center;
+  }
+  .tal{
+        height: 15px;
+        width: 15px;
+  }
+  .wallInputActionsPhoto{
+        height: 15px;
+        margin-right: 10px;
   }
 </style>
