@@ -58,12 +58,12 @@ export default {
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
-    // https://go.nuxtjs.dev/eslint
-    '@nuxtjs/eslint-module',
-    '@nuxtjs/google-analytics', {
-      id: 'G-ZVZKMLWCVM'
-    }
+    '@nuxtjs/google-analytics'
   ],
+
+  googleAnalytics: {
+    id: 'G-ZVZKMLWCVM'
+  },
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
@@ -158,5 +158,18 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    babel: {
+      // envName: server, client, modern
+      presets ({ envName }) {
+        return [
+          [
+            '@nuxt/babel-preset-app',
+            {
+              corejs: { version: 3 }
+            }
+          ]
+        ]
+      }
+    }
   }
 }
