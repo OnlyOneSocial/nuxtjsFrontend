@@ -57,14 +57,6 @@ export default {
   components: true,
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-  buildModules: [
-    '@nuxtjs/google-analytics'
-  ],
-
-  googleAnalytics: {
-    id: 'G-ZVZKMLWCVM'
-  },
-
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/axios
@@ -77,8 +69,14 @@ export default {
     '@nuxtjs/sitemap',
     '@nuxtjs/yandex-metrika',
     '@nuxtjs/i18n',
-    '@nuxtjs/toast'
+    '@nuxtjs/toast',
+    '@nuxtjs/gtm'
   ],
+
+  gtm: {
+    id: 'G-ZVZKMLWCVM'
+  },
+
   i18n: {
     strategy: 'no_prefix',
     detectBrowserLanguage: {
