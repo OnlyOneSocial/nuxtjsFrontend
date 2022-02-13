@@ -59,7 +59,10 @@ export default {
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     // https://go.nuxtjs.dev/eslint
-    '@nuxtjs/eslint-module'
+    '@nuxtjs/eslint-module',
+    '@nuxtjs/google-analytics', {
+      id: 'G-ZVZKMLWCVM'
+    }
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -125,7 +128,7 @@ export default {
         },
         {
           path: '/sitemap-users.xml',
-          exclude: ['/users', '/login', '/about', '/news', '/', '/settings', '/wallet'],
+          exclude: ['/users', '/login', '/about', '/news', '/', '/settings', '/wallet', '/im', '/register'],
           routes: async () => {
             const array = []
             const { data } = await axios.get('https://only-one.su/api/user/get')
