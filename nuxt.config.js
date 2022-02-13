@@ -70,11 +70,11 @@ export default {
     '@nuxtjs/yandex-metrika',
     '@nuxtjs/i18n',
     '@nuxtjs/toast',
-    '@nuxtjs/gtm'
+    '@nuxtjs/google-gtag'
   ],
 
-  gtm: {
-    id: 'G-ZVZKMLWCVM'
+  'google-gtag': {
+    id: 'G-XSYZL3D898'
   },
 
   i18n: {
