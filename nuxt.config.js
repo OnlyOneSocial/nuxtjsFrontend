@@ -74,7 +74,9 @@ export default {
   ],
 
   'google-gtag': {
-    id: 'G-XSYZL3D898'
+    id: 'G-XSYZL3D898', // required
+    debug: true
+
   },
 
   i18n: {
