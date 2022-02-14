@@ -2,9 +2,22 @@
   <div>
     <div class="w">
       <div class="EditorBox">
-        <textarea id="wallInput" v-model="wallInput" placeholder="Напишите что-нибудь...." rows="1" class="w" @keyup.enter="EnterKey" />
+        <textarea
+          id="wallInput"
+          v-model="wallInput"
+          :style="{
+            height: `${TextAreaheight}px`
+          }"
+          placeholder="Напишите что-нибудь...."
+          rows="1"
+          class="w"
+          @keyup.enter="EnterKey"
+          @input="Resize"
+        />
         <div class="wallInputActions">
-          <div class="wallInputActionsSend"><img src="/img/post/send.svg" class="tal" @click="EnterKey"></div>
+          <div class="wallInputActionsSend">
+            <img src="/img/post/send.svg" class="tal" @click="EnterKey">
+          </div>
           <img class="wallInputActionsPhoto" src="/img/post/photo.svg">
         </div>
       </div>
@@ -25,10 +38,14 @@ export default {
   },
   data () {
     return {
-      wallInput: ''
+      wallInput: '',
+      TextAreaheight: 26
     }
   },
   methods: {
+    Resize (element) {
+      this.TextAreaheight = element.target.scrollHeight
+    },
     EnterKey (e) {
       if (e.shiftKey) { return }
       this.WallSend()
@@ -65,6 +82,7 @@ export default {
     resize: none;
     border-radius: 15px;
     background: transparent;
+    max-height: 300px;
   }
   .wallInputActions{
     display: flex;
