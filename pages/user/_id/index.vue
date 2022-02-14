@@ -40,7 +40,7 @@
               <div>
                 <input
                   id="status"
-                  style="color:#8C99B2;border:none;"
+                  style="color:#8C99B2;border:none;width: -webkit-fill-available;"
                   :disabled="!user.me"
                   placeholder="Опишите ваше состояние в 80 символов"
                   :value="user.status"
