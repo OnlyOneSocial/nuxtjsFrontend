@@ -68,7 +68,7 @@ export default {
     justify-content: space-between;
     align-items: center;
     background:white;
-    border-radius: 15px;
+    border-radius: 8px;
   }
   #wallInput:focus-visible {
     outline: none;
@@ -80,7 +80,7 @@ export default {
     padding-left: 15px;
     width: 90%;
     resize: none;
-    border-radius: 15px;
+    border-radius: 8px;
     background: transparent;
     max-height: 300px;
   }
