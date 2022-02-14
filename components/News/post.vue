@@ -4,6 +4,7 @@
       <div style="display:flex">
         <img
           data-v-398b3732=""
+          class="article-avatar"
           height="32px"
           width="32px"
           alt="user avatar"
@@ -106,6 +107,9 @@ export default {
 }
 </script>
 <style scoped>
+.article-avatar{
+  margin: 0 10px 10px 0;
+}
 a {
     color: unset;
     text-decoration: none;
@@ -115,6 +119,7 @@ article {
   position:relative;
   margin-bottom: 10px;
   padding: 16px 21px 45px 13px;
+  border-radius: 8px;
 }
 .ArticleHeader {
   display:flex;
