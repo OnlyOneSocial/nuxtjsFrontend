@@ -256,7 +256,7 @@ export default Vue.extend({
       })
     },
     async UpdatePosts () {
-      await this.getPosts({ userid: this.$route.params.id, offset: this.posts.list.length, limit: 30 })
+      await this.getPosts({ userid: this.$route.params.id, offset: 0, limit: 30 })
     },
     async UpdateUser () {
       await this.getUser(this.$route.params.id).catch((err) => {
