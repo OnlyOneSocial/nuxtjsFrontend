@@ -50,7 +50,8 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     '~/plugins/axios',
-    '~/plugins/youtube.client.js'
+    '~/plugins/youtube.client.js',
+    '~/plugins/linkified.js'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

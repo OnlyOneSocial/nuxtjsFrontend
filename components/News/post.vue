@@ -37,7 +37,7 @@
         </div>
       </div>
     </div>
-    <p style="margin: 0;white-space: pre-wrap;" v-text="post.text" />
+    <p v-linkified:options="{ rel: 'nofollow noopener' }" style="margin: 0;white-space: pre-wrap;" v-text="post.text" />
     <div
       :style="(post.text==`Тестирование отображения видеороликов, а так же оптимизация блока поста ` ? 'padding-bottom:0px;':'')+'position: relative;'"
     >
