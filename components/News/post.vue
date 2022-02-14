@@ -121,6 +121,9 @@ article {
   padding: 16px 21px 45px 13px;
   border-radius: 8px;
 }
+article p{
+  overflow-wrap: break-word;
+}
 .ArticleHeader {
   display:flex;
   justify-content: space-between;
