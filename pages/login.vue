@@ -16,53 +16,66 @@
 
         <div class="login-header-line" />
       </div>
+      <form id="login-form" action="login" @submit="Auth">
+        <div class="login-form">
+          <div class="login-form-text">
+            <span>{{ $t('UserName') }}</span>
+          </div>
+          <div class="login-form-input-container">
+            <div class="login-form-input-icon">
+              <img src="/img/login/login-form-input-icon-login.svg">
+            </div>
 
-      <div class="login-form">
-        <div class="login-form-text">
-          <span>{{ $t('UserName') }}</span>
-        </div>
-        <div class="login-form-input-container">
-          <div class="login-form-input-icon">
-            <img src="/img/login/login-form-input-icon-login.svg">
+            <div class="login-form-inputbox">
+              <input
+                id="login-username"
+                v-model="login"
+                tabindex="0"
+                name="username"
+                type="text"
+                placeholder="Введите Ваш логин"
+              >
+            </div>
           </div>
 
-          <div class="login-form-inputbox">
-            <input v-model="login" name="login" type="text" placeholder="Введите Ваш логин">
+          <div class="login-form-text">
+            <span>{{ $t('UserPassword') }}</span>
+          </div>
+          <div class="login-form-input-container">
+            <div class="login-form-input-icon">
+              <img src="/img/login/login-form-input-icon-password.svg">
+            </div>
+
+            <div class="login-form-inputbox">
+              <input
+                id="login-password"
+                v-model="password"
+                tabindex="0"
+                name="password"
+                type="password"
+                placeholder="Введите Ваш пароль"
+              >
+            </div>
+
+            <div v-if="false" class="login-form-input-show">
+              <img src="/img/login/login-form-input-show.svg">
+            </div>
+          </div>
+
+          <div v-if="false" class="login-form-store-password">
+            <input id="login-form-store-password-checkbox" v-model="savePassword" type="checkbox">
+            <label for="login-form-store-password-checkbox">{{ $t('SavePassword') }}?</label>
+          </div>
+
+          <div class="login-form-captcha">
+            <recaptcha />
+          </div>
+
+          <div class="login-form-button">
+            <input type="submit" :value="$t('Login')" title="Войти или создать новый аккаунт">
           </div>
         </div>
-
-        <div class="login-form-text">
-          <span>{{ $t('UserPassword') }}</span>
-        </div>
-        <div class="login-form-input-container">
-          <div class="login-form-input-icon">
-            <img src="/img/login/login-form-input-icon-password.svg">
-          </div>
-
-          <div class="login-form-inputbox">
-            <input v-model="password" name="password" type="password" placeholder="Введите Ваш пароль">
-          </div>
-
-          <div v-if="false" class="login-form-input-show">
-            <img src="/img/login/login-form-input-show.svg">
-          </div>
-        </div>
-
-        <div class="login-form-store-password">
-          <input id="login-form-store-password-checkbox" v-model="savePassword" type="checkbox">
-          <label for="login-form-store-password-checkbox">{{ $t('SavePassword') }}?</label>
-        </div>
-
-        <div class="login-form-captcha">
-          <recaptcha />
-        </div>
-
-        <div class="login-form-button">
-          <button title="Войти или создать новый аккаунт" @click="Auth">
-            {{ $t('Login') }}
-          </button>
-        </div>
-      </div>
+      </form>
 
       <div v-if="true" class="login-footer">
         <div class="login-footer-string">
@@ -112,13 +125,14 @@ export default Vue.extend({
   mounted () {
     // eslint-disable-next-line no-undef
 
-    this.login = localStorage.getItem('login')
-    this.password = localStorage.getItem('password')
+    // this.login = localStorage.getItem('login')
+    // this.password = localStorage.getItem('password')
     this.savePassword = localStorage.getItem('savePassword')
   },
 
   methods: {
-    async Auth () {
+    async Auth (e) {
+      e.preventDefault()
       try {
         const captcha = await this.$recaptcha.getResponse()
         this.$api.$post('/user/login', {
@@ -127,6 +141,11 @@ export default Vue.extend({
           captcha
 
         }).then((data) => {
+          /* localStorage.setItem('login', this.login)
+          if (this.savePassword) {
+            localStorage.setItem('password', this.password)
+          } */
+
           localStorage.setItem('token', this.password)
           this.$cookies.set('token', data.jwt, {
             path: '/',
@@ -286,7 +305,7 @@ body {
     margin-left: 76px;
     margin-top: 12px;
 }
-.login-form-button > button {
+.login-form-button > input[type="submit"] {
     width: 426px;
     height: 64px;
 
@@ -301,7 +320,7 @@ body {
 
     transition: 0.25s;
 }
-.login-form-button > button:hover {
+.login-form-button > input[type="submit"]:hover {
     cursor: pointer;
     background: #0d57e0;
 }
@@ -372,8 +391,8 @@ body {
         margin-left: 38px;
         margin-right: 38px;
     }
-    .login-form-button > button {
-        width: 100%;
+    .login-form-button > input[type="submit"] {
+        width: 350px;
     }
 }
 </style>
