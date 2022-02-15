@@ -150,6 +150,7 @@ export default {
   },
   data () {
     return {
+      TextAreaheight: 26,
       messages: [],
       dialogs: [],
       message: '',

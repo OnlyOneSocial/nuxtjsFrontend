@@ -34,7 +34,7 @@ export default {
     }
   },
   created () {
-    if (this.me && this.me.id && this.like && this.likes.includes(parseInt(this.me.id))) {
+    if (this.me && this.me.id && this.like && this.likes && this.likes.includes(parseInt(this.me.id))) {
       this.liked = 1
     }
   },
