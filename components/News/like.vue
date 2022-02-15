@@ -19,9 +19,9 @@ export default {
       type: Array,
       default: () => []
     },
-    userid: {
-      type: Boolean,
-      default: () => false
+    userId: {
+      type: String,
+      default: () => '0'
     }
 
   },
@@ -32,7 +32,7 @@ export default {
     }
   },
   created () {
-    if (this.me && this.likes && this.likes.includes(parseInt(this.UserID))) {
+    if (this.userId && this.like && this.likes.includes(parseInt(this.userId))) {
       this.liked = 1
     }
   },
