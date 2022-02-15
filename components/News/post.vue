@@ -143,6 +143,7 @@ article p{
 
 }
 .red {
-  color: red
+  color: red;
+  filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%);
 }
 </style>
