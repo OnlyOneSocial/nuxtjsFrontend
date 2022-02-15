@@ -38,7 +38,9 @@ const object = {
         tagName
       } = opts.resolve(token)
 
-      const link = [`<${tagName} href="/open?url=${escapeAttr(formattedHref)}"`]
+      const url = new URL(formattedHref)
+
+      const link = [`<${tagName} href="${url.hostname === 'only-one.su' ? '' : '/open?url='}${escapeAttr(formattedHref)}"`]
 
       link.push('target="_blank"')
       link.push('rel="nofollow noopener"')
