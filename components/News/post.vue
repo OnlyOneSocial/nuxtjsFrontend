@@ -52,8 +52,8 @@
         class="ArticleActions"
       >
         <div>
-          <NewsLike :random-id="post.random_id" :likes="post.likes" :user-id="me.id" like />
-          <NewsLike :random-id="post.random_id" :likes="post.likes" :user-id="me.id" />
+          <NewsLike :random-id="post.random_id" :likes="post.likes" :user-id="me" like />
+          <NewsLike :random-id="post.random_id" :likes="post.likes" :user-id="me" />
         </div>
         <div @click="$router.push(`/post/${post.random_id}/?answer`)">
           {{ $t('AnswerPost') }}({{ post.answercount }})

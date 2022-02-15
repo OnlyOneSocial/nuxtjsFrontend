@@ -19,9 +19,11 @@ export default {
       type: Array,
       default: () => []
     },
-    userId: {
-      type: String,
-      default: () => '0'
+    me: {
+      type: Object,
+      default: () => {
+        return { id: 0 }
+      }
     }
 
   },
@@ -32,13 +34,13 @@ export default {
     }
   },
   created () {
-    if (this.userId && this.like && this.likes.includes(parseInt(this.userId))) {
+    if (this.me && this.me.id && this.like && this.likes.includes(parseInt(this.me.id))) {
       this.liked = 1
     }
   },
   methods: {
     Like (id) {
-      if (this.like) {
+      if (this.me && this.me.id && this.like) {
         this.$api.post('wall/like/' + id).then((data) => {
           if (this.liked) { this.locallike--; this.liked = 0 } else { this.locallike++; this.liked = 1 }
         })
