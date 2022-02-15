@@ -3,15 +3,15 @@
     <img id="avatarPhoto" alt="user avatar" :src="avatar" @click="$store.commit('SetModal', { type: 'OpenUserAvatar', data: avatar })">
     <div v-if="changeButton" id="changeAvatarButton">
       <span id="ChangeAvatarButton" @click="clickforUpload">change avatar</span>
-      <input
-        id="avatarUpload"
-        style="display: none;"
-        type="file"
-        accept=".jpg, .jpeg, .png"
-        size="5000000"
-        @change="Upload"
-      >
     </div>
+    <input
+      id="avatarUpload"
+      style="display: none;"
+      type="file"
+      accept=".jpg, .jpeg, .png"
+      size="5000000"
+      @change="Upload"
+    >
   </div>
 </template>
 <script>
