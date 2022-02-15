@@ -10,7 +10,12 @@
                   <img :src="getAvatar(msg.userid,me.avatar)">
                 </div>
                 <div style="padding-left: 5px;" class="message-username">
-                  <span>{{ me.username }}({{ msg.time }})</span>
+                  <div style="text-align:left">
+                    {{ me.username }}
+                  </div>
+                  <div style="font-size:small">
+                    {{ msg.time }}
+                  </div>
                 </div>
               </div>
             </NuxtLink>
@@ -26,7 +31,12 @@
                   <img :src="getAvatar(msg.userid,msg.avatar)">
                 </div>
                 <div style="padding-left: 5px;" class="message-username">
-                  <span>{{ msg.username }}({{ msg.time }})</span>
+                  <div style="text-align:left">
+                    {{ msg.username }}
+                  </div>
+                  <div style="font-size:small">
+                    {{ msg.time }}
+                  </div>
                 </div>
               </div>
             </NuxtLink>
@@ -38,7 +48,7 @@
         </div>
       </div>
 
-      <div style="position: absolute;bottom: 0;left:10%;width:80%;" class="message-input-container">
+      <div v-if="false" style="position: absolute;bottom: 0;left:10%;width:80%;" class="message-input-container">
         <input v-model="message" style="height:40px;border: 2px solid gray;width:75%" type="text" @keyup.enter="EnterKey">
         <div style="position: absolute;display: inline-block;" class="SmilePopup">
           <no-ssr>
@@ -62,6 +72,47 @@
         </div>
         <input style="height:40px;border: 2px solid gray;" type="button" value="Send" @click="send">
       </div>
+
+      <div style="position: absolute;bottom: 0;top:92%;left:20%;right:20%;width:80%;" class="message-input-container">
+        <div class="EditorBox">
+          <textarea
+            id="Input"
+            v-model="message"
+            :style="{
+              height: `${TextAreaheight}px`
+            }"
+            placeholder="Напишите что-нибудь...."
+            rows="1"
+            class="w"
+            @keyup.enter="EnterKey"
+            @input="Resize"
+          />
+          <div class="InputActions">
+            <div class="InputActionsSend">
+              <img src="/img/post/send.svg" class="tal" @click="EnterKey">
+            </div>
+            <no-ssr>
+              <popper
+
+                trigger="clickToToggle"
+                :options="{
+                  placement: 'top',
+                  modifiers: { offset: { offset: '0,10px' } }
+                }"
+              >
+                <div class="popper">
+                  <Emoji :select="selectEmoji2" />
+                </div>
+
+                <button slot="reference" style="background-color:unset">
+                  <img class="tal" src="/img/im/smile.svg">
+                </button>
+              </popper>
+            </no-ssr>
+            <img class="InputActionsPhoto tal" src="/img/post/photo.svg">
+          </div>
+        </div>
+      </div>
     </div>
 
     <div v-if="!$route.query.im" style="text-align:center;margin: 0 auto;background: rgb(255, 255, 255);padding: 10px 20px 20px 20px;width:50%">
@@ -73,7 +124,8 @@
               <img :src="getAvatar(dialog.sendto,dialog.avatar)">
             </div>
             <div style="padding-left: 5px;" class="message-username">
-              <span>{{ dialog.username }} ({{ dialog.time }})</span>
+              <span>{{ dialog.username }}</span>
+              <div>{{ dialog.time }}</div>
             </div>
           </div>
           <div style="margin-top: -5px;">
@@ -129,6 +181,9 @@ export default {
     this.getIm()
   },
   methods: {
+    Resize (element) {
+      this.TextAreaheight = element.target.scrollHeight
+    },
     getAvatar (id, avatar) {
       if (avatar) { return `https://cdn.only-one.su/public/clients/${id}/${avatar}` } else { return 'https://cdn.only-one.su/public/UserProfileImage.svg' }
     },
@@ -169,6 +224,50 @@ export default {
 }
 </script>
 <style scoped>
+    .w{
+      display: flex;
+      justify-content: center;
+    }
+  .EditorBox{
+    width: 80%;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    background:white;
+    border-radius: 8px;
+  }
+  #Input:focus-visible {
+    outline: none;
+  }
+  #Input{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    overflow: hidden;
+    padding-left: 15px;
+    width: 90%;
+    resize: none;
+    border-radius: 8px;
+    background: transparent;
+    max-height: 300px;
+  }
+  .InputActions{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    margin: 15px;
+  }
+  .InputActionsSend{
+    display: flex;
+    align-items: center;
+  }
+  .tal{
+        height: 20px;
+        width: 20px;
+  }
+  .InputActionsPhoto{
+        margin-right: 10px;
+  }
+
 a {
   text-decoration: unset;
   color: unset;
