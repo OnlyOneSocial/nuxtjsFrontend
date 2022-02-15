@@ -8,11 +8,17 @@
           <div :key="index" style="width:100%;">
             <div id="friend">
               <NuxtLink :to="`/user/${friend.user.id}`">
+                <div style="display:flex;justify-content: start;padding-bottom:5px">
                   <img height="41px" width="41px" style="border-radius: 100%;" alt="user avatar" :src="getAvatar(friend.user.id,friend.user.avatar)">
-                  <span data-v-bd7b612a="" style="font-size: 18px; width: 41px; overflow: hidden; white-space: nowrap;">
+                  <div style="padding-left:10px">
+                    <span style="font-size: 18px; width: 41px; overflow: hidden; white-space: nowrap;">
                       {{ friend.user.username }}
-                   </span> 
-                  <div style="font-size: small;">{{ 120 > Math.floor(new Date().getTime()/1000 - friend.user.online) ? "Онлайн":OfflinefromOnline(friend.user.online) }}</div>
+                    </span>
+                    <div style="font-size: small;">
+                      {{ 120 > Math.floor(new Date().getTime()/1000 - friend.user.online) ? "Онлайн":OfflinefromOnline(friend.user.online) }}
+                    </div>
+                  </div>
+                </div>
               </NuxtLink>
             </div>
           </div>
@@ -93,6 +99,10 @@ export default Vue.extend({
 })
 </script>
 <style scoped>
+a {
+  text-decoration: unset;
+  color: unset;
+}
 #friend {
   width: 27px;
   display: inline-block;
