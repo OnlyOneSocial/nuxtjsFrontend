@@ -52,7 +52,8 @@
         class="ArticleActions"
       >
         <div :class="{red:liked===1}" @click="Like(post.random_id)">
-          <span>{{ !post.likes ? 0+locallike : post.likes.length+locallike }}</span> {{ $t('LikePost') }}
+          <span>{{ !post.likes ? 0+locallike : post.likes.length+locallike }}</span> <img src="/icons/like.svg">
+          <span>0</span> <img src="/icons/dislike.svg">
         </div>
         <div @click="$router.push(`/post/${post.random_id}/?answer`)">
           {{ $t('AnswerPost') }}({{ post.answercount }})
