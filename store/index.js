@@ -24,7 +24,7 @@ export const actions = {
     const token = this.$cookies.get('token')
     const namePage = app.router.history.current.name
 
-    const AuthRequiredPages = ['index', 'news', 'im']
+    const AuthRequiredPages = ['news', 'im']
 
     if (!token && AuthRequiredPages.includes(namePage)) {
       redirect('/login')

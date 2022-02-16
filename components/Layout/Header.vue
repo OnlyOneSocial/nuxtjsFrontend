@@ -1,7 +1,7 @@
 <template>
   <header class="header-container">
     <NuxtLink to="/">
-      <img class="header-logo" src="/img/Logo.svg" alt="MSN - modern social network alpha">
+      <img class="header-logo" src="/img/Logo.svg" alt="Only one - Социальная сеть">
     </NuxtLink>
     <template v-if="me.id">
       <button class="login-container" @click="logout">

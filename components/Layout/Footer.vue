@@ -1,23 +1,45 @@
 <template>
-  <footer class="footer-mobile">
-    <NuxtLink to="/news">
-      <img style="width: 30px;" src="/img/footer/newspaper.svg">
-    </NuxtLink>
-    <NuxtLink
-      v-if="$store.state.me.id"
-      :to="`/user/${$store.state.me.id}`"
-    >
-      <img
-        class="ICON"
-        src="/img/footer/user.svg"
+  <footer>
+    <div v-if="$nuxt.$route.name!=='login' && $nuxt.$route.name!=='register'" class="footer-mobile">
+      <NuxtLink to="/news">
+        <img style="width: 30px;" src="/img/footer/newspaper.svg">
+      </NuxtLink>
+      <NuxtLink
+        v-if="$store.state.me.id"
+        :to="`/user/${$store.state.me.id}`"
       >
-    </NuxtLink>
-    <NuxtLink v-if="!me.id" to="/users">
-      <img class="ICON" src="/img/footer/users.svg">
-    </NuxtLink>
-    <NuxtLink v-if="me.id" to="/im">
-      <img src="/img/menu/news.svg" class="ICON">
-    </NuxtLink>
+        <img
+          class="ICON"
+          src="/img/footer/user.svg"
+        >
+      </NuxtLink>
+      <NuxtLink v-if="!me.id" to="/users">
+        <img class="ICON" src="/img/footer/users.svg">
+      </NuxtLink>
+      <NuxtLink v-if="me.id" to="/im">
+        <img src="/img/menu/news.svg" class="ICON">
+      </NuxtLink>
+    </div>
+    <div class="defaultFooter">
+      <div>
+        <NuxtLink to="/users">
+          <img src="/img/menu/people.svg" style="margin-left:6px"> {{ $t('UsersCatalog') }}
+        </NuxtLink>
+        <NuxtLink to="/about">
+          <img src="/img/menu/about.svg" style="margin-left:6px"> {{ $t('AboutProject') }}
+        </NuxtLink>
+      </div>
+      <template v-if="$i18n.localeProperties.code=='ru'">
+        <span @click="$i18n.setLocale('en')">
+          Change to English
+        </span>
+      </template>
+      <template v-else-if="$i18n.localeProperties.code=='en'">
+        <span @click="$i18n.setLocale('ru')">
+          Сменить на Русский
+        </span>
+      </template>
+    </div>
   </footer>
 </template>
 <script>
@@ -32,11 +54,23 @@ export default {
 }
 </script>
 <style>
+a {
+  color: unset;
+  text-decoration: unset;
+}
   .footer-mobile {
     display: none;
   }
 
+  .defaultFooter {
+    display:flex;
+    justify-content: space-between;
+  }
+
   @media screen and (orientation: portrait) {
+    .defaultFooter {
+      display: none;
+    }
     .footer-mobile {
       display: block;
       font-size: x-large;

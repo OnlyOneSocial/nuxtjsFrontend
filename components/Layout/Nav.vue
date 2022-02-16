@@ -33,16 +33,6 @@
           <img src="/img/menu/about.svg" style="margin-right:6px">{{ $t('AboutProject') }}
         </NuxtLink>
       </li>
-      <li v-if="$i18n.localeProperties.code=='ru'" class="nav-list__item">
-        <span @click="$i18n.setLocale('en')">
-          Change to English
-        </span>
-      </li>
-      <li v-else-if="$i18n.localeProperties.code=='en'" class="nav-list__item">
-        <span @click="$i18n.setLocale('ru')">
-          Сменить на Русский
-        </span>
-      </li>
     </ul>
   </nav>
 </template>

@@ -2,11 +2,11 @@
 <template style="">
   <div class="page-container_main">
     <section class="page-container">
-      <LayoutHeader v-if="$nuxt.$route.name!=='login' && $nuxt.$route.name!=='register'" />
+      <LayoutHeader v-if="!pages.includes($nuxt.$route.name)" />
       <section class="page-container__layout">
-        <LayoutNav /><Nuxt class="page-container__content" />
+        <LayoutNav v-if="$nuxt.$route.name!=='index'" /><Nuxt class="page-container__content" />
       </section>
-      <LayoutFooter v-if="$nuxt.$route.name!=='login' && $nuxt.$route.name!=='register'" />
+      <LayoutFooter />
     </section>
     <section v-if="modal.type" class="modal" @click.self="Close">
       <UserAvatarChangeModal
@@ -27,6 +27,9 @@
 import { mapState, mapActions } from 'vuex'
 
 export default {
+  data () {
+    return { pages: ['login', 'register'] }
+  },
   head () {
     return {
       htmlAttrs: {
@@ -164,6 +167,8 @@ export default {
 </style>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Roboto:wght@500;700&display=swap');
+
   body{
     background: #F5F8FD;
   }
