@@ -71,7 +71,7 @@ export default {
 
   },
 
-  beforeMount  () {
+  mounted  () {
     // this.getMe()
     if (this.$cookies.get('token')) {
       const socket = new WebSocket('wss://only-one.su/ws')
@@ -83,8 +83,29 @@ export default {
         }))
       })
 
-      socket.addEventListener('message', function (event) {
-        console.log(JSON.parse(event.data))
+      socket.addEventListener('message', (event) => {
+        JSON.parse(event.data).forEach((element) => {
+          switch (element.type) {
+            case 'request_send':
+              this.$toast.info(`${element.username} отправил(а) заявку в друзья`, {
+                position: 'bottom-right',
+                duration: 5000
+              })
+              break
+            case 'request_accept':
+              this.$toast.info(`${element.username} принял(а) заявку в друзья`, {
+                position: 'bottom-right',
+                duration: 5000
+              })
+              break
+            case 'message_send':
+              this.$toast.info(`${element.username} написал(а) в личные сообщения`, {
+                position: 'bottom-right',
+                duration: 5000
+              })
+              break
+          }
+        })
       })
     }
   },
