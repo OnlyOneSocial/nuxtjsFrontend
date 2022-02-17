@@ -62,6 +62,7 @@ export default {
       ]
     }
   },
+
   computed: {
     ...mapState({
       modal: state => state.modal
@@ -69,8 +70,23 @@ export default {
     })
 
   },
+
   beforeMount  () {
     // this.getMe()
+    if (this.$cookies.get('token')) {
+      const socket = new WebSocket('wss://only-one.su/ws')
+
+      socket.addEventListener('open', (event) => {
+        socket.send(JSON.stringify({
+          data: this.$cookies.get('token'),
+          type: 'init'
+        }))
+      })
+
+      socket.addEventListener('message', function (event) {
+        console.log(JSON.parse(event.data))
+      })
+    }
   },
   methods: {
     Close () {

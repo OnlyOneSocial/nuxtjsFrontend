@@ -110,9 +110,6 @@ export default Vue.extend({
   mounted () {
     // eslint-disable-next-line no-undef
 
-    // this.login = localStorage.getItem('login')
-    // this.password = localStorage.getItem('password')
-    this.savePassword = localStorage.getItem('savePassword')
   },
 
   methods: {
@@ -126,17 +123,11 @@ export default Vue.extend({
           captcha
 
         }).then((data) => {
-          /* localStorage.setItem('login', this.login)
-          if (this.savePassword) {
-            localStorage.setItem('password', this.password)
-          } */
-
-          localStorage.setItem('token', this.password)
           this.$cookies.set('token', data.jwt, {
             path: '/',
             maxAge: 60 * 60 * 24 * 7
           })
-          localStorage.setItem('savePassword', this.savePassword)
+
           location.href = `/user/${data.id}`
         // this.$router.push(`/user/${data.userid}`)
         }).catch((err) => {
