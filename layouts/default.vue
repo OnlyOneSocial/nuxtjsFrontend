@@ -1,6 +1,7 @@
 
 <template style="">
   <div class="page-container_main">
+    <audio id="notification" src="/sound.mp3" muted />
     <section class="page-container">
       <LayoutHeader v-if="!pages.includes($nuxt.$route.name)" />
       <section class="page-container__layout">
@@ -84,24 +85,27 @@ export default {
       })
 
       socket.addEventListener('message', (event) => {
+        document.getElementById('notification').muted = false
+        document.getElementById('notification').play()
+
         JSON.parse(event.data).forEach((element) => {
           switch (element.type) {
             case 'request_send':
               this.$toast.info(`${element.username} отправил(а) заявку в друзья`, {
                 position: 'bottom-right',
-                duration: 5000
+                duration: 10000
               })
               break
             case 'request_accept':
               this.$toast.info(`${element.username} принял(а) заявку в друзья`, {
                 position: 'bottom-right',
-                duration: 5000
+                duration: 10000
               })
               break
             case 'message_send':
               this.$toast.info(`${element.username} написал(а) в личные сообщения`, {
                 position: 'bottom-right',
-                duration: 5000
+                duration: 10000
               })
               break
           }
