@@ -162,7 +162,8 @@ export default {
       return this.$route.query.im
     },
     ...mapState({
-      me: state => state.me
+      me: state => state.me,
+      socket: state => state.socket
     })
   },
   watch: {
@@ -198,6 +199,11 @@ export default {
           this.messages = data.data
           if (this.loading) {
             this.$nextTick(() => {
+              console.log(this.socket)
+              this.socket.send(JSON.stringify({
+                data: this.$route.query.im,
+                type: 'OpenIm'
+              }))
               document.getElementsByClassName('messages-container')[0].scrollTop = document.getElementsByClassName('messages-container')[0].scrollHeight
             })
           }

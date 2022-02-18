@@ -66,46 +66,72 @@ export default {
 
   computed: {
     ...mapState({
-      modal: state => state.modal
+      modal: state => state.modal,
+      socket: state => state.socket
 
     })
 
   },
-
+  async beforeMount () {
+    await this.InitWebSocket()
+  },
   mounted  () {
+    // this.socket = new WebSocket('wss://only-one.su/ws')
     // this.getMe()
     if (this.$cookies.get('token')) {
-      const socket = new WebSocket('wss://only-one.su/ws')
-
-      socket.addEventListener('open', (event) => {
-        socket.send(JSON.stringify({
+      this.socket.addEventListener('open', (event) => {
+        console.log('ok')
+        this.socket.send(JSON.stringify({
           data: this.$cookies.get('token'),
           type: 'init'
         }))
       })
 
-      socket.addEventListener('message', (event) => {
-        document.getElementById('notification').muted = false
+      this.socket.addEventListener('message', (event) => {
+        if (document.getElementById('notification').muted) { document.getElementById('notification').muted = false }
         document.getElementById('notification').play()
-
         JSON.parse(event.data).forEach((element) => {
           switch (element.type) {
             case 'request_send':
               this.$toast.info(`${element.username} отправил(а) заявку в друзья`, {
                 position: 'bottom-right',
-                duration: 10000
+                duration: 15000,
+                action: [
+                  {
+                    text: 'открыть',
+                    onClick: () => {
+                      this.$router.push(`/user/${element.userid}`)
+                    }
+                  }
+                ]
               })
               break
             case 'request_accept':
               this.$toast.info(`${element.username} принял(а) заявку в друзья`, {
                 position: 'bottom-right',
-                duration: 10000
+                duration: 15000,
+                action: [
+                  {
+                    text: 'открыть',
+                    onClick: () => {
+                      this.$router.push(`/user/${element.userid}`)
+                    }
+                  }
+                ]
               })
               break
             case 'message_send':
               this.$toast.info(`${element.username} написал(а) в личные сообщения`, {
                 position: 'bottom-right',
-                duration: 10000
+                duration: 15000,
+                action: [
+                  {
+                    text: 'открыть',
+                    onClick: () => {
+                      this.$router.push(`/im?im=${element.userid}`)
+                    }
+                  }
+                ]
               })
               break
           }
@@ -121,7 +147,7 @@ export default {
     async Update () {
       await this.getMe()
     },
-    ...mapActions(['getMe'])
+    ...mapActions(['getMe', 'InitWebSocket'])
   }
 }
 </script>

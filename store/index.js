@@ -4,6 +4,7 @@ let serverUsersUrl = serverUrl
 if (process.env.NODE_ENV === 'production' && process.env.VUE_ENV === 'server') { serverUrl = 'http://localhost:3044/api'; serverNewsUrl = 'http://localhost:3053/api'; serverUsersUrl = 'http://localhost:3046/api' }
 
 export const state = () => ({
+  socket: {},
   me: {
     id: 0
   },
@@ -55,6 +56,10 @@ export const actions = {
       if (res && res.data && res.data.user && res.data.user.id) { commit('SetMe', res.data.user) }
     }
   },
+  InitWebSocket ({ commit }) {
+    const WS = new WebSocket('wss://only-one.su/ws')
+    commit('InitWebSocket', WS)
+  },
   async getUsers ({ commit }, userid) {
     const response = await this.$api.$get(`${serverUsersUrl}/user/get`).catch((err) => {
       console.log(err)
@@ -98,6 +103,9 @@ export const actions = {
 }
 
 export const mutations = {
+  InitWebSocket (state, WS) {
+    state.socket = WS
+  },
   SetModal (state, { type, data }) {
     state.modal = {
       type,
