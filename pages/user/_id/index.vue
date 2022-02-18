@@ -360,7 +360,7 @@ export default Vue.extend({
 .friends {
   background: #fff;
   border-radius: 8px;
-  width: 17vw;
+  width: 16vw;
   margin: 0px 0 0 9px;
   height: 450px;
 }
