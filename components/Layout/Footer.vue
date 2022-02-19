@@ -34,7 +34,7 @@
           English
         </span>
       </template>
-      <template v-else-if="$i18n.localeProperties.code!==='ru'">
+      <template v-else-if="$i18n.localeProperties.code!=='ru'">
         <span @click="$i18n.setLocale('ru')">
           Русский
         </span>
