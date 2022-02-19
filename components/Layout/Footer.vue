@@ -29,14 +29,19 @@
           <img src="/img/menu/about.svg" style="margin-left:6px"> {{ $t('AboutProject') }}
         </NuxtLink>
       </div>
-      <template v-if="$i18n.localeProperties.code=='ru'">
+      <template v-if="$i18n.localeProperties.code!=='en'">
         <span @click="$i18n.setLocale('en')">
-          Change to English
+          English
         </span>
       </template>
-      <template v-else-if="$i18n.localeProperties.code=='en'">
+      <template v-else-if="$i18n.localeProperties.code!==='ru'">
         <span @click="$i18n.setLocale('ru')">
-          Сменить на Русский
+          Русский
+        </span>
+      </template>
+      <template v-else-if="$i18n.localeProperties.code!=='ua'">
+        <span @click="$i18n.setLocale('ua')">
+          Українська
         </span>
       </template>
     </div>
