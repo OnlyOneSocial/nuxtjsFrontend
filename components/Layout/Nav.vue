@@ -4,33 +4,33 @@
       <template v-if="me.id">
         <li class="nav-list__item">
           <NuxtLink :to="`/user/${me.id}`">
-            <img src="/img/menu/my_page.svg" style="margin-right:6px;filter: invert(0.5) sepia(1) saturate(5) hue-rotate(175deg)">{{ $t('MyPage') }}
+            <img src="/img/menu/my_page.svg" :class="{active:$nuxt.$route.name=='user-id' }" style="margin-right:6px;">{{ $t('MyPage') }}
           </NuxtLink>
         </li>
         <li class="nav-list__item">
           <NuxtLink :to="`/user/${me.id}/friends`">
-            <img src="/img/menu/contacts.svg" style="margin-right:6px">{{ $t('Contacts') }}
+            <img src="/img/menu/contacts.svg" :class="{active:$nuxt.$route.name=='user-id-friends' }" style="margin-right:6px">{{ $t('Contacts') }}
           </NuxtLink>
         </li>
         <li class="nav-list__item">
           <NuxtLink to="/news">
-            <img src="/img/menu/news.svg" style="margin-right:6px">{{ $t('Feed') }}
+            <img src="/img/menu/news.svg" :class="{active:$nuxt.$route.name=='news' }" style="margin-right:6px">{{ $t('Feed') }}
           </NuxtLink>
         </li>
         <li class="nav-list__item">
           <NuxtLink to="/im">
-            <img src="/img/menu/news.svg" style="margin-right:6px">Диалоги
+            <img src="/img/menu/news.svg" :class="{active:$nuxt.$route.name=='im' }" style="margin-right:6px">Диалоги
           </NuxtLink>
         </li>
       </template>
       <li class="nav-list__item">
         <NuxtLink to="/users">
-          <img src="/img/menu/people.svg" style="margin-right:6px">{{ $t('UsersCatalog') }}
+          <img src="/img/menu/people.svg" :class="{active:$nuxt.$route.name=='users' }" style="margin-right:6px">{{ $t('UsersCatalog') }}
         </NuxtLink>
       </li>
       <li class="nav-list__item">
         <NuxtLink to="/about">
-          <img src="/img/menu/about.svg" style="margin-right:6px">{{ $t('AboutProject') }}
+          <img src="/img/menu/about.svg" :class="{active:$nuxt.$route.name=='about' }" style="margin-right:6px">{{ $t('AboutProject') }}
         </NuxtLink>
       </li>
     </ul>
@@ -40,6 +40,9 @@
 import { mapState } from 'vuex'
 
 export default {
+  updated () {
+    console.log(this.$nuxt.$route.name)
+  },
   computed: {
     ...mapState({
       me: state => state.me
@@ -79,5 +82,8 @@ export default {
     .page-container__layout nav {
       display: none;
     }
+  }
+  .active {
+    filter: invert(0.5) sepia(1) saturate(5) hue-rotate(175deg)
   }
 </style>
