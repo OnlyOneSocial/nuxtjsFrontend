@@ -13,6 +13,10 @@ export default {
   Logout: 'Вийти',
   UserName: 'Ім`я користувача',
   UserPassword: 'Пароль',
-  SavePassword: 'Запам`ятати пароль'
+  SavePassword: 'Запам`ятати пароль',
+  Welcome: 'Добро пожаловать',
+  YouDontHaveAccount: 'У Вас нет аккаунта',
+  InFreeDomSocialNetwork: 'в свободную социальную сеть',
+  WeAreOnlyOneWeAreOnlyOneTogether: 'Мы всего лишь одни, вместе мы одно!'
 
 }
