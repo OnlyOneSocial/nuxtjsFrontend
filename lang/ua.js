@@ -13,13 +13,13 @@ export default {
   Logout: 'Вийти',
   UserName: 'Ім`я користувача',
   UserPassword: 'Пароль',
-  InputUsername: 'Введите ваш логин',
-  InputPassword: 'Введите ваш пароль',
+  InputUsername: 'Введіть ваш логін',
+  InputPassword: 'Введіть ваш пароль',
   SavePassword: 'Запам`ятати пароль',
-  Welcome: 'Добро пожаловать',
-  YouDontHaveAccount: 'У Вас нет аккаунта',
-  Reigster: 'Регистрация',
-  InFreeDomSocialNetwork: 'в свободную социальную сеть',
-  WeAreOnlyOneWeAreOnlyOneTogether: 'Мы всего лишь одни, вместе мы одно!'
+  Welcome: 'Ласкаво просимо',
+  YouDontHaveAccount: 'У Вас немає акаунта',
+  Reigster: 'Реєстрація',
+  InFreeDomSocialNetwork: 'у вільну соціальну мережу',
+  WeAreOnlyOneWeAreOnlyOneTogether: 'Ми всього лише одні, разом ми одне!'
 
 }
