@@ -13,5 +13,10 @@ export default {
   Logout: 'Log Out',
   UserName: 'Username',
   UserPassword: 'Password',
-  SavePassword: 'Save password'
+  SavePassword: 'Save password',
+  Welcome: 'Welcome',
+  YouDontHaveAccount: 'You don`t have account',
+  Reigster: 'Sign up',
+  InFreeDomSocialNetwork: 'In freedom social network',
+  WeAreOnlyOneWeAreOnlyOneTogether: 'We are only one, We are only one together'
 }

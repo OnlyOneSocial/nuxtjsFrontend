@@ -74,9 +74,9 @@
 
     <div v-if="true" class="login-footer">
       <div class="login-footer-string">
-        <span>У Вас нет аккаунта?</span>
+        <span>{{ $t('YouDontHaveAccount') }}</span>
         <NuxtLink :to="`/register`">
-          Регистрация
+          {{ $t('Register') }}
         </NuxtLink>
       </div>
 

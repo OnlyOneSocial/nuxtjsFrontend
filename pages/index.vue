@@ -3,10 +3,10 @@
     <div class="mainContent">
       <div style="text-align:center">
         <h2 class="Header">
-          Добро пожаловать
-        </h2> <span style="font-size:large"><h3> в свободную социальную сеть</h3> <h1>Only one</h1></span> <br>
+          {{ $t('Welcome') }}
+        </h2> <span style="font-size:large"><h3>{{ $t('InFreeDomSocialNetwork') }}</h3> <h1>Only one</h1></span> <br>
         <h2 class="weareonlyone">
-          Мы всего лишь одни, вместе мы одно!
+          {{ $t('WeAreOnlyOneWeAreOnlyOneTogether') }}!
         </h2>
       </div>
     </div>
