@@ -1,18 +1,18 @@
 export default {
-  MyPage: 'Моя страница',
-  Contacts: 'Контакты',
-  Feed: 'Лента',
-  UsersCatalog: 'Список пользователей',
-  AboutProject: 'О проекте',
-  Wall: 'Стена',
-  Send: 'Отправить',
-  AnswerPost: 'Ответить',
-  LikePost: 'лайк',
-  FriendsUser: 'Ваша сеть',
-  Login: 'Войти',
-  Logout: 'Выйти',
-  UserName: 'Имя пользователя',
+  MyPage: 'Моя сторінка',
+  Contacts: 'Контакти',
+  Feed: 'Стрічка',
+  UsersCatalog: 'Список користувачів',
+  AboutProject: 'Про проєкт',
+  Wall: 'Стіна',
+  Send: 'Відправити',
+  AnswerPost: 'Відповісти',
+  LikePost: 'вподобайка',
+  FriendsUser: 'Ваша мережа',
+  Login: 'Увійти',
+  Logout: 'Вийти',
+  UserName: 'Ім'я користувача',
   UserPassword: 'Пароль',
-  SavePassword: 'Запомнить пароль'
+  SavePassword: 'Запам'ятати пароль'
 
 }
