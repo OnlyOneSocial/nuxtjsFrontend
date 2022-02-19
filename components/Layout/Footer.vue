@@ -31,15 +31,15 @@
       </div>
 
       <div>
-        <span v-if="$i18n.localeProperties.code!=='en'" @click="$i18n.setLocale('en')">
+        <span v-if="$i18n.localeProperties.code!=='en'" style="cursor: pointer;" @click="$i18n.setLocale('en')">
           English
         </span>
 
-        <span v-if="$i18n.localeProperties.code!=='ru'" @click="$i18n.setLocale('ru')">
+        <span v-if="$i18n.localeProperties.code!=='ru'" style="cursor: pointer;" @click="$i18n.setLocale('ru')">
           Русский
         </span>
 
-        <span v-if="$i18n.localeProperties.code!=='ua'" @click="$i18n.setLocale('ua')">
+        <span v-if="$i18n.localeProperties.code!=='ua'" style="cursor: pointer;" @click="$i18n.setLocale('ua')">
           Українська
         </span>
       </div>
