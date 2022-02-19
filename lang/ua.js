@@ -19,7 +19,7 @@ export default {
   Welcome: 'Ласкаво просимо',
   YouDontHaveAccount: 'У Вас немає акаунта',
   Reigster: 'Реєстрація',
-  InFreeDomSocialNetwork: 'в вільну соціальну мережу',
+  InFreeDomSocialNetwork: 'у вільну соціальну мережу',
   WeAreOnlyOneWeAreOnlyOneTogether: 'Ми всього лише одні, разом ми одне!'
 
 }
