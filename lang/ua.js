@@ -11,8 +11,8 @@ export default {
   FriendsUser: 'Ваша мережа',
   Login: 'Увійти',
   Logout: 'Вийти',
-  UserName: 'Ім'я користувача',
+  UserName: 'Ім`я користувача',
   UserPassword: 'Пароль',
-  SavePassword: 'Запам'ятати пароль'
+  SavePassword: 'Запам`ятати пароль'
 
 }
