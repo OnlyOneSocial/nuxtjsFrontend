@@ -28,7 +28,7 @@
               tabindex="0"
               name="username"
               type="text"
-              placeholder="Введите Ваш логин"
+              :placeholder="$t('InputUsername')"
             >
           </div>
         </div>
@@ -48,7 +48,7 @@
               tabindex="0"
               name="password"
               type="password"
-              placeholder="Введите Ваш пароль"
+              :placeholder="$t('InputPassword')"
             >
           </div>
 

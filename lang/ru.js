@@ -11,6 +11,8 @@ export default {
   FriendsUser: 'Ваша сеть',
   Login: 'Войти',
   Logout: 'Выйти',
+  InputUsername: 'Введите ваш логин',
+  InputPassword: 'Введите ваш пароль',
   UserName: 'Имя пользователя',
   UserPassword: 'Пароль',
   SavePassword: 'Запомнить пароль',

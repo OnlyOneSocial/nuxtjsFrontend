@@ -13,6 +13,8 @@ export default {
   Logout: 'Log Out',
   UserName: 'Username',
   UserPassword: 'Password',
+  InputUsername: 'Write your username',
+  InputPassword: 'Write your password',
   SavePassword: 'Save password',
   Welcome: 'Welcome',
   YouDontHaveAccount: 'You don`t have account',
