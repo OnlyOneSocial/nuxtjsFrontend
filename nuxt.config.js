@@ -90,7 +90,7 @@ export default {
     locales: [
       { code: 'en', iso: 'en-US', file: 'en.js', dir: 'ltr' },
       { code: 'ru', iso: 'ru-RU', file: 'ru.js', dir: 'ltr' },
-      { code: 'ua', iso: 'uk_UA', file: 'ua.js', dir: 'ltr' }
+      { code: 'md', iso: 'ro_MD', file: 'md.js', dir: 'ltr' }
     ],
     defaultLocale: 'en',
     vueI18n: {
