@@ -1,6 +1,6 @@
 <template>
   <header class="header-container">
-    <NuxtLink to="/">
+    <NuxtLink :to="me.id ? '/news':'/' ">
       <img class="header-logo" src="/img/Logo.svg" alt="Only one - Социальная сеть">
     </NuxtLink>
     <template v-if="me.id">
