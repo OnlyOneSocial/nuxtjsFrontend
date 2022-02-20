@@ -1,6 +1,10 @@
 <template>
   <span :class="{red:liked===1}" @click="Like(randomId)">
-    <template v-if="like"> {{ !likes ? 0+locallike : likes.length+locallike }} </template> <template v-else>0</template> <img v-if="like" style="height:14px" src="/icons/like.svg"> <img v-else style="height:14px" src="/icons/dislike.svg">
+    <template v-if="like"> {{ !likes ? 0+locallike : likes.length+locallike }} </template>
+    <template v-else>0</template>
+
+    <img v-if="like" class="likeOrDislike" src="/icons/like.svg">
+    <img v-else class="likeOrDislike" src="/icons/dislike.svg">
   </span>
 </template>
 <script>
@@ -49,3 +53,9 @@ export default {
   }
 }
 </script>
+<style scoped>
+.likeOrDislike{
+  height:12px;
+  padding-right: 2px;
+}
+</style>

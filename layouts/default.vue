@@ -33,6 +33,18 @@ export default {
   },
   head () {
     return {
+      script: [{
+        type: 'application/ld+json',
+        json: {
+          '@context': 'http://schema.org',
+          '@type': 'Organization',
+          name: 'Only one - Свободная социальная сеть',
+          url: 'https://only-one.su/',
+          sameAs: [
+            'http://vk.com/onlyonesu'
+          ]
+        }
+      }],
       htmlAttrs: {
         lang: this.$i18n.localeProperties.code
       },
@@ -235,6 +247,17 @@ export default {
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Roboto:wght@500;700&display=swap');
+@font-face {
+    font-family: 'SF Pro Display';
+    src: url('/fonts/SFProDisplay-Regular.eot');
+    src: local('SF Pro Display Regular'), local('SFProDisplay-Regular'),
+        url('/fonts/SFProDisplay-Regular.eot?#iefix') format('embedded-opentype'),
+        url('/fonts/SFProDisplay-Regular.woff2') format('woff2'),
+        url('/fonts/SFProDisplay-Regular.woff') format('woff'),
+        url('/fonts/SFProDisplay-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
 
   body{
     background: #F5F8FD;
@@ -243,8 +266,8 @@ export default {
     margin: 0;
     padding: 0;
     border: 0;
+    font-family: 'SF Pro Display';
     box-sizing: border-box;
-    font-family: sans-serif;
   }
   button {
    border-radius: 4px;
