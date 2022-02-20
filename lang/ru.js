@@ -5,6 +5,7 @@ export default {
   Feed: 'Лента',
   UsersCatalog: 'Список пользователей',
   AboutProject: 'О проекте',
+  Explore: 'Исследовать',
   // Страница пользователя
   Friends: 'Друзья',
   Subscribes: 'Подписки',

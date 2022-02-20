@@ -5,6 +5,7 @@ export default {
   Feed: 'Стрічка',
   UsersCatalog: 'Список користувачів',
   AboutProject: 'Про проєкт',
+  Explore: 'Исследовать',
   // Страница пользователя
   Friends: 'Друзья',
   Subscribes: 'Подписки',

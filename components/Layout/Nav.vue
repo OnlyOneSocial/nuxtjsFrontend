@@ -4,33 +4,33 @@
       <template v-if="me.id">
         <li class="nav-list__item">
           <NuxtLink :to="`/user/${me.id}`">
-            <img src="/img/menu/my_page.svg" :class="{active:$nuxt.$route.name=='user-id' }" style="margin-right:6px;">{{ $t('MyPage') }}
+            <img src="/img/menu/my_page.svg" :class="{active:$nuxt.$route.name=='user-id' }">{{ $t('MyPage') }}
           </NuxtLink>
         </li>
         <li class="nav-list__item">
           <NuxtLink :to="`/user/${me.id}/friends`">
-            <img src="/img/menu/contacts.svg" :class="{active:$nuxt.$route.name=='user-id-friends' }" style="margin-right:6px">{{ $t('Contacts') }}
+            <img src="/img/menu/contacts.svg" :class="{active:$nuxt.$route.name=='user-id-friends' }">{{ $t('Contacts') }}
           </NuxtLink>
         </li>
         <li class="nav-list__item">
           <NuxtLink to="/news">
-            <img src="/img/menu/news.svg" :class="{active:$nuxt.$route.name=='news' }" style="margin-right:6px">{{ $t('Feed') }}
+            <img src="/img/menu/news.svg" :class="{active:$nuxt.$route.name=='news' }">{{ $t('Feed') }}
           </NuxtLink>
         </li>
         <li class="nav-list__item">
           <NuxtLink to="/im">
-            <img src="/img/menu/news.svg" :class="{active:$nuxt.$route.name=='im' }" style="margin-right:6px">{{ $t('Im') }}
+            <img src="/img/menu/im.svg" :class="{active:$nuxt.$route.name=='im' }">{{ $t('Im') }}
           </NuxtLink>
         </li>
       </template>
       <li class="nav-list__item">
-        <NuxtLink to="/users">
-          <img src="/img/menu/people.svg" :class="{active:$nuxt.$route.name=='users' }" style="margin-right:6px">{{ $t('UsersCatalog') }}
+        <NuxtLink to="/explore">
+          <img src="/img/menu/explore.svg" :class="{active:$nuxt.$route.name=='explore' }">{{ $t('Explore') }}
         </NuxtLink>
       </li>
       <li class="nav-list__item">
         <NuxtLink to="/about">
-          <img src="/img/menu/about.svg" :class="{active:$nuxt.$route.name=='about' }" style="margin-right:6px">{{ $t('AboutProject') }}
+          <img src="/img/menu/about.svg" :class="{active:$nuxt.$route.name=='about' }">{{ $t('AboutProject') }}
         </NuxtLink>
       </li>
     </ul>
@@ -52,6 +52,7 @@ export default {
 </script>
 
 <style scoped>
+
    .nav-list__item > a {
     color: black;
     text-decoration: none;
@@ -61,10 +62,11 @@ export default {
     font-size: 16px;
     line-height: 17px;
     letter-spacing: 0.01em;
-
   }
+
   .nav-list__item > a > img {
-    margin-right:6px
+    margin-right:6px;
+    height:18px;
   }
 
   .nav-container{
