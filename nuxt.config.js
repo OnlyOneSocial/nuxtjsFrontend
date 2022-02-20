@@ -5,6 +5,9 @@ export default {
     host: '0.0.0.0', // default: localhost
     port: 8111
   },
+  env: {
+    version: 0.05
+  },
   head: {
     title: 'Social network',
     meta: [
@@ -154,7 +157,9 @@ export default {
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
+    icon: false,
     manifest: {
+      name: 'Only one',
       lang: 'ru'
     }
   },
