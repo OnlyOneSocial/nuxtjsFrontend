@@ -249,12 +249,12 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Roboto:wght@500;700&display=swap');
 @font-face {
     font-family: 'SF Pro Display';
-    src: url('./fonts/SFProDisplay-Regular.eot');
+    src: url('/fonts/SFProDisplay-Regular.eot');
     src: local('SF Pro Display Regular'), local('SFProDisplay-Regular'),
-        url('./fonts/SFProDisplay-Regular.eot?#iefix') format('embedded-opentype'),
-        url('./fonts/SFProDisplay-Regular.woff2') format('woff2'),
-        url('./fonts/SFProDisplay-Regular.woff') format('woff'),
-        url('./fonts/SFProDisplay-Regular.ttf') format('truetype');
+        url('/fonts/SFProDisplay-Regular.eot?#iefix') format('embedded-opentype'),
+        url('/fonts/SFProDisplay-Regular.woff2') format('woff2'),
+        url('/fonts/SFProDisplay-Regular.woff') format('woff'),
+        url('/fonts/SFProDisplay-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
