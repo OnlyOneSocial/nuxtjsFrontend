@@ -259,12 +259,6 @@ export default {
     font-style: normal;
 }
 
-* {
-    font-family: 'SF Pro Display';
-    font-weight: normal;
-    font-style: normal;
-}
-
   body{
     background: #F5F8FD;
   }
@@ -272,8 +266,8 @@ export default {
     margin: 0;
     padding: 0;
     border: 0;
+    font-family: 'SF Pro Display';
     box-sizing: border-box;
-    font-family: sans-serif;
   }
   button {
    border-radius: 4px;
