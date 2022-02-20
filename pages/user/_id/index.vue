@@ -52,19 +52,19 @@
           <div style="opacity: 0.5;border: 1px solid #D7E2F2;box-sizing: border-box;width: 100%;height: 0px;" />
           <div>
             <template v-if="user.birthday_date!==0">
-              Дата рождения:
+              {{ $t('BirthDay') }}:
               {{ new Date(user.birthday_date * 1000).toLocaleDateString() }} ({{ Math.floor((new Date()-new Date(user.birthday_date * 1000))/1000/60/60/24/365) }})
             </template>
             <br>
-            Пол: {{ user.gender }}
+            {{ $t('Gender') }}: {{ user.gender }}
             <br>
             <NuxtLink v-if="false" :to="`/user/${user.id}/contacts`">
               Контакты и страницы
               <br>
             </NuxtLink>
-            Местоположение: {{ user.country }}, {{ user.city }}
+            {{ $t('Location') }}: {{ user.country }}, {{ user.city }}
             <br>
-            Краткое описание: <span>{{ user.bio }}</span>
+            {{ $t('ShortDesc') }}: <span>{{ user.bio }}</span>
           </div>
         </div>
       </div>
@@ -83,9 +83,9 @@
             </div>
 
             <div style="padding: 19px 28px 16px 28px;">
-              <span :class="{'textBold':NetworkSelectNum===1}" @click="NetworkSelect(1)">Друзья</span>
-              <span :class="{'textBold':NetworkSelectNum===2}" @click="NetworkSelect(2)">Подписки</span>
-              <span v-if="user.me" :class="{'textBold':NetworkSelectNum===3}" @click="NetworkSelect(3)">Запросы ({{ requests.count }})</span>
+              <span :class="{'textBold':NetworkSelectNum===1}" @click="NetworkSelect(1)">{{ $t('Friends') }}</span>
+              <span :class="{'textBold':NetworkSelectNum===2}" @click="NetworkSelect(2)">{{ $t('Subscribes') }}</span>
+              <span v-if="user.me" :class="{'textBold':NetworkSelectNum===3}" @click="NetworkSelect(3)">{{ $t('Requests') }} ({{ requests.count }})</span>
             </div>
 
             <div

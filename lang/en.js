@@ -1,9 +1,19 @@
 export default {
   MyPage: 'My profile',
   Contacts: 'My contacts',
+  Im: 'Im',
   Feed: 'Feed',
   UsersCatalog: 'User Catalog',
   AboutProject: 'About',
+  // page User
+  Friends: 'Friends',
+  Subscribes: 'Subscribes',
+  Requests: 'Requests',
+  BirthDay: 'BirthDay',
+  Gender: 'Gender',
+  Location: 'Location',
+  ShortDesc: 'ShortDesc',
+  // end page User
   Wall: 'Wall',
   Send: 'Send',
   AnswerPost: 'Answer',

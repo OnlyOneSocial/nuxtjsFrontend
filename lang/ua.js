@@ -1,9 +1,19 @@
 export default {
   MyPage: 'Моя сторінка',
+  Im: 'Діалоги',
   Contacts: 'Контакти',
   Feed: 'Стрічка',
   UsersCatalog: 'Список користувачів',
   AboutProject: 'Про проєкт',
+  // Страница пользователя
+  Friends: 'Друзья',
+  Subscribes: 'Подписки',
+  Requests: 'Запросы',
+  BirthDay: 'Дата рождения',
+  Gender: 'Пол',
+  Location: 'Местоположение',
+  ShortDesc: 'Краткое описание',
+  // конец Страница пользователя
   Wall: 'Стіна',
   Send: 'Відправити',
   AnswerPost: 'Відповісти',

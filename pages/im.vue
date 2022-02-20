@@ -116,7 +116,7 @@
     </div>
 
     <div v-if="!$route.query.im" style="text-align:center;margin: 0 auto;background: rgb(255, 255, 255);padding: 10px 20px 20px 20px;width:50%">
-      Диалоги
+      {{ $t('Im') }}
       <div v-for="(dialog,index) in dialogs" :key="index" style="text-align:left">
         <NuxtLink v-if="dialog.sendto>0" :to="`/im?im=${dialog.sendto}`">
           <div style="display: flex;align-items: flex-start;margin-top:10px">
@@ -125,7 +125,7 @@
             </div>
             <div style="padding-left: 5px;" class="message-username">
               <span>{{ dialog.username }}</span>
-              <div>{{ dialog.time }}</div>
+              <div>{{ FromNowTime(dialog.timestamp) }}</div>
             </div>
           </div>
           <div style="margin-top: -5px;">
@@ -143,6 +143,7 @@
 import { mapState } from 'vuex'
 import Popper from 'vue-popperjs'
 import 'vue-popperjs/dist/vue-popper.css'
+import moment from 'moment'
 
 export default {
   components: {
@@ -183,6 +184,10 @@ export default {
     this.getIm()
   },
   methods: {
+    FromNowTime (timestamp) {
+      if (!timestamp) { return 'offline' }
+      return moment(timestamp * 1000).locale(this.$i18n.localeProperties.code).fromNow()
+    },
     Resize (element) {
       this.TextAreaheight = element.target.scrollHeight
     },

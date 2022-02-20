@@ -39,7 +39,7 @@
           Русский
         </span>
 
-        <span v-if="$i18n.localeProperties.code!=='ua'" style="cursor: pointer;" @click="$i18n.setLocale('ua')">
+        <span v-if="$i18n.localeProperties.code!=='uk'" style="cursor: pointer;" @click="$i18n.setLocale('uk')">
           Українська
         </span>
       </div>

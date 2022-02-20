@@ -19,7 +19,7 @@
         </li>
         <li class="nav-list__item">
           <NuxtLink to="/im">
-            <img src="/img/menu/news.svg" :class="{active:$nuxt.$route.name=='im' }" style="margin-right:6px">Диалоги
+            <img src="/img/menu/news.svg" :class="{active:$nuxt.$route.name=='im' }" style="margin-right:6px">{{ $t('Im') }}
           </NuxtLink>
         </li>
       </template>
