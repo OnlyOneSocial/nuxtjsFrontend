@@ -27,6 +27,8 @@
       <a href="https://katelinlis.ru">
         Авторка проекта
       </a> <br>
+      admin@only-one.su почта для обратной связи
+      <br/>
       <a href="https://github.com/OnlyOneSocial">
         Репозитории проекта на Github
       </a>
