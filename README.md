@@ -54,4 +54,5 @@ https://www.buymeacoffee.com/katelinlis
 - Author - [Katelinlis](https://vk.com/katelinlis)
 ## Stars
 
-![Stargazers over time](https://starchart.cc/katelinlis/nuxtjsFrontend.svg)
+[![Stargazers over time](https://starchart.cc/OnlyOneSocial/nuxtjsFrontend.svg)](https://starchart.cc/OnlyOneSocial/nuxtjsFrontend)
+

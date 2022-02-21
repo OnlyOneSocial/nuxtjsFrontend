@@ -42,6 +42,9 @@
         <span v-if="$i18n.localeProperties.code!=='uk'" style="cursor: pointer;" @click="$i18n.setLocale('uk')">
           Українська
         </span>
+        <span v-if="$i18n.localeProperties.code!=='be'" style="cursor: pointer;" @click="$i18n.setLocale('be')">
+          беларускі
+        </span>
       </div>
     </div>
   </footer>
