@@ -16,7 +16,7 @@ export default Vue.extend({
         {
           hid: 'description',
           name: 'description',
-          content: 'Добро пожаловать в свободную социальную сеть Only one, тебя тут ждет новый огромный мир, а так же ты сможешь создавать свои миры, нас уже больше 500 человек'
+          content: 'Добро пожаловать в свободную социальную сеть Only one, где тебя ждет огромный новый мир, а так же возможность создавать свои миры. Нас уже больше 500 человек!'
         },
         { hid: 'og:title', name: 'og:title', content: 'Авторизация в Only One | Свободная социальная сеть' },
         { hid: 'og:image', name: 'og:image', content: 'http://only-one.su/img/OpenGraphLogo.png' }
