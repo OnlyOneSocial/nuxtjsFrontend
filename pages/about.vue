@@ -23,7 +23,7 @@
       </a> <br>
 
       <a href="https://katelinlis.ru">
-        Автор проекта
+        Авторка проекта
       </a> <br>
       admin@only-one.su почта для обратной связи
       <br/>
