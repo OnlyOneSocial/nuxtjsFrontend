@@ -95,7 +95,7 @@ export default {
       { code: 'ru', iso: 'ru-RU', file: 'ru.js', dir: 'ltr' },
       { code: 'uk', iso: 'uk_UA', file: 'ua.js', dir: 'ltr' },
       { code: 'md', iso: 'ro_MD', file: 'md.js', dir: 'ltr' },
-      { code: 'by', iso: 'be-BY', file: 'by.js', dir: 'ltr' }
+      { code: 'be', iso: 'be-BY', file: 'by.js', dir: 'ltr' }
     ],
     defaultLocale: 'en',
     vueI18n: {
