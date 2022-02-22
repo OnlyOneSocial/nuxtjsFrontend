@@ -5,7 +5,7 @@
 
 
 ## Description
-[![Discord](https://img.shields.io/discord/922386468138266725?label=Discord)](https://discord.gg/A4qh8BT8Ue)
+[![Discord](https://img.shields.io/discord/922386468138266725?label=Discord)](https://discord.gg/afrHYdkZ)
 
 Социальная сеть с открытым исходным кодом 
 <br/>
