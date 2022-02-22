@@ -43,10 +43,10 @@
           Українська
         </span>
         <span v-if="$i18n.localeProperties.code!=='be'" style="cursor: pointer;" @click="$i18n.setLocale('be')">
-          беларускі
+          Беларускі
         </span>
         <span v-if="$i18n.localeProperties.code!=='kz'" style="cursor: pointer;" @click="$i18n.setLocale('kz')">
-          қазақ
+          Қазақ
         </span>
         <span v-if="$i18n.localeProperties.code!=='ro'" style="cursor: pointer;" @click="$i18n.setLocale('ro')">
           Română
