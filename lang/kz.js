@@ -1,4 +1,5 @@
 export default {
+  // by https://vk.com/aisberg.stalk
   MyPage: 'менің парағым',
   Im: 'Диалогтар',
   Contacts: 'Байланыстар',
