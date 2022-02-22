@@ -3,7 +3,10 @@
 </p>
 <p align="center">Open Social Network </p>
 
+
 ## Description
+[![Discord](https://img.shields.io/discord/922386468138266725?label=Discord)](https://discord.gg/A4qh8BT8Ue)
+
 Социальная сеть с открытым исходным кодом 
 <br/>
 адрес
