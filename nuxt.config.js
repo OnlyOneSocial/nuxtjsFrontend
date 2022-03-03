@@ -97,7 +97,9 @@ export default {
       { code: 'md', iso: 'ro_MD', file: 'md.js', dir: 'ltr' },
       { code: 'be', iso: 'be-BY', file: 'by.js', dir: 'ltr' },
       { code: 'ro', iso: 'ro-MD', file: 'ro.js', dir: 'ltr' },
-      { code: 'kz', iso: 'kk-KZ', file: 'kz.js', dir: 'ltr' }
+      { code: 'kz', iso: 'kk-KZ', file: 'kz.js', dir: 'ltr' },
+      { code: 'zhtw', iso: 'zh-tw', file: 'zh-tw.js', dir: 'ltr' },
+      { code: 'zhcn', iso: 'zh-cn', file: 'zh-cn.js', dir: 'ltr' },
     ],
     defaultLocale: 'en',
     vueI18n: {
