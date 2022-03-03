@@ -51,6 +51,12 @@
         <span v-if="$i18n.localeProperties.code!=='ro'" style="cursor: pointer;" @click="$i18n.setLocale('ro')">
           Română
         </span>
+        <span v-if="$i18n.localeProperties.code!=='zhcn'" style="cursor: pointer;" @click="$i18n.setLocale('zhcn')">
+          汉语
+        </span>
+         <span v-if="$i18n.localeProperties.code!=='zhtw'" style="cursor: pointer;" @click="$i18n.setLocale('zhtw')">
+          臺灣話
+        </span>
       </div>
     </div>
   </footer>
