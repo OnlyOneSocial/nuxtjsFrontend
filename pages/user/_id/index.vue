@@ -117,9 +117,9 @@
             </div>
 
             <div v-if="user && requests && NetworkSelectNum===3" style="margin-left:6px">
-              <template v-for="(friend,index) in requests.list">
+              <template v-for="(friend) in requests.list">
                 <div :key="friend.user.id" style="width:80%;margin: 0 auto">
-                  <div v-if="index" id="friend">
+                  <div v-if="friend" id="friend">
                     <NuxtLink :to="`/user/${friend.user.id}`">
                       <div style="display:flex;justify-content: start;padding-bottom:5px">
                         <img height="41px" width="41px" style="border-radius: 100%;" alt="user avatar" :src="getAvatar(friend.user.id,friend.user.avatar)">
