@@ -45,7 +45,8 @@ $ npm run test
 ## Другие репозитории
 <a href="https://github.com/OnlyOneSocial/Wallbackend">github.com/OnlyOneSocial/Wallbackend</a> - Бэкенд для  стены <br>
 <a href="https://github.com/OnlyOneSocial/MessagesBackend">github.com/OnlyOneSocial/MessagesBackend</a> - Бэкенд для сообщений <br>
-<a href="https://github.com/katelinlis/AuthBackend">github.com/katelinlis/AuthBackend</a> - Бэкенд для Авторизации (используется пока что авторизация на nodejs)
+<a href="https://github.com/OnlyOneSocial/UserBackend">github.com/katelinlis/AuthBackend</a> - Бэкенд Пользователи и друзья <br>
+<a href="https://github.com/OnlyOneSocial/AndroidAPP">github.com/katelinlis/AuthBackend</a> - Приложение на АНдроид
   
 ## Зеркало в <a href="https://github.com/yggdrasil-network/yggdrasil-go">Yggdrasil</a> (Устарело и заброшенно)
 http://social.anon
