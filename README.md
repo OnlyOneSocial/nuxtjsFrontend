@@ -48,8 +48,10 @@ $ npm run test
 <a href="https://github.com/OnlyOneSocial/UserBackend">github.com/OnlyOneSocial/UserBackend</a> - Бэкенд Пользователи и друзья <br>
 <a href="https://github.com/OnlyOneSocial/AndroidAPP">github.com/OnlyOneSocial/AndroidAPP</a> - Приложение на АНдроид
   
-## Зеркало в <a href="https://github.com/yggdrasil-network/yggdrasil-go">Yggdrasil</a> (Устарело и заброшенно)
-http://social.anon
+## Зеркало (Устарело и заброшенно) в Yggdrasil
+  http://social.anon <br/>
+технологии <br/><a href="https://github.com/yggdrasil-network/yggdrasil-go">Yggdrasil Mesh network</a>  <a href="https://github.com/Revertron/Alfis">Alfis dns</a>  </br>
+
   
 ## Donate
 support
