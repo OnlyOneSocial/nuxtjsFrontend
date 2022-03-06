@@ -47,7 +47,9 @@ $ npm run test
 <a href="https://github.com/OnlyOneSocial/MessagesBackend">github.com/OnlyOneSocial/MessagesBackend</a> - Бэкенд для сообщений <br>
 <a href="https://github.com/katelinlis/AuthBackend">github.com/katelinlis/AuthBackend</a> - Бэкенд для Авторизации (используется пока что авторизация на nodejs)
   
-
+## Зеркало в <a href="https://github.com/yggdrasil-network/yggdrasil-go">Yggdrasil</a> (Устарело и заброшенно)
+http://social.anon
+  
 ## Donate
 support
 https://www.buymeacoffee.com/katelinlis
