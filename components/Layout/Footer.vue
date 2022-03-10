@@ -72,7 +72,7 @@ export default {
   }
 }
 </script>
-<style>
+<style scoped>
 a {
   color: unset;
   text-decoration: unset;
