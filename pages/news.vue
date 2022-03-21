@@ -37,13 +37,10 @@ export default Vue.extend({
     async Scroll () {
       // this.$nextTick(() => {
       const clientHeight = document.getElementsByClassName('page-container_main')[0].clientHeight
-      const percent = clientHeight - window.scrollY
+      const percent = clientHeight - window.innerHeight
 
-      console.log(percent)
-
-      if (percent < 1800 && !this.loading && !this.news.end) {
+      if (percent < 100 && !this.loading && !this.news.end) {
         this.loading = true
-        console.log(percent)
         await this.getNews({ offset: this.news.list.length, limit: 30 })
         this.loading = false
       }
