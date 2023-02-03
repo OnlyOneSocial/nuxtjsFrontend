@@ -8,6 +8,9 @@ export default {
   env: {
     version: 0.05
   },
+  router: {
+    trailingSlash: false
+  },
   head: {
     title: 'Social network',
     meta: [
@@ -99,7 +102,7 @@ export default {
       { code: 'ro', iso: 'ro-MD', file: 'ro.js', dir: 'ltr' },
       { code: 'kz', iso: 'kk-KZ', file: 'kz.js', dir: 'ltr' },
       { code: 'zhtw', iso: 'zh-tw', file: 'zh_tw.js', dir: 'ltr' },
-      { code: 'zhcn', iso: 'zh-cn', file: 'zh_cn.js', dir: 'ltr' },
+      { code: 'zhcn', iso: 'zh-cn', file: 'zh_cn.js', dir: 'ltr' }
     ],
     defaultLocale: 'en',
     vueI18n: {
