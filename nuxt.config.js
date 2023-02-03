@@ -9,6 +9,7 @@ export default {
     version: 0.05
   },
   router: {
+    middleware: 'trailingSlashRedirect',
     trailingSlash: false
   },
   head: {
