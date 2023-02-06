@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="display:block">
     Поиск пользователей
     <br>
     <label for="Username">Имя пользователя</label>
@@ -8,7 +8,11 @@
 
     <br>
 
-    Функционал временно не доступен
+    <div v-for="(user,index) in users" :key="index">
+      <nuxt-link :to="`/user/${user.id}`">
+        {{ user.username }}
+      </nuxt-link>
+    </div>
   </div>
 </template>
 
@@ -19,7 +23,8 @@ let timeoutRequestSearch
 export default Vue.extend({
   data () {
     return {
-      username: ''
+      username: '',
+      users: []
     }
   },
   head () {
@@ -41,8 +46,8 @@ export default Vue.extend({
       if (timeoutRequestSearch) { clearTimeout(timeoutRequestSearch) }
 
       timeoutRequestSearch = setTimeout(() => {
-        this.$api.$post(`/user/search?username=${this.username}`).then((data) => {
-          console.log(data)
+        this.$api.$get(`/user/search?username=${this.username}`).then((data) => {
+          this.users = data
         })
       }, 500)
     }
