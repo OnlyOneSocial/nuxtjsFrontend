@@ -22,12 +22,13 @@
             <img src="/img/menu/im.svg" :class="{active:$nuxt.$route.name=='im' }">{{ $t('Im') }}
           </NuxtLink>
         </li>
+        <li class="nav-list__item">
+          <NuxtLink to="/explore">
+            <img src="/img/menu/explore.svg" :class="{active:$nuxt.$route.name=='explore' }">{{ $t('Explore') }}
+          </NuxtLink>
+        </li>
       </template>
-      <li class="nav-list__item">
-        <NuxtLink to="/explore">
-          <img src="/img/menu/explore.svg" :class="{active:$nuxt.$route.name=='explore' }">{{ $t('Explore') }}
-        </NuxtLink>
-      </li>
+
       <li class="nav-list__item">
         <NuxtLink to="/about">
           <img src="/img/menu/about.svg" :class="{active:$nuxt.$route.name=='about' }">{{ $t('AboutProject') }}
