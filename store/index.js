@@ -30,6 +30,9 @@ export const actions = {
     if (!token && AuthRequiredPages.includes(namePage)) {
       redirect('/login')
     }
+    if (token === undefined && namePage === 'post-post' && app.router.history.current.query.answer === null) {
+      redirect(app.router.history.current.path)
+    }
 
     if (token && namePage === 'index') {
       redirect('/news')

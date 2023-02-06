@@ -1,13 +1,20 @@
 <template>
   <div style="display:block">
     Поиск пользователей
-    <br>
-    <label for="Username">Имя пользователя</label>
-    <input id="Username" v-model="username">
-    <br>
+    <form @submit="submit">
+      <br>
+      <label for="Username">Имя пользователя</label>
+      <input id="Username" v-model="filter.username">
+      <br>
+      <label for="agestart">Возраст от</label>
+      <input id="agestart" v-model="filter.agestart" type="number">
+      <br>
+      <label for="agestart">Возраст до</label>
+      <input id="agestart" v-model="filter.ageend" type="number">
+      <br>
 
-    <br>
-
+      <input type="submit" value="search">
+    </form>
     <div v-for="(user,index) in users" :key="index">
       <nuxt-link :to="`/user/${user.id}`">
         {{ user.username }}
@@ -23,7 +30,11 @@ let timeoutRequestSearch
 export default Vue.extend({
   data () {
     return {
-      username: '',
+      filter: {
+        username: '',
+        agestart: 0,
+        ageend: 0
+      },
       users: []
     }
   },
@@ -41,12 +52,16 @@ export default Vue.extend({
       ]
     }
   },
-  watch: {
-    username (newUsername) {
+  methods: {
+    submit (e) {
+      e.preventDefault()
+      this.Search()
+    },
+    Search () {
       if (timeoutRequestSearch) { clearTimeout(timeoutRequestSearch) }
 
       timeoutRequestSearch = setTimeout(() => {
-        this.$api.$get(`/user/search?username=${this.username}`).then((data) => {
+        this.$api.$get(`/user/search?username=${this.filter.username}&agestart=${this.filter.agestart}&ageend=${this.filter.ageend}`).then((data) => {
           this.users = data
         })
       }, 500)
