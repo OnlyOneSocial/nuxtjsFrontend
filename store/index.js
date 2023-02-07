@@ -1,3 +1,4 @@
+import jwt_decode from 'jwt-decode'
 let serverUrl = 'https://only-one.su/api'
 let serverNewsUrl = serverUrl
 let serverUsersUrl = serverUrl
@@ -23,24 +24,7 @@ export const state = () => ({
 export const actions = {
   async nuxtServerInit ({ commit, state }, { app, redirect }) {
     const token = this.$cookies.get('token')
-    const namePage = app.router.history.current.name
-
-    const AuthRequiredPages = ['news', 'im']
-
-    if (!token && AuthRequiredPages.includes(namePage)) {
-      redirect('/login')
-    }
-    if (token === undefined && namePage === 'post-post' && app.router.history.current.query.answer === null) {
-      redirect(app.router.history.current.path)
-    }
-
-    if (token && namePage === 'index') {
-      redirect('/news')
-    }
-    if (token && namePage === 'login') {
-      redirect('/news')
-    }
-    if (token && namePage !== 'login') {
+    if (token !== undefined && jwt_decode(token).exp > new Date().getTime() / 1000) {
       let headers = {}
 
       if (token !== '') {
@@ -57,6 +41,25 @@ export const actions = {
       })
 
       if (res && res.data && res.data.user && res.data.user.id) { commit('SetMe', res.data.user) }
+    } else if (jwt_decode(token).exp <= new Date().getTime() / 1000) {
+      this.$cookies.remove('token')
+    }
+    const namePage = app.router.history.current.name
+
+    const AuthRequiredPages = ['news', 'im']
+
+    if (!token && AuthRequiredPages.includes(namePage)) {
+      redirect('/login')
+    }
+    if (token === undefined && namePage === 'post-post' && app.router.history.current.query.answer === null) {
+      redirect(app.router.history.current.path)
+    }
+
+    if (token && namePage === 'index') {
+      redirect('/news')
+    }
+    if (token && namePage === 'login') {
+      redirect('/news')
     }
   },
   InitWebSocket ({ commit }) {
